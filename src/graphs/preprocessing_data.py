@@ -46,8 +46,8 @@ def edgelist2id(dataset):
     with open(node2id_file) as f:
         node2id = json.load(f)
 
-    df["target_id"] = df["target"].apply(lambda x: node2id[x])
-    df["source_id"] = df["source"].apply(lambda x: node2id[x])
+    df["target_id"] = df["target"].apply(lambda x: node2id[str(x)])
+    df["source_id"] = df["source"].apply(lambda x: node2id[str(x)])
     print(df.head(5))
 
     df.to_csv(inputfile, index=False)
