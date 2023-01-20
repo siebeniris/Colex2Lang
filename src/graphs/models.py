@@ -21,28 +21,18 @@ import numpy as np
 # https://github.com/VHRanger/nodevectors (node2vec, GGVec, ProNE, GraRep, GloVe)
 
 
-def get_graph_from_feature(file, nodefile, feature):
+def get_synset_pair_graphs(file, dataset):
+    # source        target          weight  target_id  source_id
+    # bn:00051613n  bn:00054891n     520      21559      43098
+
     df = pd.read_csv(file)
-    cprint(f"loading file {file} to create a graph for the feature {feature}, data length {len(df)}", "red",
-           attrs=["bold"])
-    df = df[["target", "source", feature]].dropna().drop_duplicates(subset=["target", "source"])
-    cprint(f"feature {feature} length {len(df)}", "red")
-
-    cprint(f"loading node2id file {nodefile}", "red")
-
-    with open(nodefile) as f:
-        node2id = json.load(f)
-
-    df["target"] = df["target"].apply(lambda x: node2id[x])
-    df["source"] = df["source"].apply(lambda x: node2id[x])
-
     cprint(df.head(2), "green")
 
-    cprint("creating a weighted graph for the feature...", "magenta")
+    cprint("creating a weighted graph for the synset pairs...", "magenta")
     G = nx.Graph()
-    for tgt, src, weight in zip(df["target"], df["source"], df[feature]):
+    for tgt, src, weight in zip(df["target_id"], df["source_id"], df["weight"]):
         G.add_edge(tgt, src, weight=weight)
-    # print(G[293][731])
+
     G = G.to_undirected()
 
     return G
@@ -138,9 +128,9 @@ def generate_node2vec_embeddings(G, N_COMPONENTS):
     return model
 
 
-def generate_node_embeddings_batch(model, N_COMPONENTS=100, feature="pmi", file="data/edgelists/bn_features_all.csv",
-                                   nodefile="data/edgelists/bn_node2id.json", output_folder="data/node_embeddings"):
-    G = get_graph_from_feature(file, nodefile, feature)
+def generate_node_embeddings_batch(model, N_COMPONENTS=100, dataset="bn", file="data/edgelists/edgelists_bn.csv",
+                                   output_folder="data/node_embeddings"):
+    G = get_synset_pair_graphs(file, dataset)
 
     if model == "node2vec":
         embeds = generate_node2vec_embeddings(G, N_COMPONENTS)
@@ -154,42 +144,29 @@ def generate_node_embeddings_batch(model, N_COMPONENTS=100, feature="pmi", file=
         embeds = generate_glove_embeddings(G, N_COMPONENTS)  # didn't converge
 
     if model == "node2vec":
-        embeds.save(os.path.join(output_folder, f"{model}_{feature}.bin"))
+        embeds.save(os.path.join(output_folder, f"{model}.bin"))
     else:
-        embeds.save(os.path.join(output_folder, f"{model}_{feature}"))
+        embeds.save(os.path.join(output_folder, f"{model}"))
 
 
-def main(inputfile, colex="clics"):
-    # features = ["pmi", "phonological", "syntactic", "genetic", "geographic", "inventory", "featural", "similarity"]
-    features = ["pmi", "chi_sq", "phi_sq", "jaccard",
-                "similarity",
-                "featural", "genetic", "inventory", "geographic", "phonological", "syntactic"]
-
-    output_folder = f"data/node_embeddings/{colex}"
+def main(inputfile, dataset="bn"):
+    output_folder = f"data/node_embeddings/{dataset}"
     if not os.path.exists(output_folder):
         os.mkdir(output_folder)
 
-    dirname = os.path.dirname(inputfile)
-
-    # node2id should be specified for each feature, so it can work for ecg.
-
-    # "prone", "ggvc", "glove"
-
     for model in ["node2vec", "prone", "ggvc", "glove"]:
-        for feature in features:
-            node2id_file = os.path.join(dirname, f"{feature}_node2id.json")
 
-            if model == "node2vec":
-                filepath = os.path.join(output_folder, f"{model}_{feature}.bin")
-                if not os.path.exists(filepath):
-                    print(model, feature)
-                    generate_node_embeddings_batch(model, 64, feature, inputfile, node2id_file, output_folder)
+        if model == "node2vec":
+            filepath = os.path.join(output_folder, f"{model}.bin")
+            if not os.path.exists(filepath):
+                print(model, dataset)
+                generate_node_embeddings_batch(model, 100, dataset, inputfile, output_folder)
 
-            if model != "node2vec":
-                filepath = os.path.join(output_folder, f"{model}_{feature}.zip")
-                if not os.path.exists(filepath):
-                    print(model, feature)
-                    generate_node_embeddings_batch(model, 64, feature, inputfile, node2id_file, output_folder)
+        if model != "node2vec":
+            filepath = os.path.join(output_folder, f"{model}.zip")
+            if not os.path.exists(filepath):
+                print(model, dataset)
+                generate_node_embeddings_batch(model, 100, dataset, inputfile, output_folder)
 
 
 if __name__ == '__main__':
