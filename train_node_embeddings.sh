@@ -4,7 +4,7 @@
 #SBATCH --job-name=graphEmb_bn
 #SBATCH --output=node_embeddings.txt
 #SBATCH --time=8:00:00
-#SBATCH --mem=64G
+#SBATCH --mem=128G
 
 source $HOME/.bashrc
 conda activate graphEmb
