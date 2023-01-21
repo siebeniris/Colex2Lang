@@ -78,7 +78,7 @@ def load_model(model_name, input_folder="data/node_embeddings"):
             return Glove.load(filepath).model
 
 
-def model2embeddings(dataset="wn", model_folder="data/node_embeddings", output_folder="data/eval_nodeEmb"):
+def model2embeddings(dataset="wn", model_name=None, model_folder="data/node_embeddings",  output_folder="data/eval_nodeEmb"):
     """
     Convert pretrained graph embedding models to node2vec format for evaluation.
     """
@@ -88,39 +88,71 @@ def model2embeddings(dataset="wn", model_folder="data/node_embeddings", output_f
     if not os.path.exists(output_folder_colex):
         os.mkdir(output_folder_colex)
 
-    for file in os.listdir(inputfolder):
-        if file.endswith(".zip") or file.endswith(".bin"):
-            model_name = file.replace(".zip", "").replace(".bin", "")
-            model = load_model(model_name, inputfolder)
-            print(dataset, model_name )
-            if model_name != "node2vec":
-                model_size = len(model)
-                first_k = list(model.keys())[0]
-                emb_dim = model[first_k].shape[0]
-                with open(os.path.join(output_folder_colex, f"{model_name}_embeddings"), "w") as writer:
-                    writer.write(f"{model_size} {emb_dim}\n")
-                    for key, vec in model.items():
-                        vec = list(vec)
-                        writer.write(str(key) + ' ')
-                        vec_str = ['%.9f' % val for val in vec]
-                        vec_str = " ".join(vec_str)
-                        writer.write(vec_str + '\n')
-            else:
-                # node2vec
-                keys = list(model.wv.key_to_index)
-                model_size = len(keys)
-                emb_dim = model.wv[keys[0]].shape[0]
+    if model_name is not None:
+        model = load_model(model_name, inputfolder)
+        print(dataset, model_name)
+        if model_name != "node2vec":
+            model_size = len(model)
+            first_k = list(model.keys())[0]
+            emb_dim = model[first_k].shape[0]
+            with open(os.path.join(output_folder_colex, f"{model_name}_embeddings"), "w") as writer:
+                writer.write(f"{model_size} {emb_dim}\n")
+                for key, vec in model.items():
+                    vec = list(vec)
+                    writer.write(str(key) + ' ')
+                    vec_str = ['%.9f' % val for val in vec]
+                    vec_str = " ".join(vec_str)
+                    writer.write(vec_str + '\n')
+        else:
+            # node2vec
+            keys = list(model.wv.key_to_index)
+            model_size = len(keys)
+            emb_dim = model.wv[keys[0]].shape[0]
 
-                with open(os.path.join(output_folder_colex, f"{model_name}_embeddings"),
-                          "w") as writer1:
-                    writer1.write(f"{model_size} {emb_dim}\n")
-                    for key in keys:
-                        vec = model.wv[key]
-                        vec = list(vec)
-                        writer1.write(str(key) + ' ')
-                        vec_str = ['%.9f' % val for val in vec]
-                        vec_str = " ".join(vec_str)
-                        writer1.write(vec_str + '\n')
+            with open(os.path.join(output_folder_colex, f"{model_name}_embeddings"),
+                      "w") as writer1:
+                writer1.write(f"{model_size} {emb_dim}\n")
+                for key in keys:
+                    vec = model.wv[key]
+                    vec = list(vec)
+                    writer1.write(str(key) + ' ')
+                    vec_str = ['%.9f' % val for val in vec]
+                    vec_str = " ".join(vec_str)
+                    writer1.write(vec_str + '\n')
+    else:
+        for file in os.listdir(inputfolder):
+            if file.endswith(".zip") or file.endswith(".bin"):
+                model_name = file.replace(".zip", "").replace(".bin", "")
+                model = load_model(model_name, inputfolder)
+                print(dataset, model_name )
+                if model_name != "node2vec":
+                    model_size = len(model)
+                    first_k = list(model.keys())[0]
+                    emb_dim = model[first_k].shape[0]
+                    with open(os.path.join(output_folder_colex, f"{model_name}_embeddings"), "w") as writer:
+                        writer.write(f"{model_size} {emb_dim}\n")
+                        for key, vec in model.items():
+                            vec = list(vec)
+                            writer.write(str(key) + ' ')
+                            vec_str = ['%.9f' % val for val in vec]
+                            vec_str = " ".join(vec_str)
+                            writer.write(vec_str + '\n')
+                else:
+                    # node2vec
+                    keys = list(model.wv.key_to_index)
+                    model_size = len(keys)
+                    emb_dim = model.wv[keys[0]].shape[0]
+
+                    with open(os.path.join(output_folder_colex, f"{model_name}_embeddings"),
+                              "w") as writer1:
+                        writer1.write(f"{model_size} {emb_dim}\n")
+                        for key in keys:
+                            vec = model.wv[key]
+                            vec = list(vec)
+                            writer1.write(str(key) + ' ')
+                            vec_str = ['%.9f' % val for val in vec]
+                            vec_str = " ".join(vec_str)
+                            writer1.write(vec_str + '\n')
 
 
 def convert2eval_format(dataset, output_folder="data/eval_nodeEmb"):
@@ -142,11 +174,11 @@ bin the real-valued features into a series of classes via the use of a histogram
 """
 
 
-def main(task, dataset, model_folder="data/node_embeddings", output_folder="data/eval_nodeEmb"):
+def main(task, dataset, model_name, model_folder="data/node_embeddings", output_folder="data/eval_nodeEmb"):
     if task == "format":
         convert2eval_format(dataset, output_folder)
     elif task == "model2emb":
-        model2embeddings(dataset, model_folder, output_folder)
+        model2embeddings(dataset, model_name, model_folder, output_folder)
     elif task == "ecg":
         generate_ecg(dataset)
 

@@ -15,6 +15,7 @@ cd $HOME/ColexGraph
 
 env=$1
 dataset=$2
+modelname=$3
 
 
 
@@ -31,7 +32,7 @@ sleep 1
 # step 2:
 # plac.call(model2embeddings)
 echo "Coverting model to embeddings..."
-python -m src.graphs.evaluation model2emb "$dataset"
+python -m src.graphs.evaluation model2emb "$dataset" "$modelname"
 # doesn't work in macos.
 
 sleep 2
