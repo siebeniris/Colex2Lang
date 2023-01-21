@@ -149,12 +149,15 @@ def generate_node_embeddings_batch(model, N_COMPONENTS=100, dataset="bn", file="
         embeds.save(os.path.join(output_folder, f"{model}"))
 
 
-def main(inputfile, dataset="bn"):
+def main(inputfile, dataset="bn", one_model=None):
     output_folder = f"data/node_embeddings/{dataset}"
     if not os.path.exists(output_folder):
         os.mkdir(output_folder)
+    print(f"working on {inputfile} -> {dataset} -> {one_model}")
 
-    for model in ["node2vec", "prone", "ggvc", "glove"]:
+    if one_model is not None:
+        model = one_model
+        print(f"one model is chosen {one_model}")
 
         if model == "node2vec":
             filepath = os.path.join(output_folder, f"{model}.bin")
@@ -167,6 +170,22 @@ def main(inputfile, dataset="bn"):
             if not os.path.exists(filepath):
                 print(model, dataset)
                 generate_node_embeddings_batch(model, 100, dataset, inputfile, output_folder)
+
+    else:
+
+        for model in ["prone", "node2vec", "ggvc", "glove"]:
+
+            if model == "node2vec":
+                filepath = os.path.join(output_folder, f"{model}.bin")
+                if not os.path.exists(filepath):
+                    print(model, dataset)
+                    generate_node_embeddings_batch(model, 100, dataset, inputfile, output_folder)
+
+            if model != "node2vec":
+                filepath = os.path.join(output_folder, f"{model}.zip")
+                if not os.path.exists(filepath):
+                    print(model, dataset)
+                    generate_node_embeddings_batch(model, 100, dataset, inputfile, output_folder)
 
 
 if __name__ == '__main__':

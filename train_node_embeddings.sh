@@ -13,8 +13,10 @@ cd $HOME/ColexGraph
 
 env=$1
 dataset=$2
+model=$3
+
 
 conda activate "$env"
 
 echo "Train the graph embedding models..."
-python -m src.graphs.models data/edgelists/edgelists_"$dataset".csv "$dataset"
+python -m src.graphs.models data/edgelists/edgelists_"$dataset".csv "$dataset" "$model"
