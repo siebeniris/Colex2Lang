@@ -6,6 +6,7 @@ from gensim.models import KeyedVectors
 from nodevectors import ProNE, Glove, GGVec
 from sklearn.metrics.pairwise import cosine_similarity
 
+
 def load_model(model_name, dataset, input_folder="data/node_embeddings"):
     if model_name == "node2vec":
         filepath = os.path.join(input_folder, dataset, f"{model_name}.bin")
@@ -27,7 +28,8 @@ def main(dataset):
 
     df = pd.read_csv(f"data/edgelists/edgelists_{dataset}.csv")
 
-    for model_name in ["node2vec", "prone", "ggvc", "glove"]:
+    # for model_name in ["node2vec", "prone", "ggvc", "glove"]:
+    for model_name in ["node2vec", "prone", "ggvc"]:
         model = load_model(model_name, dataset)
         print(f"loading model {model_name}")
         sims = []
@@ -50,5 +52,5 @@ def main(dataset):
 
 if __name__ == '__main__':
     import plac
-    plac.call(main)
 
+    plac.call(main)
