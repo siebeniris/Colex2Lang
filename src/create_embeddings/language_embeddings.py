@@ -28,8 +28,14 @@ def get_language_embeddings(dataset, colex_metric, lang_metric, model_name, inpu
         vec_str = " ".join(vec_str)
         return vec_str
 
-    def creating_language_vector(connector):
-        pass
+    def creating_language_vector(lang_metric, lang_vecs_list):
+        lang_vecs = np.stack(lang_vecs_list, axis=0)
+        if lang_metric == "sum":
+            return np.sum(lang_vecs, axis=0)
+        elif lang_metric == "avg":
+            return np.average(lang_vecs, axis=0)
+        elif lang_metric == "max":
+            return np.amax(lang_vecs, axis=0)
 
     colex_embeddings_file = f"data/colex_embeddings/{colex_metric}/{dataset}_{model_name}_embeddings"
     colex_vectors = KeyedVectors.load_word2vec_format(colex_embeddings_file, binary=False)
@@ -42,18 +48,24 @@ def get_language_embeddings(dataset, colex_metric, lang_metric, model_name, inpu
         lang_len = len(df["ISO639P3code"].dropna().value_counts())
         colex_dim = get_colex_dim(colex_metric)
         print(
-            f"languages {lang_len} -> dataset {dataset}-> {model_name} -> colex_metric {colex_metric} -> lang metric {lang_metric}")
+            f"languages {lang_len} -> dataset {dataset}-> {model_name} -> colex_metric {colex_metric} dim {colex_dim} -> lang metric {lang_metric}")
+
         writer.write(f"{lang_len} {colex_dim}\n")
 
         for lang, group in df.groupby(by="ISO639P3code"):
-            lang_vec = np.zeros(colex_dim)
+            # how many colexifications  in the group of languages.
+
             writer.write(str(lang) + ' ')
-
+            lang_vec_list = []
             for colex_id in group["Colex_ID"]:
-                lang_vec += colex_vectors[str(colex_id)]
+                lang_vec_list.append(colex_vectors[str(colex_id)])
 
-            # lang_i = sum(colex_j)
-            vec_str = get_vec_string(lang_vec)
+            lang_vec_array = creating_language_vector(lang_metric, lang_vec_list)
+            # print(lang_vec_array)
+            # print(lang_vec_array.shape)
+            assert lang_vec_array.shape[0] == colex_dim
+
+            vec_str = get_vec_string(lang_vec_array)
 
             writer.write(vec_str + '\n')
 
@@ -63,25 +75,26 @@ def get_language_embeddings(dataset, colex_metric, lang_metric, model_name, inpu
         colex_dim = get_colex_dim(colex_metric)
         writer.write(f"{lang_len} {colex_dim}\n")
         print(
-            f"languages {lang_len} -> dataset {dataset} -> {model_name} -> colex_metric {colex_metric} lang metric {lang_metric}")
+            f"languages {lang_len} -> dataset {dataset} -> {model_name} -> colex_metric {colex_metric} dim {colex_dim}-> lang metric {lang_metric}")
 
         for lang, group in df.groupby(by="LANG3"):
             lang_vec = np.zeros(colex_dim)
             writer.write(str(lang) + ' ')
-
+            lang_vec_list = []
             for colex_id in group["COLEX_ID"]:
-                lang_vec += colex_vectors[str(colex_id)]
+                lang_vec_list.append(colex_vectors[str(colex_id)])
 
-            # lang_i = sum(colex_j)
-            vec_str = get_vec_string(lang_vec)
+            lang_vec_array = creating_language_vector(lang_metric, lang_vec_list)
+            assert lang_vec_array.shape[0] == colex_dim
+            vec_str = get_vec_string(lang_vec_array)
             writer.write(vec_str + '\n')
 
     writer.close()
 
 
 def main(dataset, colex_metric, lang_metric, inputfile):
-    # for model_name in ["node2vec", "prone", "glove", "ggvc"]:
-    for model_name in ["node2vec", "prone", "ggvc", "glove"]:
+    for model_name in ["node2vec", "prone", "glove", "ggvc"]:
+        # for model_name in ["node2vec"]:
         print(model_name)
         get_language_embeddings(dataset, colex_metric, lang_metric, model_name, inputfile)
 
@@ -90,5 +103,3 @@ if __name__ == '__main__':
     import plac
 
     plac.call(main)
-
-#  python src/clustering/language_embeddings.py clics ~/Documents/experiments/LangSim/data/linguistic_features/colex_clics3_all.csv
