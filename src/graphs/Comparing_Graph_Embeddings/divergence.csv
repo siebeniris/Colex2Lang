@@ -1,1 +1,4 @@
-Dataset	Model	Divergence
+clics	node2vec	0.002147103
+clics	glove	0.05893162
+clics	ggvc	0.07269361
+clics	prone	0.006560081

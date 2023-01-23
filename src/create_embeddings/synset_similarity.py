@@ -29,7 +29,7 @@ def main(dataset):
     df = pd.read_csv(f"data/edgelists/edgelists_{dataset}.csv")
 
     # for model_name in ["node2vec", "prone", "ggvc", "glove"]:
-    for model_name in ["node2vec", "prone", "ggvc"]:
+    for model_name in ["glove"]:
         model = load_model(model_name, dataset)
         print(f"loading model {model_name}")
         sims = []

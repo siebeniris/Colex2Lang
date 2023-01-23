@@ -10,11 +10,12 @@ from termcolor import cprint
 
 def main(outputfile="divergence.csv", inputfolder="/Users/yiyichen/Documents/experiments/ColexGraph/data/eval_nodeEmb"):
     result_writer = open(outputfile, "w+")
-    # result_writer.write("Dataset\tModel\tDivergence\n")
+    result_writer.write("Dataset\tModel\tDivergence\n")
     # datasets = ["wn", "clics", "bn", "b,/n_concept", "wn_concept"]
     datasets = ["wn", "wn_concept"]
     # datasets = ["clics"]
     modelnames = ["node2vec", "glove", "ggvc", "prone"]
+
 
     for dataset in datasets:
         for modelname in modelnames:
