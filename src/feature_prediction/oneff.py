@@ -155,7 +155,7 @@ def load_dataset(df, feature_name):
     return df_feature, df["wals_code"].tolist()
 
 
-def run(device="cpu", lexicon_only=False):
+def run(device="cpu"):
     # device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
     device = device
     print(f"Using {device} device")
@@ -170,10 +170,9 @@ def run(device="cpu", lexicon_only=False):
     dev_df = pd.read_csv(dev_file)
     test_df = pd.read_csv(test_file)
 
-    if lexicon_only:
-        features = []
-    else:
-        features = list(feature_maps.keys())
+
+    features = list(feature_maps.keys())
+    print(features)
 
     for feature_name in features:
 
