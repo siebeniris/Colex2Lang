@@ -109,22 +109,22 @@ def train_model(model, optimizer, train_data, dev_data, test_data, feature_name,
         dev_acc, dev_report, dev_loss = evaluate_dataset(model, dev_data, feature_name, lang_dict, mode="dev")
 
         if dev_acc > np.max(best_acc):
-            print(f"Epoch {epoch} ")
-            print("training ")
-            print(f"classification report {train_report}")
-            print(f"accuracy {acc}")
-            print(f"avg loss {train_loss}")
-
-            print("dev...")
-            print(f"accuracy {dev_acc}")
-            print(f"report {dev_report}")
-            print(f"avg loss{dev_loss}")
+            # print(f"Epoch {epoch} ")
+            # print("training ")
+            # print(f"classification report {train_report}")
+            # print(f"accuracy {acc}")
+            # print(f"avg loss {train_loss}")
+            #
+            # print("dev...")
+            # print(f"accuracy {dev_acc}")
+            # print(f"report {dev_report}")
+            # print(f"avg loss{dev_loss}")
             best_acc.append(dev_acc)
 
             test_acc, test_report, _ = evaluate_dataset(model, test_data, feature_name, lang_dict, mode="test")
-            print(f"testing")
-            print(f"acc {test_acc}")
-            print(f"report {test_report}")
+            # print(f"testing")
+            # print(f"acc {test_acc}")
+            # print(f"report {test_report}")
 
             result = {
                 "epoch": epoch,
@@ -142,22 +142,17 @@ def train_model(model, optimizer, train_data, dev_data, test_data, feature_name,
             }
 
             model_name = f"oneff_{feature_name}"
+            print(f"output model {model_name}")
             with open(os.path.join(output_folder, f"{model_name}.json"), "w") as f:
                 json.dump(result, f)
 
             torch.save(model.state_dict(), os.path.join(output_folder, model_name))
 
 
-def load_dataset(filepath, feature_name):
-    df = pd.read_csv(filepath)
-    # lang_dict = {lang: idx for idx, lang in enumerate(df["wals_code"].tolist())}
-
+def load_dataset(df, feature_name):
     df_feature = df[["wals_code", feature_name]].dropna()
     df_feature[feature_name] = df_feature[feature_name].astype("int")
-
-    print(df_feature[feature_name].value_counts())
-    label_dim = len(df_feature[feature_name].value_counts().to_dict())
-    return df_feature, label_dim, df["wals_code"].tolist()
+    return df_feature, df["wals_code"].tolist()
 
 
 def run():
@@ -166,27 +161,37 @@ def run():
     print(f"Using {device} device")
     feature_name = "Number_of_Non-Derived_Basic_Colour_Categories"
 
+
+    with open("data/TypPred/preprocessed/feature_maps.json") as f:
+        feature_maps = json.load(f)
+
     train_file = os.path.join("data/TypPred/preprocessed", "train.csv")
     dev_file = os.path.join("data/TypPred/preprocessed", "dev.csv")
     test_file = os.path.join("data/TypPred/preprocessed", "test.csv")
+    train_df = pd.read_csv(train_file)
+    dev_df = pd.read_csv(dev_file)
+    test_df = pd.read_csv(test_file)
 
+    for feature_name in list(feature_maps.keys())[:10]:
 
-    train_data, label_dim, langs_train = load_dataset(train_file, feature_name)
-    dev_data, _, langs_dev = load_dataset(dev_file, feature_name)
-    test_data, _, langs_test = load_dataset(test_file, feature_name)
+        label_dim = len(feature_maps[feature_name])
 
-    all_langs = list(set(langs_dev) | set(langs_train) | set(langs_test))
-    num_langs = len(all_langs)
-    print(f"nr of langs {num_langs}, {all_langs[:10]}")
-    lang_dict = {lang: idx for idx, lang in enumerate(all_langs)}
+        train_data, langs_train = load_dataset(train_df, feature_name)
+        dev_data, langs_dev = load_dataset(dev_df, feature_name)
+        test_data, langs_test = load_dataset(test_df, feature_name)
 
-    model = OneFF(num_langs=num_langs, input_dim=100, hidden_dim=200, label_dim=label_dim, dropout=0.5)
-    model = model.to(device)
+        all_langs = list(set(langs_dev) | set(langs_train) | set(langs_test))
+        num_langs = len(all_langs)
+        print(f"feature {feature_name} nr of langs {num_langs}, {all_langs[:10]}")
+        lang_dict = {lang: idx for idx, lang in enumerate(all_langs)}
 
-    optimizer = optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-6)
-    output_folder = "output/models/oneff/"
-    train_model(model, optimizer, train_data, dev_data, test_data, feature_name, lang_dict, output_folder,
-                max_epochs=200)
+        model = OneFF(num_langs=num_langs, input_dim=100, hidden_dim=200, label_dim=label_dim, dropout=0.5)
+        model = model.to(device)
+
+        optimizer = optim.Adam(model.parameters(), lr=0.001)
+        output_folder = "output/models/oneff/"
+        train_model(model, optimizer, train_data, dev_data, test_data, feature_name, lang_dict, output_folder,
+                    max_epochs=100)
 
 
 if __name__ == '__main__':
