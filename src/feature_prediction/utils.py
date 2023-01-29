@@ -1,6 +1,13 @@
-import pandas as pd
-import json
 import os
+import json
+from collections import defaultdict
+import pandas as pd
+import numpy as np
+import torch
+from torch import nn
+import torch.optim as optim
+
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, f1_score
 
 
 def lang_clics_wn():
@@ -33,12 +40,28 @@ def get_langs_inter_typpred(file, sep, dataset):
     print(f'length: {len(df_filter)}')
 
 
-def load_train_data():
-    df = pd.read_csv("data/TypPred/preprocessed/train.csv")
 
+
+def feature_maps_info():
+    with open("data/TypPred/preprocessed/feature_maps.json") as f:
+        feature_maps = json.load(f)
+    df_parameter = pd.read_csv("data/cldf-datasets-wals-878ea47/raw/parameter.csv")
+    feature2id = dict(zip([name.replace(" ","_") for name in df_parameter["name"]], df_parameter["id"]))
+    print(feature2id)
+
+    new_feature_maps = defaultdict(dict)
+    for feature, value_dict in feature_maps.items():
+        new_feature_maps[feature] = {
+            "id": feature2id[feature],
+            "values": value_dict
+        }
+    with open("data/TypPred/preprocessed/feature_dict.json", "w") as f:
+        json.dump(new_feature_maps, f)
 
 
 if __name__ == '__main__':
     import plac
+
     # plac.call(lang_clics_wn)
-    plac.call(get_langs_inter_typpred)
+    # plac.call(get_langs_inter_typpred)
+    plac.call(feature_maps_info)
