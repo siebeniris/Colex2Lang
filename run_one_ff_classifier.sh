@@ -15,9 +15,7 @@ cd $HOME/ColexGraph
 
 env=$1
 device=$2
-lexicon=$3
-
 
 
 conda activate "$env"
-python -m src.feature_prediction.run "$device" "$lexicon"
+python -m src.feature_prediction.run "$device"
