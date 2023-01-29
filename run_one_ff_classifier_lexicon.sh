@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #SBATCH --partition=prioritized
-#SBATCH --job-name=oneff
+#SBATCH --job-name=oneff_lang
 #SBATCH --output=%j.out
 #SBATCH --time=8:00:00
 #SBATCH --mem=32G
