@@ -1,0 +1,1939 @@
+{
+  "Number_of_Non-Derived_Basic_Colour_Categories": {
+    "id": "132A",
+    "values": {
+      "2 3.5": 0,
+      "5 5": 1,
+      "7 6": 2,
+      "1 3": 3,
+      "3 4": 4,
+      "6 5.5": 5
+    }
+  },
+  "Number_of_Basic_Colour_Categories": {
+    "id": "133A",
+    "values": {
+      "1 3-4": 0,
+      "5 8-8.5": 1,
+      "4 7-7.5": 2,
+      "6 9-10": 3,
+      "7 11": 4,
+      "3 6-6.5": 5,
+      "2 4.5-5.5": 6
+    }
+  },
+  "Green_and_Blue": {
+    "id": "134A",
+    "values": {
+      "3 Black/green/blue": 0,
+      "6 Yellow/green vs. blue": 1,
+      "4 Black/blue vs. green": 2,
+      "1 Green vs. blue": 3,
+      "7 None": 4,
+      "5 Yellow/green/blue": 5,
+      "2 Green/blue": 6
+    }
+  },
+  "Red_and_Yellow": {
+    "id": "135A",
+    "values": {
+      "5 None": 0,
+      "4 Yellow/green vs. red": 1,
+      "2 Red/yellow": 2,
+      "3 Yellow/green/blue vs. red": 3,
+      "1 Red vs. yellow": 4
+    }
+  },
+  "Fixed_Stress_Locations": {
+    "id": "14A",
+    "values": {
+      "2 Initial": 0,
+      "6 Penultimate": 1,
+      "3 Second": 2,
+      "5 Antepenultimate": 3,
+      "4 Third": 4,
+      "1 No fixed stress": 5,
+      "7 Ultimate": 6
+    }
+  },
+  "Weight-Sensitive_Stress": {
+    "id": "15A",
+    "values": {
+      "2 Left-oriented: One of the first three": 0,
+      "3 Right-edge: Ultimate or penultimate": 1,
+      "4 Right-oriented: One of the last three": 2,
+      "5 Unbounded: Stress can be anywhere": 3,
+      "7 Not predictable": 4,
+      "1 Left-edge: First or second": 5,
+      "6 Combined: Right-edge and unbounded": 6,
+      "8 Fixed stress (no weight-sensitivity)": 7
+    }
+  },
+  "Weight_Factors_in_Weight-Sensitive_Stress_Systems": {
+    "id": "16A",
+    "values": {
+      "2 Long vowel": 0,
+      "4 Long vowel or coda consonant": 1,
+      "7 Combined": 2,
+      "1 No weight": 3,
+      "5 Prominence": 4,
+      "3 Coda consonant": 5,
+      "6 Lexical stress": 6
+    }
+  },
+  "Rhythm_Types": {
+    "id": "17A",
+    "values": {
+      "4 Undetermined": 0,
+      "2 Iambic": 1,
+      "3 Dual: both trochaic and iambic": 2,
+      "5 No rhythmic stress": 3,
+      "1 Trochaic": 4
+    }
+  },
+  "Consonant_Inventories": {
+    "id": "1A",
+    "values": {
+      "3 Average": 0,
+      "5 Large": 1,
+      "1 Small": 2,
+      "4 Moderately large": 3,
+      "2 Moderately small": 4
+    }
+  },
+  "Vowel_Quality_Inventories": {
+    "id": "2A",
+    "values": {
+      "1 Small (2-4)": 0,
+      "3 Large (7-14)": 1,
+      "2 Average (5-6)": 2
+    }
+  },
+  "Consonant-Vowel_Ratio": {
+    "id": "3A",
+    "values": {
+      "3 Average": 0,
+      "1 Low": 1,
+      "4 Moderately high": 2,
+      "2 Moderately low": 3,
+      "5 High": 4
+    }
+  },
+  "Voicing_in_Plosives_and_Fricatives": {
+    "id": "4A",
+    "values": {
+      "3 In fricatives alone": 0,
+      "1 No voicing contrast": 1,
+      "2 In plosives alone": 2,
+      "4 In both plosives and fricatives": 3
+    }
+  },
+  "Voicing_and_Gaps_in_Plosive_Systems": {
+    "id": "5A",
+    "values": {
+      "1 Other": 0,
+      "3 Missing /p/": 1,
+      "2 None missing in /p t k b d g/": 2,
+      "4 Missing /g/": 3,
+      "5 Both missing": 4
+    }
+  },
+  "Uvular_Consonants": {
+    "id": "6A",
+    "values": {
+      "3 Uvular continuants only": 0,
+      "1 None": 1,
+      "2 Uvular stops only": 2,
+      "4 Uvular stops and continuants": 3
+    }
+  },
+  "Glottalized_Consonants": {
+    "id": "7A",
+    "values": {
+      "4 Glottalized resonants only": 0,
+      "6 Ejectives and glottalized resonants": 1,
+      "5 Ejectives and implosives": 2,
+      "8 Ejectives, implosives, and glottalized resonants": 3,
+      "1 No glottalized consonants": 4,
+      "3 Implosives only": 5,
+      "7 Implosives and glottalized resonants": 6,
+      "2 Ejectives only": 7
+    }
+  },
+  "Lateral_Consonants": {
+    "id": "8A",
+    "values": {
+      "4 /l/ and lateral obstruent": 0,
+      "2 /l/, no obstruent laterals": 1,
+      "1 No laterals": 2,
+      "5 No /l/, but lateral obstruents": 3,
+      "3 Laterals, but no /l/, no obstruent laterals": 4
+    }
+  },
+  "The_Velar_Nasal": {
+    "id": "9A",
+    "values": {
+      "2 No initial velar nasal": 0,
+      "1 Initial velar nasal": 1,
+      "3 No velar nasal": 2
+    }
+  },
+  "Vowel_Nasalization": {
+    "id": "10A",
+    "values": {
+      "2 Contrast absent": 0,
+      "1 Contrast present": 1
+    }
+  },
+  "Front_Rounded_Vowels": {
+    "id": "11A",
+    "values": {
+      "2 High and mid": 0,
+      "1 None": 1,
+      "4 Mid only": 2,
+      "3 High only": 3
+    }
+  },
+  "Syllable_Structure": {
+    "id": "12A",
+    "values": {
+      "1 Simple": 0,
+      "3 Complex": 1,
+      "2 Moderately complex": 2
+    }
+  },
+  "Absence_of_Common_Consonants": {
+    "id": "18A",
+    "values": {
+      "2 No bilabials": 0,
+      "1 All present": 1,
+      "4 No nasals": 2,
+      "6 No fricatives or nasals": 3,
+      "3 No fricatives": 4,
+      "5 No bilabials or nasals": 5
+    }
+  },
+  "Presence_of_Uncommon_Consonants": {
+    "id": "19A",
+    "values": {
+      "2 Clicks": 0,
+      "3 Labial-velars": 1,
+      "7 Pharyngeals and \"th\"": 2,
+      "4 Pharyngeals": 3,
+      "5 'Th' sounds": 4,
+      "1 None": 5
+    }
+  },
+  "Fusion_of_Selected_Inflectional_Formatives": {
+    "id": "20A",
+    "values": {
+      "1 Exclusively concatenative": 0,
+      "7 Isolating/concatenative": 1,
+      "3 Exclusively tonal": 2,
+      "6 Ablaut/concatenative": 3,
+      "2 Exclusively isolating": 4
+    }
+  },
+  "Exponence_of_Selected_Inflectional_Formatives": {
+    "id": "21A",
+    "values": {
+      "5 No case": 0,
+      "2 Case + number": 1,
+      "3 Case + referentiality": 2,
+      "1 Monoexponential case": 3
+    }
+  },
+  "Prefixing_vs._Suffixing_in_Inflectional_Morphology": {
+    "id": "26A",
+    "values": {
+      "4 Equal prefixing and suffixing": 0,
+      "5 Weakly prefixing": 1,
+      "3 Weakly suffixing": 2,
+      "6 Strong prefixing": 3,
+      "1 Little affixation": 4,
+      "2 Strongly suffixing": 5
+    }
+  },
+  "Case_Syncretism": {
+    "id": "28A",
+    "values": {
+      "1 No case marking": 0,
+      "3 Core and non-core": 1,
+      "4 No syncretism": 2,
+      "2 Core cases only": 3
+    }
+  },
+  "Syncretism_in_Verbal_Person/Number_Marking": {
+    "id": "29A",
+    "values": {
+      "3 Not syncretic": 0,
+      "1 No subject person/number marking": 1,
+      "2 Syncretic": 2
+    }
+  },
+  "Coding_of_Nominal_Plurality": {
+    "id": "33A",
+    "values": {
+      "1 Plural prefix": 0,
+      "7 Plural word": 1,
+      "2 Plural suffix": 2,
+      "8 Plural clitic": 3,
+      "6 Mixed morphological plural": 4,
+      "4 Plural tone": 5,
+      "5 Plural complete reduplication": 6,
+      "3 Plural stem change": 7,
+      "9 No plural": 8
+    }
+  },
+  "Plurality_in_Independent_Personal_Pronouns": {
+    "id": "35A",
+    "values": {
+      "2 Number-indifferent pronouns": 0,
+      "8 Person stem + nominal plural affix": 1,
+      "4 Person-number stem": 2,
+      "3 Person-number affixes": 3,
+      "1 No independent subject pronouns": 4,
+      "5 Person-number stem + pronominal plural affix": 5,
+      "7 Person stem + pronominal plural affix": 6,
+      "6 Person-number stem + nominal plural affix": 7
+    }
+  },
+  "Inclusive/Exclusive_Distinction_in_Independent_Pronouns": {
+    "id": "39A",
+    "values": {
+      "2 'We' the same as 'I'": 0,
+      "4 Only inclusive": 1,
+      "3 No inclusive/exclusive": 2,
+      "5 Inclusive/exclusive": 3,
+      "1 No 'we'": 4
+    }
+  },
+  "Inclusive/Exclusive_Distinction_in_Verbal_Inflection": {
+    "id": "40A",
+    "values": {
+      "2 'We' the same as 'I'": 0,
+      "4 Only inclusive": 1,
+      "1 No person marking": 2,
+      "3 No inclusive/exclusive": 3,
+      "5 Inclusive/exclusive": 4
+    }
+  },
+  "Gender_Distinctions_in_Independent_Personal_Pronouns": {
+    "id": "44A",
+    "values": {
+      "1 In 3rd person + 1st and/or 2nd person": 0,
+      "6 No gender distinctions": 1,
+      "2 3rd person only, but also non-singular": 2,
+      "3 3rd person singular only": 3,
+      "5 3rd person non-singular only": 4
+    }
+  },
+  "Person_Marking_on_Adpositions": {
+    "id": "48A",
+    "values": {
+      "2 No person marking": 0,
+      "1 No adpositions": 1,
+      "3 Pronouns only": 2,
+      "4 Pronouns and nouns": 3
+    }
+  },
+  "Number_of_Cases": {
+    "id": "49A",
+    "values": {
+      "8 10 or more cases": 0,
+      "6 6-7 cases": 1,
+      "3 3 cases": 2,
+      "7 8-9 cases": 3,
+      "2 2 cases": 4,
+      "1 No morphological case-marking": 5,
+      "9 Exclusively borderline case-marking": 6,
+      "5 5 cases": 7,
+      "4 4 cases": 8
+    }
+  },
+  "Asymmetrical_Case-Marking": {
+    "id": "50A",
+    "values": {
+      "2 Symmetrical": 0,
+      "6 Syncretism in relevant NP-types": 1,
+      "3 Additive-quantitatively asymmetrical": 2,
+      "5 Qualitatively asymmetrical": 3,
+      "4 Subtractive-quantitatively asymmetrical": 4,
+      "1 No case-marking": 5
+    }
+  },
+  "Position_of_Case_Affixes": {
+    "id": "51A",
+    "values": {
+      "3 Case tone": 0,
+      "1 Case suffixes": 1,
+      "2 Case prefixes": 2,
+      "7 Prepositional clitics": 3,
+      "5 Mixed morphological case": 4,
+      "6 Postpositional clitics": 5,
+      "8 Inpositional clitics": 6,
+      "9 No case affixes or adpositional clitics": 7
+    }
+  },
+  "Position_of_Pronominal_Possessive_Affixes": {
+    "id": "57A",
+    "values": {
+      "4 No possessive affixes": 0,
+      "2 Possessive suffixes": 1,
+      "3 Prefixes and suffixes": 2,
+      "1 Possessive prefixes": 3
+    }
+  },
+  "Perfective/Imperfective_Aspect": {
+    "id": "65A",
+    "values": {
+      "1 Grammatical marking": 0,
+      "2 No grammatical marking": 1
+    }
+  },
+  "The_Past_Tense": {
+    "id": "66A",
+    "values": {
+      "1 Present, no remoteness distinctions": 0,
+      "4 No past tense": 1,
+      "3 Present, 4 or more remoteness distinctions": 2,
+      "2 Present, 2-3 remoteness distinctions": 3
+    }
+  },
+  "The_Future_Tense": {
+    "id": "67A",
+    "values": {
+      "2 No inflectional future": 0,
+      "1 Inflectional future exists": 1
+    }
+  },
+  "The_Perfect": {
+    "id": "68A",
+    "values": {
+      "1 From possessive": 0,
+      "4 No perfect": 1,
+      "2 From 'finish', 'already'": 2,
+      "3 Other perfect": 3
+    }
+  },
+  "Position_of_Tense-Aspect_Affixes": {
+    "id": "69A",
+    "values": {
+      "2 Tense-aspect suffixes": 0,
+      "1 Tense-aspect prefixes": 1,
+      "4 Mixed type": 2,
+      "5 No tense-aspect inflection": 3,
+      "3 Tense-aspect tone": 4
+    }
+  },
+  "Semantic_Distinctions_of_Evidentiality": {
+    "id": "77A",
+    "values": {
+      "2 Indirect only": 0,
+      "1 No grammatical evidentials": 1,
+      "3 Direct and indirect": 2
+    }
+  },
+  "Coding_of_Evidentiality": {
+    "id": "78A",
+    "values": {
+      "5 Modal morpheme": 0,
+      "4 Separate particle": 1,
+      "1 No grammatical evidentials": 2,
+      "2 Verbal affix or clitic": 3,
+      "3 Part of the tense system": 4,
+      "6 Mixed": 5
+    }
+  },
+  "Order_of_Subject,_Object_and_Verb": {
+    "id": "81A",
+    "values": {
+      "1 SOV": 0,
+      "5 OVS": 1,
+      "6 OSV": 2,
+      "4 VOS": 3,
+      "7 No dominant order": 4,
+      "2 SVO": 5,
+      "3 VSO": 6
+    }
+  },
+  "Order_of_Subject_and_Verb": {
+    "id": "82A",
+    "values": {
+      "2 VS": 0,
+      "3 No dominant order": 1,
+      "1 SV": 2
+    }
+  },
+  "Order_of_Object_and_Verb": {
+    "id": "83A",
+    "values": {
+      "3 No dominant order": 0,
+      "1 OV": 1,
+      "2 VO": 2
+    }
+  },
+  "Order_of_Object,_Oblique,_and_Verb": {
+    "id": "84A",
+    "values": {
+      "3 XOV": 0,
+      "1 VOX": 1,
+      "2 XVO": 2,
+      "4 OXV": 3,
+      "5 OVX": 4,
+      "6 No dominant order": 5
+    }
+  },
+  "Order_of_Adposition_and_Noun_Phrase": {
+    "id": "85A",
+    "values": {
+      "5 No adpositions": 0,
+      "2 Prepositions": 1,
+      "4 No dominant order": 2,
+      "1 Postpositions": 3,
+      "3 Inpositions": 4
+    }
+  },
+  "Order_of_Genitive_and_Noun": {
+    "id": "86A",
+    "values": {
+      "3 No dominant order": 0,
+      "1 Genitive-Noun": 1,
+      "2 Noun-Genitive": 2
+    }
+  },
+  "Order_of_Adjective_and_Noun": {
+    "id": "87A",
+    "values": {
+      "3 No dominant order": 0,
+      "4 Only internally-headed relative clauses": 1,
+      "2 Noun-Adjective": 2,
+      "1 Adjective-Noun": 3
+    }
+  },
+  "Order_of_Demonstrative_and_Noun": {
+    "id": "88A",
+    "values": {
+      "3 Demonstrative prefix": 0,
+      "4 Demonstrative suffix": 1,
+      "1 Demonstrative-Noun": 2,
+      "5 Demonstrative before and after Noun": 3,
+      "2 Noun-Demonstrative": 4,
+      "6 Mixed": 5
+    }
+  },
+  "Order_of_Relative_Clause_and_Noun": {
+    "id": "90A",
+    "values": {
+      "5 Adjoined": 0,
+      "7 Mixed": 1,
+      "2 Relative clause-Noun": 2,
+      "4 Correlative": 3,
+      "3 Internally headed": 4,
+      "1 Noun-Relative clause": 5
+    }
+  },
+  "Order_of_Degree_Word_and_Adjective": {
+    "id": "91A",
+    "values": {
+      "2 Adjective-Degree word": 0,
+      "1 Degree word-Adjective": 1,
+      "3 No dominant order": 2
+    }
+  },
+  "Position_of_Interrogative_Phrases_in_Content_Questions": {
+    "id": "93A",
+    "values": {
+      "2 Not initial interrogative phrase": 0,
+      "1 Initial interrogative phrase": 1,
+      "3 Mixed": 2
+    }
+  },
+  "Order_of_Adverbial_Subordinator_and_Clause": {
+    "id": "94A",
+    "values": {
+      "4 Subordinating suffix": 0,
+      "3 Internal subordinator word": 1,
+      "5 Mixed": 2,
+      "1 Initial subordinator word": 3,
+      "2 Final subordinator word": 4
+    }
+  },
+  "Relationship_between_the_Order_of_Object_and_Verb_and_the_Order_of_Adposition_and_Noun_Phrase": {
+    "id": "95A",
+    "values": {
+      "3 VO and Postpositions": 0,
+      "1 OV and Postpositions": 1,
+      "5 Other": 2,
+      "2 OV and Prepositions": 3,
+      "4 VO and Prepositions": 4
+    }
+  },
+  "Relationship_between_the_Order_of_Object_and_Verb_and_the_Order_of_Relative_Clause_and_Noun": {
+    "id": "96A",
+    "values": {
+      "1 OV and RelN": 0,
+      "4 VO and NRel": 1,
+      "5 Other": 2,
+      "3 VO and RelN": 3,
+      "2 OV and NRel": 4
+    }
+  },
+  "Relationship_between_the_Order_of_Object_and_Verb_and_the_Order_of_Adjective_and_Noun": {
+    "id": "97A",
+    "values": {
+      "3 VO and AdjN": 0,
+      "1 OV and AdjN": 1,
+      "5 Other": 2,
+      "2 OV and NAdj": 3,
+      "4 VO and NAdj": 4
+    }
+  },
+  "Alignment_of_Case_Marking_of_Full_Noun_Phrases": {
+    "id": "98A",
+    "values": {
+      "6 Active-inactive": 0,
+      "3 Nominative - accusative (marked nominative)": 1,
+      "1 Neutral": 2,
+      "4 Ergative - absolutive": 3,
+      "2 Nominative - accusative (standard)": 4,
+      "5 Tripartite": 5
+    }
+  },
+  "Alignment_of_Case_Marking_of_Pronouns": {
+    "id": "99A",
+    "values": {
+      "3 Nominative - accusative (marked nominative)": 0,
+      "1 Neutral": 1,
+      "7 None": 2,
+      "4 Ergative - absolutive": 3,
+      "2 Nominative - accusative (standard)": 4,
+      "5 Tripartite": 5,
+      "6 Active - inactive": 6
+    }
+  },
+  "Alignment_of_Verbal_Person_Marking": {
+    "id": "100A",
+    "values": {
+      "3 Ergative": 0,
+      "1 Neutral": 1,
+      "2 Accusative": 2,
+      "4 Active": 3,
+      "5 Hierarchical": 4,
+      "6 Split": 5
+    }
+  },
+  "Verbal_Person_Marking": {
+    "id": "102A",
+    "values": {
+      "4 A or P argument": 0,
+      "1 No person marking": 1,
+      "2 Only the A argument": 2,
+      "3 Only the P argument": 3,
+      "5 Both the A and P arguments": 4
+    }
+  },
+  "Third_Person_Zero_of_Verbal_Person_Marking": {
+    "id": "103A",
+    "values": {
+      "5 Zero in all 3rd person forms": 0,
+      "1 No person marking": 1,
+      "4 Zero in all 3sg forms": 2,
+      "2 No zero realization": 3,
+      "6 Zero only in 3rd nonsingular": 4,
+      "3 Zero in some 3sg forms": 5
+    }
+  },
+  "Order_of_Person_Markers_on_the_Verb": {
+    "id": "104A",
+    "values": {
+      "2 A precedes P": 0,
+      "1 A and P do not or do not both occur on the verb": 1,
+      "3 P precedes A": 2,
+      "5 A and P are fused": 3,
+      "4 Both orders of A and P occur": 4
+    }
+  },
+  "Passive_Constructions": {
+    "id": "107A",
+    "values": {
+      "1 Present": 0,
+      "2 Absent": 1
+    }
+  },
+  "Nonperiphrastic_Causative_Constructions": {
+    "id": "111A",
+    "values": {
+      "1 Neither": 0,
+      "3 Compound but no morphological": 1,
+      "4 Both": 2,
+      "2 Morphological but no compound": 3
+    }
+  },
+  "Negative_Morphemes": {
+    "id": "112A",
+    "values": {
+      "6 Double negation": 0,
+      "5 Variation between negative word and affix": 1,
+      "3 Negative auxiliary verb": 2,
+      "4 Negative word, unclear if verb or particle": 3,
+      "1 Negative affix": 4,
+      "2 Negative particle": 5
+    }
+  },
+  "Symmetric_and_Asymmetric_Standard_Negation": {
+    "id": "113A",
+    "values": {
+      "3 Both": 0,
+      "2 Asymmetric": 1,
+      "1 Symmetric": 2
+    }
+  },
+  "Subtypes_of_Asymmetric_Standard_Negation": {
+    "id": "114A",
+    "values": {
+      "6 A/NonReal and A/Cat": 0,
+      "5 A/Fin and A/Cat": 1,
+      "1 A/Fin": 2,
+      "2 A/NonReal": 3,
+      "7 Non-assignable": 4,
+      "3 A/Cat": 5,
+      "4 A/Fin and A/NonReal": 6
+    }
+  },
+  "Comparative_Constructions": {
+    "id": "121A",
+    "values": {
+      "2 Exceed": 0,
+      "4 Particle": 1,
+      "1 Locational": 2,
+      "3 Conjoined": 3
+    }
+  },
+  "Hand_and_Arm": {
+    "id": "129A",
+    "values": {
+      "2 Different": 0,
+      "1 Identical": 1
+    }
+  },
+  "Finger_and_Hand": {
+    "id": "130A",
+    "values": {
+      "2 Different": 0,
+      "1 Identical": 1
+    }
+  },
+  "Postverbal_Negative_Morphemes": {
+    "id": "143F",
+    "values": {
+      "1 VNeg": 0,
+      "3 VNeg&[V-Neg]": 1,
+      "2 [V-Neg]": 2,
+      "4 None": 3
+    }
+  },
+  "Postnominal_relative_clauses": {
+    "id": "90C",
+    "values": {
+      "3 NRel or internally-headed": 0,
+      "2 NRel or RelN": 1,
+      "1 Noun-Relative clause (NRel) dominant": 2
+    }
+  },
+  "SVNegO_Order": {
+    "id": "144J",
+    "values": {
+      "3 Word&OptDoubleNeg": 0,
+      "1 Word&NoDoubleNeg": 1,
+      "5 Word&OnlyWithAnotherNeg": 2,
+      "4 Suffix&OptDoubleNeg": 3,
+      "6 Suffix&OnlyWithAnotherNeg": 4,
+      "2 Suffix&NoDoubleNeg": 5,
+      "7 No SVNegO": 6
+    }
+  },
+  "Position_of_Negative_Word_With_Respect_to_Subject,_Object,_and_Verb": {
+    "id": "144A",
+    "values": {
+      "1 NegSVO": 0,
+      "6 SNegOV": 1,
+      "20 MorphNeg": 2,
+      "3 SVNegO": 3,
+      "13 ONegVS": 4,
+      "8 SOVNeg": 5,
+      "21 Other": 6,
+      "16 More than one position": 7,
+      "14 OVNegS": 8,
+      "19 OptDoubleNeg": 9,
+      "2 SNegVO": 10,
+      "18 ObligDoubleNeg": 11,
+      "4 SVONeg": 12,
+      "7 SONegV": 13,
+      "11 VSONeg": 14,
+      "5 NegSOV": 15,
+      "9 NegVSO": 16,
+      "10 VSNegO": 17,
+      "12 NegVOS": 18,
+      "15 OSVNeg": 19
+    }
+  },
+  "SVONeg_Order": {
+    "id": "144K",
+    "values": {
+      "4 No SVONeg": 0,
+      "3 OnlyWithAnotherNeg": 1,
+      "1 NoDoubleNeg": 2,
+      "2 OptDoubleNeg": 3
+    }
+  },
+  "The_Position_of_Negative_Morphemes_in_SVO_Languages": {
+    "id": "144D",
+    "values": {
+      "11 Other NegV": 0,
+      "4 SVONeg": 1,
+      "6 S[V-Neg]O": 2,
+      "12 Other VNeg": 3,
+      "15 OptNeg": 4,
+      "14 ObligNeg": 5,
+      "10 SOV/SOV but SNegVO": 6,
+      "3 SVNegO": 7,
+      "8 VSO but NegSVO": 8,
+      "2 SNegVO": 9,
+      "7 SVO&Tone": 10,
+      "13 More than one construction": 11,
+      "5 S[Neg-V]O": 12
+    }
+  },
+  "Preverbal_Negative_Morphemes": {
+    "id": "143E",
+    "values": {
+      "1 NegV": 0,
+      "4 None": 1,
+      "3 NegV&[Neg-V]": 2,
+      "2 [Neg-V]": 3
+    }
+  },
+  "Order_of_Negative_Morpheme_and_Verb": {
+    "id": "143A",
+    "values": {
+      "15 OptDoubleNeg": 0,
+      "11 Type 3 / Type 4": 1,
+      "14 ObligDoubleNeg": 2,
+      "16 OptTripleNeg&ObligDoubleNeg": 3,
+      "1 NegV": 4,
+      "10 Type 2 / Type 4": 5,
+      "9 Type 2 / Type 3": 6,
+      "6 Type 1 / Type 2": 7,
+      "4 [V-Neg]": 8,
+      "5 Negative Tone": 9,
+      "7 Type 1 / Type 3": 10,
+      "3 [Neg-V]": 11,
+      "8 Type 1 / Type 4": 12,
+      "2 VNeg": 13
+    }
+  },
+  "Minor_morphological_means_of_signaling_negation": {
+    "id": "143G",
+    "values": {
+      "3 NegStemChange": 0,
+      "1 NegTone": 1,
+      "4 None": 2
+    }
+  },
+  "Exponence_of_Tense-Aspect-Mood_Inflection": {
+    "id": "21B",
+    "values": {
+      "5 TAM+polarity": 0,
+      "1 monoexponential TAM": 1,
+      "2 TAM+agreement": 2,
+      "3 TAM+agreement+diathesis": 3,
+      "6 no TAM": 4
+    }
+  },
+  "Tone": {
+    "id": "13A",
+    "values": {
+      "3 Complex tone system": 0,
+      "2 Simple tone system": 1,
+      "1 No tones": 2
+    }
+  },
+  "Inflectional_Synthesis_of_the_Verb": {
+    "id": "22A",
+    "values": {
+      "2 2-3 categories per word": 0,
+      "3 4-5 categories per word": 1,
+      "6 10-11 categories per word": 2,
+      "5 8-9 categories per word": 3,
+      "1 0-1 category per word": 4,
+      "7 12-13 categories per word": 5,
+      "4 6-7 categories per word": 6
+    }
+  },
+  "Locus_of_Marking_in_the_Clause": {
+    "id": "23A",
+    "values": {
+      "5 Other": 0,
+      "1 Head marking": 1,
+      "3 Double marking": 2,
+      "4 No marking": 3,
+      "2 Dependent marking": 4
+    }
+  },
+  "Locus_of_Marking_in_Possessive_Noun_Phrases": {
+    "id": "24A",
+    "values": {
+      "5 Other": 0,
+      "1 Head marking": 1,
+      "3 Double marking": 2,
+      "4 No marking": 3,
+      "2 Dependent marking": 4
+    }
+  },
+  "Locus_of_Marking:_Whole-language_Typology": {
+    "id": "25A",
+    "values": {
+      "4 Zero-marking": 0,
+      "5 Inconsistent or other": 1,
+      "2 Dependent-marking": 2,
+      "1 Head-marking": 3,
+      "3 Double-marking": 4
+    }
+  },
+  "Reduplication": {
+    "id": "27A",
+    "values": {
+      "2 Full reduplication only": 0,
+      "3 No productive reduplication": 1,
+      "1 Productive full and partial reduplication": 2
+    }
+  },
+  "Number_of_Genders": {
+    "id": "30A",
+    "values": {
+      "2 Two": 0,
+      "4 Four": 1,
+      "5 Five or more": 2,
+      "3 Three": 3,
+      "1 None": 4
+    }
+  },
+  "Sex-based_and_Non-sex-based_Gender_Systems": {
+    "id": "31A",
+    "values": {
+      "3 Non-sex-based": 0,
+      "1 No gender": 1,
+      "2 Sex-based": 2
+    }
+  },
+  "Systems_of_Gender_Assignment": {
+    "id": "32A",
+    "values": {
+      "3 Semantic and formal": 0,
+      "1 No gender": 1,
+      "2 Semantic": 2
+    }
+  },
+  "Occurrence_of_Nominal_Plurality": {
+    "id": "34A",
+    "values": {
+      "1 No nominal plural": 0,
+      "4 All nouns, always optional": 1,
+      "6 All nouns, always obligatory": 2,
+      "3 Only human nouns, obligatory": 3,
+      "2 Only human nouns, optional": 4,
+      "5 All nouns, optional in inanimates": 5
+    }
+  },
+  "The_Associative_Plural": {
+    "id": "36A",
+    "values": {
+      "4 No associative plural": 0,
+      "2 Unique affixal associative plural": 1,
+      "3 Unique periphrastic associative plural": 2,
+      "1 Associative same as additive plural": 3
+    }
+  },
+  "Definite_Articles": {
+    "id": "37A",
+    "values": {
+      "1 Definite word distinct from demonstrative": 0,
+      "5 No definite or indefinite article": 1,
+      "2 Demonstrative word used as definite article": 2,
+      "3 Definite affix": 3,
+      "4 No definite, but indefinite article": 4
+    }
+  },
+  "Indefinite_Articles": {
+    "id": "38A",
+    "values": {
+      "3 Indefinite affix": 0,
+      "2 Indefinite word same as 'one'": 1,
+      "5 No definite or indefinite article": 2,
+      "1 Indefinite word distinct from 'one'": 3,
+      "4 No indefinite, but definite article": 4
+    }
+  },
+  "Distance_Contrasts_in_Demonstratives": {
+    "id": "41A",
+    "values": {
+      "2 Two-way contrast": 0,
+      "4 Four-way contrast": 1,
+      "3 Three-way contrast": 2,
+      "5 Five (or more)-way contrast": 3,
+      "1 No distance contrast": 4
+    }
+  },
+  "Pronominal_and_Adnominal_Demonstratives": {
+    "id": "42A",
+    "values": {
+      "2 Different stem": 0,
+      "3 Different inflection": 1,
+      "1 Identical": 2
+    }
+  },
+  "Indefinite_Pronouns": {
+    "id": "46A",
+    "values": {
+      "2 Generic-noun-based": 0,
+      "4 Mixed": 1,
+      "5 Existential construction": 2,
+      "3 Special": 3,
+      "1 Interrogative-based": 4
+    }
+  },
+  "Intensifiers_and_Reflexive_Pronouns": {
+    "id": "47A",
+    "values": {
+      "2 Differentiated": 0,
+      "1 Identical": 1
+    }
+  },
+  "Comitatives_and_Instrumentals": {
+    "id": "52A",
+    "values": {
+      "2 Differentiation": 0,
+      "1 Identity": 1,
+      "3 Mixed": 2
+    }
+  },
+  "Ordinal_Numerals": {
+    "id": "53A",
+    "values": {
+      "2 One, two, three": 0,
+      "6 First, two-th, three-th": 1,
+      "5 First/one-th, two-th, three-th": 2,
+      "4 One-th, two-th, three-th": 3,
+      "7 First, second, three-th": 4,
+      "3 First, two, three": 5,
+      "1 None": 6,
+      "8 Various": 7
+    }
+  },
+  "Distributive_Numerals": {
+    "id": "54A",
+    "values": {
+      "2 Marked by reduplication": 0,
+      "4 Marked by suffix": 1,
+      "7 Marked by mixed or other strategies": 2,
+      "1 No distributive numerals": 3,
+      "5 Marked by preceding word": 4,
+      "6 Marked by following word": 5,
+      "3 Marked by prefix": 6
+    }
+  },
+  "Numeral_Classifiers": {
+    "id": "55A",
+    "values": {
+      "2 Optional": 0,
+      "3 Obligatory": 1,
+      "1 Absent": 2
+    }
+  },
+  "Obligatory_Possessive_Inflection": {
+    "id": "58A",
+    "values": {
+      "1 Exists": 0,
+      "2 Absent": 1
+    }
+  },
+  "Possessive_Classification": {
+    "id": "59A",
+    "values": {
+      "2 Two classes": 0,
+      "3 Three to five classes": 1,
+      "1 No possessive classification": 2,
+      "4 More than five classes": 3
+    }
+  },
+  "Genitives,_Adjectives_and_Relative_Clauses": {
+    "id": "60A",
+    "values": {
+      "2 Genitives and adjectives collapsed": 0,
+      "3 Genitives and relative clauses collapsed": 1,
+      "1 Weakly differentiated": 2,
+      "4 Adjectives and relative clauses collapsed": 3,
+      "6 Highly differentiated": 4,
+      "5 Moderately differentiated in other ways": 5
+    }
+  },
+  "Adjectives_without_Nouns": {
+    "id": "61A",
+    "values": {
+      "2 Without marking": 0,
+      "4 Marked by suffix": 1,
+      "7 Marked by mixed or other strategies": 2,
+      "5 Marked by preceding word": 3,
+      "6 Marked by following word": 4,
+      "3 Marked by prefix": 5
+    }
+  },
+  "Action_Nominal_Constructions": {
+    "id": "62A",
+    "values": {
+      "7 Restricted": 0,
+      "3 Ergative-Possessive": 1,
+      "4 Double-Possessive": 2,
+      "1 Sentential": 3,
+      "2 Possessive-Accusative": 4,
+      "5 Other": 5,
+      "8 No action nominals": 6,
+      "6 Mixed": 7
+    }
+  },
+  "Noun_Phrase_Conjunction": {
+    "id": "63A",
+    "values": {
+      "2 'And' identical to 'with'": 0,
+      "1 'And' different from 'with'": 1
+    }
+  },
+  "Nominal_and_Verbal_Conjunction": {
+    "id": "64A",
+    "values": {
+      "2 Differentiation": 0,
+      "1 Identity": 1,
+      "3 Both expressed by juxtaposition": 2
+    }
+  },
+  "The_Morphological_Imperative": {
+    "id": "70A",
+    "values": {
+      "5 No second-person imperatives": 0,
+      "4 Second person number-neutral": 1,
+      "1 Second singular and second plural": 2,
+      "3 Second plural": 3,
+      "2 Second singular": 4
+    }
+  },
+  "The_Prohibitive": {
+    "id": "71A",
+    "values": {
+      "4 Special imperative + special negative": 0,
+      "1 Normal imperative + normal negative": 1,
+      "3 Special imperative + normal negative": 2,
+      "2 Normal imperative + special negative": 3
+    }
+  },
+  "Imperative-Hortative_Systems": {
+    "id": "72A",
+    "values": {
+      "3 Both types of system": 0,
+      "4 Neither type of system": 1,
+      "1 Maximal system": 2,
+      "2 Minimal system": 3
+    }
+  },
+  "The_Optative": {
+    "id": "73A",
+    "values": {
+      "2 Inflectional optative absent": 0,
+      "1 Inflectional optative present": 1
+    }
+  },
+  "Situational_Possibility": {
+    "id": "74A",
+    "values": {
+      "2 Verbal constructions": 0,
+      "1 Affixes on verbs": 1,
+      "3 Other kinds of markers": 2
+    }
+  },
+  "Epistemic_Possibility": {
+    "id": "75A",
+    "values": {
+      "3 Other": 0,
+      "1 Verbal constructions": 1,
+      "2 Affixes on verbs": 2
+    }
+  },
+  "Overlap_between_Situational_and_Epistemic_Modal_Marking": {
+    "id": "76A",
+    "values": {
+      "1 Overlap for both possibility and necessity": 0,
+      "3 No overlap": 1,
+      "2 Overlap for either possibility or necessity": 2
+    }
+  },
+  "Suppletion_According_to_Tense_and_Aspect": {
+    "id": "79A",
+    "values": {
+      "1 Tense": 0,
+      "2 Aspect": 1,
+      "3 Tense and aspect": 2,
+      "4 None": 3
+    }
+  },
+  "Verbal_Number_and_Suppletion": {
+    "id": "80A",
+    "values": {
+      "3 Singular-plural pairs, suppletion": 0,
+      "5 Singular-dual-plural triples, suppletion": 1,
+      "4 Singular-dual-plural triples, no suppletion": 2,
+      "1 None": 3,
+      "2 Singular-plural pairs, no suppletion": 4
+    }
+  },
+  "Order_of_Numeral_and_Noun": {
+    "id": "89A",
+    "values": {
+      "2 Noun-Numeral": 0,
+      "3 No dominant order": 1,
+      "4 Numeral only modifies verb": 2,
+      "1 Numeral-Noun": 3
+    }
+  },
+  "Position_of_Polar_Question_Particles": {
+    "id": "92A",
+    "values": {
+      "3 Second position": 0,
+      "5 In either of two positions": 1,
+      "4 Other position": 2,
+      "1 Initial": 3,
+      "2 Final": 4,
+      "6 No question particle": 5
+    }
+  },
+  "Expression_of_Pronominal_Subjects": {
+    "id": "101A",
+    "values": {
+      "5 Optional pronouns in subject position": 0,
+      "1 Obligatory pronouns in subject position": 1,
+      "4 Subject pronouns in different position": 2,
+      "2 Subject affixes on verb": 3,
+      "3 Subject clitics on variable host": 4,
+      "6 Mixed": 5
+    }
+  },
+  "Ditransitive_Constructions:_The_Verb_'Give'": {
+    "id": "105A",
+    "values": {
+      "1 Indirect-object construction": 0,
+      "2 Double-object construction": 1,
+      "3 Secondary-object construction": 2,
+      "4 Mixed": 3
+    }
+  },
+  "Reciprocal_Constructions": {
+    "id": "106A",
+    "values": {
+      "4 Identical to reflexive": 0,
+      "1 No reciprocals": 1,
+      "3 Mixed": 2,
+      "2 Distinct from reflexive": 3
+    }
+  },
+  "Antipassive_Constructions": {
+    "id": "108A",
+    "values": {
+      "2 Oblique patient": 0,
+      "1 Implicit patient": 1,
+      "3 No antipassive": 2
+    }
+  },
+  "Applicative_Constructions": {
+    "id": "109A",
+    "values": {
+      "8 No applicative construction": 0,
+      "1 Benefactive object; both bases": 1,
+      "3 Benefactive and other; both bases": 2,
+      "2 Benefactive object; only transitive": 3,
+      "5 Non-benefactive object; both bases": 4,
+      "4 Benefactive and other; only transitive": 5,
+      "7 Non-benefactive object; only intransitive": 6
+    }
+  },
+  "Periphrastic_Causative_Constructions": {
+    "id": "110A",
+    "values": {
+      "1 Sequential but no purposive": 0,
+      "2 Purposive but no sequential": 1,
+      "3 Both": 2
+    }
+  },
+  "Negative_Indefinite_Pronouns_and_Predicate_Negation": {
+    "id": "115A",
+    "values": {
+      "3 Mixed behaviour": 0,
+      "2 No predicate negation": 1,
+      "1 Predicate negation also present": 2,
+      "4 Negative existential construction": 3
+    }
+  },
+  "Polar_Questions": {
+    "id": "116A",
+    "values": {
+      "6 Interrogative intonation only": 0,
+      "5 Absence of declarative morphemes": 1,
+      "2 Interrogative verb morphology": 2,
+      "3 Mixture of previous two types": 3,
+      "1 Question particle": 4,
+      "4 Interrogative word order": 5
+    }
+  },
+  "Predicative_Possession": {
+    "id": "117A",
+    "values": {
+      "2 Genitive": 0,
+      "5 'Have'": 1,
+      "4 Conjunctional": 2,
+      "3 Topic": 3,
+      "1 Locational": 4
+    }
+  },
+  "Predicative_Adjectives": {
+    "id": "118A",
+    "values": {
+      "2 Nonverbal encoding": 0,
+      "1 Verbal encoding": 1,
+      "3 Mixed": 2
+    }
+  },
+  "Nominal_and_Locational_Predication": {
+    "id": "119A",
+    "values": {
+      "2 Identical": 0,
+      "1 Different": 1
+    }
+  },
+  "Zero_Copula_for_Predicate_Nominals": {
+    "id": "120A",
+    "values": {
+      "1 Impossible": 0,
+      "2 Possible": 1
+    }
+  },
+  "Relativization_on_Subjects": {
+    "id": "122A",
+    "values": {
+      "4 Gap": 0,
+      "3 Pronoun-retention": 1,
+      "1 Relative pronoun": 2,
+      "2 Non-reduction": 3
+    }
+  },
+  "Relativization_on_Obliques": {
+    "id": "123A",
+    "values": {
+      "5 Not possible": 0,
+      "2 Non-reduction": 1,
+      "4 Gap": 2,
+      "3 Pronoun-retention": 3,
+      "1 Relative pronoun": 4
+    }
+  },
+  "'Want'_Complement_Subjects": {
+    "id": "124A",
+    "values": {
+      "5 Desiderative particle": 0,
+      "2 Subject is expressed overtly": 1,
+      "1 Subject is left implicit": 2,
+      "4 Desiderative verbal affix": 3,
+      "3 Both construction types exist": 4
+    }
+  },
+  "Purpose_Clauses": {
+    "id": "125A",
+    "values": {
+      "2 Balanced/deranked": 0,
+      "3 Deranked": 1,
+      "1 Balanced": 2
+    }
+  },
+  "'When'_Clauses": {
+    "id": "126A",
+    "values": {
+      "2 Balanced/deranked": 0,
+      "3 Deranked": 1,
+      "1 Balanced": 2
+    }
+  },
+  "Reason_Clauses": {
+    "id": "127A",
+    "values": {
+      "2 Balanced/deranked": 0,
+      "3 Deranked": 1,
+      "1 Balanced": 2
+    }
+  },
+  "Utterance_Complement_Clauses": {
+    "id": "128A",
+    "values": {
+      "2 Balanced/deranked": 0,
+      "3 Deranked": 1,
+      "1 Balanced": 2
+    }
+  },
+  "Numeral_Bases": {
+    "id": "131A",
+    "values": {
+      "1 Decimal": 0,
+      "6 Restricted": 1,
+      "2 Hybrid vigesimal-decimal": 2,
+      "4 Other base": 3,
+      "3 Pure vigesimal": 4
+    }
+  },
+  "M-T_Pronouns": {
+    "id": "136A",
+    "values": {
+      "1 No M-T pronouns": 0,
+      "2 M-T pronouns, paradigmatic": 1,
+      "3 M-T pronouns, non-paradigmatic": 2
+    }
+  },
+  "N-M_Pronouns": {
+    "id": "137A",
+    "values": {
+      "1 No N-M pronouns": 0,
+      "3 N-M pronouns, non-paradigmatic": 1,
+      "2 N-M pronouns, paradigmatic": 2
+    }
+  },
+  "Prenominal_relative_clauses": {
+    "id": "90B",
+    "values": {
+      "2 RelN or NRel": 0,
+      "3 RelN or internally-headed": 1,
+      "1 Relative clause-Noun (RelN) dominant": 2,
+      "4 RelN or correlative": 3
+    }
+  },
+  "NegSOV_Order": {
+    "id": "144P",
+    "values": {
+      "4 No NegSOV": 0,
+      "3 OnlyWithAnotherNeg": 1,
+      "1 NoDoubleNeg": 2,
+      "2 OptDoubleNeg": 3
+    }
+  },
+  "SOVNeg_Order": {
+    "id": "144S",
+    "values": {
+      "7 Type 1 / Type 2": 0,
+      "9 Type 5 / Type 4": 1,
+      "1 Word&NoDoubleNeg": 2,
+      "2 Suffix&NoDoubleNeg": 3,
+      "11 NoSOVNeg": 4,
+      "5 Word&OnlyWithAnotherNeg": 5,
+      "4 Suffix&OptDoubleNeg": 6,
+      "6 Suffix&OnlyWithAnotherNeg": 7,
+      "3 Word&OptDoubleNeg": 8
+    }
+  },
+  "SONegV_Order": {
+    "id": "144R",
+    "values": {
+      "7 Type 1 / Type 2": 0,
+      "3 Word&OptDoubleNeg": 1,
+      "1 Word&NoDoubleNeg": 2,
+      "2 Prefix&NoDoubleNeg": 3,
+      "5 Word&OnlyWithAnotherNeg": 4,
+      "8 No SONegV": 5,
+      "6 Prefix&OnlyWithAnotherNeg": 6
+    }
+  },
+  "Multiple_Negative_Constructions_in_SOV_Languages": {
+    "id": "144M",
+    "values": {
+      "18 SOVNeg/OVNegS": 0,
+      "9 SONegV/SVONeg": 1,
+      "14 SO[Neg-V]/S[Neg-V]O": 2,
+      "22 SOV & NegV/[V-Neg]": 3,
+      "19 SO[V-Neg]/O[V-Neg]S": 4,
+      "10 SOVNeg/SVNegO": 5,
+      "3 NegSOV/SNegOV/SONegV": 6,
+      "6 SO[Neg-V]/SO[V-Neg]": 7,
+      "24 SV & OV & NegV/VNeg": 8,
+      "17 NegSOV/NegOVS": 9,
+      "27 SV & OV & VNeg/[V-Neg]": 10,
+      "21 SOV & NegV/[Neg-V]": 11,
+      "5 SOVNeg/SO[V-Neg]": 12,
+      "2 SNegOV/SONegV": 13,
+      "15 SO[V-Neg]/S[V-Neg]O/": 14,
+      "16 SONegV/SO[Neg-V]/SNegVO/S[Neg-V]O": 15,
+      "4 NegSOV/2ndPos": 16,
+      "23 SOV & NegV/VNeg (b)": 17
+    }
+  },
+  "SNegOV_Order": {
+    "id": "144Q",
+    "values": {
+      "3 OnlyWithAnotherNeg": 0,
+      "4 No SNegOV": 1,
+      "2 OptDoubleNeg": 2,
+      "1 NoDoubleNeg": 3
+    }
+  },
+  "The_Position_of_Negative_Morphemes_in_SOV_Languages": {
+    "id": "144L",
+    "values": {
+      "17 OptDoubleNeg": 0,
+      "20 SV&OV&[Neg-V]": 1,
+      "11 SVO but SO[Neg-V]": 2,
+      "18 SV&OV&NegV": 3,
+      "4 SOVNeg": 4,
+      "22 SV&OV&ImmedPreverbal": 5,
+      "21 SV&OV&[V-Neg]": 6,
+      "9 SVO but SOVNeg": 7,
+      "23 SV&OV&InitialNeg": 8,
+      "19 SV&OV&VNeg": 9,
+      "15 More than one construction": 10,
+      "16 ObligDoubleNeg": 11,
+      "14 Other NegV": 12,
+      "7 SVO but SNegOV": 13,
+      "5 SO[Neg-V]": 14,
+      "2 SNegOV": 15,
+      "6 SO[V-Neg]": 16,
+      "3 SONegV": 17,
+      "1 NegSOV": 18
+    }
+  },
+  "M_in_Second_Person_Singular": {
+    "id": "137B",
+    "values": {
+      "1 No m in second person singular": 0,
+      "2 m in second person singular": 1
+    }
+  },
+  "M_in_First_Person_Singular": {
+    "id": "136B",
+    "values": {
+      "2 m in first person singular": 0,
+      "1 No m in first person singular": 1
+    }
+  },
+  "Other_Roles_of_Applied_Objects": {
+    "id": "109B",
+    "values": {
+      "3 Instrument and locative": 0,
+      "2 Locative": 1,
+      "1 Instrument": 2,
+      "4 No other roles (= Only benefactive)": 3,
+      "5 No applicative construction": 4
+    }
+  },
+  "Zero_Marking_of_A_and_P_Arguments": {
+    "id": "25B",
+    "values": {
+      "2 Non-zero marking": 0,
+      "1 Zero-marking": 1
+    }
+  },
+  "Productivity_of_the_Antipassive_Construction": {
+    "id": "108B",
+    "values": {
+      "2 partially productive": 0,
+      "4 no antipassive": 1,
+      "1 productive": 2,
+      "3 not productive": 3
+    }
+  },
+  "Number_of_Possessive_Nouns": {
+    "id": "58B",
+    "values": {
+      "2 One": 0,
+      "3 Two to four": 1,
+      "1 None reported": 2,
+      "4 Five or more": 3
+    }
+  },
+  "Suppletion_in_Imperatives_and_Hortatives": {
+    "id": "79B",
+    "values": {
+      "3 Hortative": 0,
+      "1 A regular and a suppletive form alternate": 1,
+      "2 Imperative": 2,
+      "5 None (= no suppletive imperatives reported in the reference material)": 3
+    }
+  },
+  "Tea": {
+    "id": "138A",
+    "values": {
+      "2 Words derived from Min Nan Chinese te": 0,
+      "1 Words derived from Sinitic cha": 1,
+      "3 Others": 2
+    }
+  },
+  "Politeness_Distinctions_in_Pronouns": {
+    "id": "45A",
+    "values": {
+      "2 Binary politeness distinction": 0,
+      "1 No politeness distinction": 1,
+      "4 Pronouns avoided for politeness": 2,
+      "3 Multiple politeness distinctions": 3
+    }
+  },
+  "Conjunctions_and_Universal_Quantifiers": {
+    "id": "56A",
+    "values": {
+      "3 Formally similar, with interrogative": 0,
+      "2 Formally similar, without interrogative": 1,
+      "1 Formally different": 2
+    }
+  },
+  "SNegVO_Order": {
+    "id": "144I",
+    "values": {
+      "7 Type 1 / Type 2": 0,
+      "1 Word&NoDoubleNeg": 1,
+      "4 Prefix&OptDoubleNeg": 2,
+      "8 No SNegVO": 3,
+      "2 Prefix&NoDoubleNeg": 4,
+      "5 Word&OnlyWithAnotherNeg": 5,
+      "3 Word&OptDoubleNeg": 6,
+      "6 Prefix&OnlyWithAnotherNeg": 7
+    }
+  },
+  "Obligatory_Double_Negation": {
+    "id": "143B",
+    "values": {
+      "12 Type 1 / Type 5": 0,
+      "9 VNegNeg": 1,
+      "11 Type 1 / Type 3": 2,
+      "16 ObligDoubleNeg&OptTripleNeg": 3,
+      "1 NegVNeg": 4,
+      "6 Negative tone & [Neg-V]": 5,
+      "3 [Neg-V]Neg": 6,
+      "13 Type 1 / Type 7": 7,
+      "14 Type 1 / Type 9": 8,
+      "2 Neg[V-Neg]": 9,
+      "4 [Neg-V-Neg]": 10,
+      "5 Negative tone & VNeg": 11,
+      "7 NegNegV": 12,
+      "8 Neg[Neg-V]": 13
+    }
+  },
+  "Obligatory_Double_Negation_in_SVO_languages": {
+    "id": "144F",
+    "values": {
+      "21 SNegVONeg/SVNegONeg/NegVOSNeg/VNegOSNeg": 0,
+      "19 SNegVONeg/SNegOVNeg": 1,
+      "1 SNegVONeg": 2,
+      "20 SVONeg&NegTone/SNegOVNeg": 3,
+      "12 SNegNegVO/SNegVNegO": 4,
+      "5 S[Neg-V]ONeg": 5,
+      "14 SNegVONeg/S[Neg-V]ONeg": 6,
+      "10 SVNegO&NegTone": 7,
+      "22 SVO & NegVNeg": 8,
+      "16 SNeg[V-Neg]O&NegTone/SNegVNegO": 9,
+      "23 S[Neg-V]O & NegV": 10,
+      "11 S[Neg-V]O&NegTone": 11,
+      "9 S[Neg-V-Neg]O": 12,
+      "2 SNegVNegO": 13,
+      "7 S[Neg-V]NegO": 14,
+      "6 SNeg[V-Neg]O": 15,
+      "15 (Neg)S(Neg)VONeg": 16,
+      "18 SNeg[V(-Neg)]ONeg/S[Neg-V(-Neg)]ONeg": 17,
+      "13 SNegVNegO/SNegVONeg": 18
+    }
+  },
+  "NegSVO_Order": {
+    "id": "144H",
+    "values": {
+      "4 No NegSVO": 0,
+      "1 NoDoubleNeg": 1,
+      "3 OnlyWithAnotherNeg": 2
+    }
+  },
+  "Position_of_negative_words_relative_to_beginning_and_end_of_clause_and_with_respect_to_adjacency_to_verb": {
+    "id": "144B",
+    "values": {
+      "4 Immed postverbal": 0,
+      "6 End, not immed postverbal": 1,
+      "2 Preverbal, not beginning or immed": 2,
+      "5 Postverbal, not immed or end": 3,
+      "1 Beginning, not immed preverbal": 4,
+      "3 Immed preverbal": 5
+    }
+  },
+  "Optional_Double_Negation": {
+    "id": "143C",
+    "values": {
+      "16 [Neg-V]/NegVNeg": 0,
+      "20 NegV/[V-Neg]/[Neg-V-Neg]": 1,
+      "8 [(Neg-)V-Neg]": 2,
+      "14 NegV/[Neg-V-Neg]": 3,
+      "10 [V-Neg](Neg)": 4,
+      "17 NegV or NegativeTone&VNeg": 5,
+      "11 Neg(Neg)V": 6,
+      "2 (Neg)VNeg": 7,
+      "12 Neg[(Neg-)]V": 8,
+      "13 NegV&OptChangeVerbStem": 9,
+      "5 [Neg-V](Neg)": 10,
+      "1 NegV(Neg)": 11,
+      "6 [(Neg-)V]Neg": 12,
+      "18 NegV/[V-Neg]/Neg[V-Neg]": 13,
+      "19 NegV/VNeg/NegVNeg": 14,
+      "9 V(Neg)Neg": 15,
+      "3 Neg[V(-Neg)]": 16,
+      "4 (Neg)[V-Neg]": 17
+    }
+  },
+  "Optional_Double_Negation_in_SOV_languages": {
+    "id": "144O",
+    "values": {
+      "7 SO[(Neg-)V-Neg]": 0,
+      "4 SNegO[V(-Neg)]": 1,
+      "11 SOV but S[Neg-V-Neg]O/SO[V-Neg]": 2,
+      "13 (Neg)SOVNeg/S(Neg)OVNeg/SO(Neg)VNeg": 3,
+      "5 SO[(Neg-)V]Neg": 4,
+      "18 SV & OV & (Neg)V(Neg)": 5,
+      "19 SV & OV &  (Neg)[V-Neg]": 6,
+      "14 S(Neg)O[V(-Neg)]/SO(Neg)[V(-Neg)]": 7,
+      "21 SV & OV &  [(Neg-)V-Neg]": 8,
+      "3 SNegOV(Neg)": 9,
+      "17 SOV/SVO & Neg[V-(Neg)]": 10,
+      "8 SO[V-Neg](Neg)": 11,
+      "1 NegSOV(Neg)": 12,
+      "2 S(Neg)OVNeg": 13
+    }
+  },
+  "Third_Person_Pronouns_and_Demonstratives": {
+    "id": "43A",
+    "values": {
+      "3 Related to remote demonstratives": 0,
+      "2 Related for all demonstratives": 1,
+      "4 Related to non-remote demonstratives": 2,
+      "1 Unrelated": 3,
+      "6 Related for non-human reference": 4,
+      "5 Related by gender markers": 5
+    }
+  },
+  "Optional_Double_Negation_in_SVO_languages": {
+    "id": "144G",
+    "values": {
+      "2 S(Neg)VONeg": 0,
+      "18 SVO/VSO & NegV/VNeg/NegVNeg": 1,
+      "15 SNeg[V-Neg]O/S[Neg-V-Neg]O": 2,
+      "8 S[(Neg-)V]NegO": 3,
+      "11 S(Neg)[V(-Neg)]O": 4,
+      "1 SNegVO(Neg)": 5,
+      "14 S[Neg-V]O/NegSVNegO": 6,
+      "4 SNegV(Neg)O": 7,
+      "9 S[Neg-V]O(Neg)": 8,
+      "6 SVNegO(Neg)": 9,
+      "17 SVO/SOV & (Neg)[V-Neg]": 10,
+      "3 S(Neg)VNegO": 11,
+      "5 (Neg)SVONeg": 12,
+      "10 SNegVO/SVNegO&NegTone": 13
+    }
+  },
+  "Languages_with_different_word_order_in_negative_clauses": {
+    "id": "144C",
+    "values": {
+      "2 SVO, but SNegOV": 0,
+      "11 SOV but  SONeg[V-Neg]/S[Neg-V-Neg] O": 1,
+      "4 SVO, but SOVNeg": 2,
+      "1 VSO, but NegSVO": 3,
+      "9 SVO, but NegSNegOV": 4,
+      "5 SVO, but NegVSO": 5,
+      "7 SVO but SO[Neg-V]": 6,
+      "15 SVO/SOV, but SNegVO": 7
+    }
+  },
+  "Verb-Initial_with_Clause-Final_Negative": {
+    "id": "144X",
+    "values": {
+      "3 OnlyWithAnotherNeg": 0,
+      "2 OptDoubleNeg": 1,
+      "4 No clause-final neg": 2,
+      "1 NoDoubleNeg": 3
+    }
+  },
+  "Verb-Initial_with_Preverbal_Negative": {
+    "id": "144V",
+    "values": {
+      "7 Type 1 / Type 2": 0,
+      "5 Word&OnlyWithAnotherNeg": 1,
+      "3 Word&Opt": 2,
+      "9 No preverbal neg": 3,
+      "2 Prefix, no double negation\tPrefix&NoDoubleNeg": 4,
+      "6 Prefix&OnlyWithAnotherNeg": 5,
+      "1 Separate word, no double negation\tWord&NoDoubleNeg": 6
+    }
+  },
+  "Verb-Initial_with_Negative_that_is_Immediately_Postverbal_or_between_Subject_and_Object": {
+    "id": "144W",
+    "values": {
+      "2 Word&OnlyWithAnotherNeg": 0,
+      "3 Suffix&OptDoubleNeg": 1,
+      "6 None": 2,
+      "1 Suffix&NoDoubleNeg": 3,
+      "5 WordBetweenSAndO": 4,
+      "4 Suffix&OnlyWithAnotherNeg": 5
+    }
+  },
+  "The_Position_of_Negative_Morphemes_in_Verb-Initial_Languages": {
+    "id": "144T",
+    "values": {
+      "16 NegVOS/NegSVO": 0,
+      "15 VSONeg/SVONeg": 1,
+      "8 [Neg-V]SO": 2,
+      "9 [Neg-V]OS": 3,
+      "17 NegVOS/SNegVO": 4,
+      "6 NegV & VS & VO": 5,
+      "14 NegVSO/SNegVO": 6,
+      "4 NegVOS": 7,
+      "10 [V-Neg]OS": 8,
+      "1 NegVSO": 9,
+      "2 VSNegO": 10,
+      "3 VSONeg": 11,
+      "19 NegV & VSO/SVO": 12,
+      "5 NegVSO/NegVOS": 13,
+      "18 [Neg-V]OS/S[Neg-V]O": 14,
+      "22 ObligDoubleNeg": 15,
+      "23 OptDoubleNeg": 16,
+      "7 SVO but NegVSO": 17
+    }
+  },
+  "Multiple_Negative_Constructions_in_SVO_Languages": {
+    "id": "144E",
+    "values": {
+      "15 SVONeg/SONegV": 0,
+      "2 NegSVO/SNegVO": 1,
+      "5 SVNegO/SVONeg": 2,
+      "16 SVNegO/SOVNeg": 3,
+      "11 SVONeg/VSONeg": 4,
+      "21 S[V-Neg]O/SO[V-Neg]": 5,
+      "7 SNegVO/S[V-Neg]O": 6,
+      "14 S[Neg-V]O/[Neg-V]OS": 7,
+      "20 S[Neg-V]O/SO[Neg-V]": 8,
+      "6 SVO & Flexible Neg": 9,
+      "13 SNegVO/NegVOS": 10,
+      "12 NegSVO/NegVOS": 11,
+      "1 SNegVO/SVNegO": 12,
+      "10 SNegVO/NegVSO": 13,
+      "26 SVO/VSO & NegV": 14,
+      "22 SNegVO/SONegV/S[Neg-V]O/SO[Neg-V]": 15,
+      "8 S[Neg-V]O/SVNegO": 16,
+      "28 SVO/SOV & NegV/VNeg": 17,
+      "24 SVO & NegV/VNeg": 18
+    }
+  },
+  "Languages_with_two_Dominant_Orders_of_Subject,_Object,_and_Verb": {
+    "id": "81B",
+    "values": {
+      "5 SOV or OVS": 0,
+      "4 SVO or VOS": 1,
+      "1 SOV or SVO": 2,
+      "2 VSO or VOS": 3,
+      "3 SVO or VSO": 4
+    }
+  },
+  "Para-Linguistic_Usages_of_Clicks": {
+    "id": "142A",
+    "values": {
+      "2 Affective meanings": 0,
+      "1 Logical meanings": 1,
+      "3 Other or none": 2
+    }
+  },
+  "Cultural_Categories_of_Languages_with_Identity_of_'Finger'_and_'Hand'": {
+    "id": "130B",
+    "values": {
+      "1 Hunter-gatherers": 0,
+      "3 Full-fledged farmers": 1,
+      "2 Farmer-foragers": 2
+    }
+  },
+  "Double_negation_in_verb-initial_languages": {
+    "id": "144U",
+    "values": {
+      "14 VS&VO&NegV/[(Neg-)V-Neg]": 0,
+      "6 VS & VO & [Neg-V-Neg]": 1,
+      "1 NegVNegSO": 2,
+      "8 V(Neg)SONeg": 3,
+      "15 VOS & NegVNeg": 4,
+      "5 VNegSONeg": 5,
+      "9 Neg(Neg)VSO": 6,
+      "13 VS&VO&Neg[(Neg-)V]": 7,
+      "2 NegVNegOS": 8,
+      "16 VSO/SVO & (Neg)V(Neg)": 9,
+      "11 NegVSO&OptStemChange": 10,
+      "7 NegVOSNeg/VNegOSNeg/SNegVONeg/SVNegONeg": 11,
+      "4 NegNegVSO": 12
+    }
+  },
+  "Internally-headed_relative_clauses": {
+    "id": "90D",
+    "values": {
+      "7 Internally-headed exists": 0,
+      "1 Internally-headed relative clause dominant": 1,
+      "5 Internally-headed or double-headed": 2,
+      "6 Internally-headed occurs as nondominant type": 3,
+      "2 Internally-headed or RelN": 4,
+      "3 Internally-headed or NRel": 5
+    }
+  },
+  "Obligatory_Double_Negation_in_SOV_languages": {
+    "id": "144N",
+    "values": {
+      "10 SNegO[V-Neg]/SONeg[V-Neg]": 0,
+      "15 SOV & Neg[V-Neg]": 1,
+      "12 SNegOVNeg/SNegVONeg": 2,
+      "13 SNegOVNeg/SVONeg&NegTone": 3,
+      "17 SV & OV & Neg[V-Neg]": 4,
+      "1 SONegVNeg": 5,
+      "6 SO[Neg-V-Neg]": 6,
+      "14 SOV & NegVNeg": 7,
+      "5 SO[Neg-V]Neg": 8,
+      "18 SV & OV & [Neg-V-Neg]": 9,
+      "4 SONeg[V-Neg]": 10,
+      "2 SVO but NegSNegOV": 11,
+      "3 NegSO[V-Neg]": 12
+    }
+  },
+  "The_Position_of_Negative_Morphemes_in_Object-Initial_Languages": {
+    "id": "144Y",
+    "values": {
+      "3 OSVNeg": 0,
+      "6 O[Neg-V-Neg]S": 1,
+      "2 OVNegS": 2,
+      "8 NegOVS/NegSOV": 3,
+      "9 O[V-Neg]S/SO[V-Neg]": 4,
+      "7 OVNegS/SOVNeg": 5,
+      "1 ONegVS": 6,
+      "4 O[V-Neg]S": 7
+    }
+  },
+  "Nasal_Vowels_in_West_Africa": {
+    "id": "10B",
+    "values": {
+      "1 no nasal vs. oral vowel contrast": 0,
+      "5 four-way nasal vs. oral vowel contrast (/\u1e7d/ vs. /\u1e7d\u02d0/ vs. /V/ v /V\u02d0/) with nasal spreading": 1,
+      "4 four-way nasal vs. oral vowel contrast (/\u1e7d/ vs. /\u1e7d\u02d0/ vs. /V/ vs. /V\u02d0/) without nasal spreading": 2,
+      "3 two-way nasal vs. oral vowel contrast (/\u1e7d/ vs. /V/) with nasal spreading": 3,
+      "2 two-way nasal vs. oral vowel contrast (/\u1e7d/ vs. /V/) without nasal spreading": 4
+    }
+  },
+  "Inclusive/Exclusive_Forms_in_Pama-Nyungan": {
+    "id": "39B",
+    "values": {
+      "1 No inclusive/exclusive opposition": 0,
+      "2 Inclusive and exclusive differentiated": 1
+    }
+  }
+}
