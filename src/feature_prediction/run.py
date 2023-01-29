@@ -33,6 +33,7 @@ def run(device="cpu", lexicon_only=None, output_folder="output/models", model_na
     # metric: add+avg
 
     print(f"Using {device} device")
+    print(f"dataset {dataset} node_embeddings {node_embeddings} metric {metric}")
 
     with open("data/TypPred/preprocessed/feature_dict.json") as f:
         feature_dict = json.load(f)
@@ -78,7 +79,14 @@ def run(device="cpu", lexicon_only=None, output_folder="output/models", model_na
         # output folder for the models.
 
         if model_name == "oneff":
-            model = OneFF(num_langs=num_langs, input_dim=100, hidden_dim=200, label_dim=label_dim, dropout=0.5)
+            if metric in ["add+avg", "add+max", "add+sum"]:
+                input_dim = 100
+                hidden_dim = 200
+            else:
+                input_dim = 200
+                hidden_dim = 400
+
+            model = OneFF(device=device, num_langs=num_langs, input_dim=input_dim, hidden_dim=hidden_dim, label_dim=label_dim, dropout=0.5)
 
             model = model.to(device)
 

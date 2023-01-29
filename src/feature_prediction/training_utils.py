@@ -7,7 +7,7 @@ import torch
 from torch import nn
 import torch.optim as optim
 
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, f1_score
+from sklearn.metrics import classification_report, accuracy_score
 
 
 def evaluate_dataset(model, data, feature_name, lang_dict, mode="dev", language_vectors=None):
@@ -36,6 +36,8 @@ def evaluate_dataset(model, data, feature_name, lang_dict, mode="dev", language_
                     langs_embeddings.append(lang)
                     language_vector = language_vectors[lang]
                     output = model(lang_idx, language_vector)
+                else:
+                    output = model(lang_idx, None)
             else:
                 output = model(lang_idx, None)
 
@@ -79,6 +81,7 @@ def train_model(model, model_name, optimizer, train_data, dev_data, test_data, f
                     train_langs_embeddings.append(lang)
                     language_vector = language_vectors[lang]
                     output = model(lang_idx, language_vector)
+                else: output = model(lang_idx, None)
             else:
                 output = model(lang_idx, None)
 
