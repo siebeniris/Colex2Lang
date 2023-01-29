@@ -26,7 +26,7 @@ from src.feature_prediction.models import OneFF
 torch.manual_seed(42)
 
 
-def run(device="cpu", lexicon_only=True, output_folder="output/models", model_name="oneff", epochs=100,
+def run(device="cpu", lexicon_only=None, output_folder="output/models", model_name="oneff", epochs=100,
         node_embeddings=None, dataset=None, metric=None):
     # node_embeddings : node2vec
     # dataset: clics
@@ -54,7 +54,7 @@ def run(device="cpu", lexicon_only=True, output_folder="output/models", model_na
     lang_dict = {lang: idx for idx, lang in enumerate(all_langs)}
     print(f"languages in total {num_langs}")
 
-    if lexicon_only:
+    if lexicon_only is not None:
         feature_file = "data/TypPred/preprocessed/wals_features.yaml"
         with open(feature_file) as f:
             features = yaml.load(f, Loader=Loader)
