@@ -5,11 +5,6 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-try:
-    from yaml import CLoader as Loader, CDumper as Dumper
-except ImportError:
-    from yaml import Loader, Dumper
-
 from collections import defaultdict
 
 models = ["node2vec", "glove", "ggvc", "prone"]
