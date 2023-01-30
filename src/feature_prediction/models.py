@@ -30,6 +30,9 @@ class OneFF(nn.Module):
         self.num_langs = num_langs
         self.input_dim = input_dim
 
+        self.fc.weight.data.uniform_(-1.0,1.0)
+        self.fc.bias.data.zero_()
+
     def forward(self, input_idx, language_vector=None):
         if language_vector is not None:
             input_embeddings = torch.tensor(language_vector)
@@ -37,7 +40,7 @@ class OneFF(nn.Module):
         else:
 
             emb1 = nn.Embedding(self.num_langs, self.input_dim)
-            emb1 = nn.init.uniform_(emb1.weight, -1, 1.0)
+            emb1 = nn.init.uniform_(emb1.weight, -1.0, 1.0)
             input_embeddings = emb1[input_idx]
 
         fc_output = self.fc(input_embeddings)

@@ -20,6 +20,7 @@ def evaluate_dataset(model, data, feature_name, lang_dict, mode="dev", language_
     :param mode: dev or test
     :return: results
     """
+    model.eval()
     creterion = nn.CrossEntropyLoss()
     gold = []
     pred = []
@@ -63,6 +64,7 @@ def evaluate_dataset(model, data, feature_name, lang_dict, mode="dev", language_
 def train_model(model, model_name, optimizer, train_data, dev_data, test_data, feature_name, feature_id, lang_dict,
                 output_folder,
                 max_epochs=10, language_vectors=None):
+    model.train()
     creterion = nn.CrossEntropyLoss()
     best_acc = [0]
     train_langs_embeddings = []
@@ -115,16 +117,6 @@ def train_model(model, model_name, optimizer, train_data, dev_data, test_data, f
         dev_langs_embed = list(set(dev_langs_embed))
 
         if dev_acc > np.max(best_acc):
-            # print(f"Epoch {epoch} ")
-            # print("training ")
-            # print(f"classification report {train_report}")
-            # print(f"accuracy {acc}")
-            # print(f"avg loss {train_loss}")
-            #
-            # print("dev...")
-            # print(f"accuracy {dev_acc}")
-            # print(f"report {dev_report}")
-            # print(f"avg loss{dev_loss}")
             best_acc.append(dev_acc)
 
             test_langs, test_lang_embeds, test_acc, test_report, _ = evaluate_dataset(model, test_data, feature_name,
@@ -133,10 +125,6 @@ def train_model(model, model_name, optimizer, train_data, dev_data, test_data, f
 
             test_langs = list(set(test_langs))
             test_lang_embeds = list(set(test_lang_embeds))
-
-            # print(f"testing")
-            # print(f"acc {test_acc}")
-            # print(f"report {test_report}")
 
             result = {
                 "feature_name": feature_name,
