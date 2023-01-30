@@ -40,13 +40,11 @@ def get_langs_inter_typpred(file, sep, dataset):
     print(f'length: {len(df_filter)}')
 
 
-
-
 def feature_maps_info():
     with open("data/TypPred/preprocessed/feature_maps.json") as f:
         feature_maps = json.load(f)
     df_parameter = pd.read_csv("data/cldf-datasets-wals-878ea47/raw/parameter.csv")
-    feature2id = dict(zip([name.replace(" ","_") for name in df_parameter["name"]], df_parameter["id"]))
+    feature2id = dict(zip([name.replace(" ", "_") for name in df_parameter["name"]], df_parameter["id"]))
     print(feature2id)
 
     new_feature_maps = defaultdict(dict)
@@ -59,9 +57,64 @@ def feature_maps_info():
         json.dump(new_feature_maps, f)
 
 
+def get_overlap_langs():
+    with open("data/language_embeddings/common_langs.json") as f:
+        common_langs = set(json.load(f))
+
+    with open("data/URIEL/uriel_learned_langs.json") as f:
+        uriel_langs = set(json.load(f))
+    with open("data/language_embeddings/wn_langs.json") as f:
+        wn_langs = set(json.load(f))
+
+    with open("data/language_embeddings/clics_langs.json") as f:
+        clics_langs = set(json.load(f))
+
+    wals_train = pd.read_csv("data/TypPred/preprocessed/train.csv")
+    wals_test = pd.read_csv("data/TypPred/preprocessed/test.csv")
+    wals_df = pd.concat([wals_train, wals_test], axis=0)
+    wals_langs = set(list(set(wals_df["wals_code"].tolist())))
+
+    print(f"wals {len(wals_langs)}")
+    print(f"wn langs {len(wn_langs)}")
+    print(f"uriel {len(uriel_langs)}")
+    print("clics", len(clics_langs))
+    print("*"*50)
+    print(f"wn and clics {len(set(clics_langs).intersection(set(wn_langs)))}")
+    print(f"uriel and wordnet {len(set(uriel_langs).intersection(set(wn_langs)))}")
+    print(f"uriel and wals {len(set(uriel_langs).intersection(set(wals_langs)))}")
+    print(f"clics and wordnet {len(set(clics_langs).intersection(set(wn_langs)))}")
+    print(f"clics and wals {len(set(clics_langs).intersection(set(wals_langs)))}")
+
+    print("*"*50)
+    # print(f"wals and clics {len(set(clics_langs).intersection(set(wn_langs)).intersection(uriel_langs))}")
+    # print(f"uriel and wordnet {len(set(uriel_langs).intersection(set(wn_langs)))}")
+    # print(f"uriel and wals {len(set(uriel_langs).intersection(set(wals_langs)))}")
+    # print(f"clics and wordnet {len(set(clics_langs).intersection(set(wn_langs)))}")
+    print(f"uriel, wals, wn {len(uriel_langs &  wals_langs & wn_langs)}")
+    print(f"uriel, wals, clics {len(uriel_langs &  wals_langs & clics_langs)}")
+
+    print(f"uriel, wals, clics, wn {len(uriel_langs &  wals_langs & clics_langs & wn_langs)}")
+
+    all_commons = uriel_langs &  wals_langs & clics_langs & wn_langs
+    with open("data/TypPred/preprocessed/wals_uriel_clics_wn.json", "w")as f:
+        json.dump(list(all_commons), f)
+
+    l = uriel_langs & wals_langs & clics_langs
+    with open("data/TypPred/preprocessed/wals_uriel_clics.json", "w") as f:
+        json.dump(list(l), f)
+
+    l2 = uriel_langs & wals_langs & wn_langs
+    with open("data/TypPred/preprocessed/wals_uriel_wn.json", "w") as f:
+        json.dump(list(l2), f)
+
+
+    #
+
+
 if __name__ == '__main__':
     import plac
 
     # plac.call(lang_clics_wn)
     # plac.call(get_langs_inter_typpred)
-    plac.call(feature_maps_info)
+    # plac.call(feature_maps_info)
+    get_overlap_langs()

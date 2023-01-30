@@ -13,7 +13,7 @@ from termcolor import cprint
 from node2vec import Node2Vec
 
 from src.graphs.graph_partition_and_measures import partition_networkx
-from src.graphs.models import get_synset_pair_graphs
+from src.graphs.models import get_graph_from_feature
 
 N_COMPONENTS = 100
 SEED = 42
@@ -29,13 +29,14 @@ TEST_SIZE = 0.2
 
 
 def generate_ecg(dataset):
-    colex_folder = "data/edgelists"
-    print("reading the files for colex and node2id by feature...")
+    input_folder = f"/Users/yiyichen/Documents/experiments/LangSim/data/edgelists"
     output_folder = "data/eval_nodeEmb/"
+    nodefile = os.path.join(input_folder, dataset, "pmi_node2id.json")
 
-    file = os.path.join(colex_folder, f"edgelists_{dataset}.csv")
+    file = os.path.join(input_folder, dataset, "features_all.csv")
 
-    G = get_synset_pair_graphs(file, dataset)
+    G = get_graph_from_feature(file, nodefile, "normalized_weight")
+
     cprint("best partition on the graph ...", "red")
     ml = community.best_partition(G)
     cprint("ecg on the graph ...", "red")
@@ -78,92 +79,64 @@ def load_model(model_name, input_folder="data/node_embeddings"):
             return Glove.load(filepath).model
 
 
-def model2embeddings(dataset="wn", model_name=None, model_folder="data/node_embeddings",  output_folder="data/eval_nodeEmb"):
-    """
-    Convert pretrained graph embedding models to node2vec format for evaluation.
-    """
-    inputfolder = os.path.join(model_folder, dataset)
+def embeddings_format(dataset, output_folder="data/eval_nodeEmb",  input_folder="data/language_embeddings"):
+    # datasets = ["wn", "wn_concept", "clics"]
+    modelnames = ["node2vec", "glove", "ggvc", "prone"]
+    metrics = ["add+avg", "add+max", "add+sum", "concat+avg", "concat+max", "concat+sum"]
 
-    output_folder_colex = os.path.join(output_folder, dataset)
-    if not os.path.exists(output_folder_colex):
-        os.mkdir(output_folder_colex)
+    def get_vec_string(lang_emb):
+        vec = list(lang_emb)
+        vec_str = ['%.9f' % val for val in vec]
+        vec_str = " ".join(vec_str)
+        return vec_str
 
-    if model_name is not None:
-        model = load_model(model_name, inputfolder)
-        print(dataset, model_name)
-        if model_name != "node2vec":
-            model_size = len(model)
-            first_k = list(model.keys())[0]
-            emb_dim = model[first_k].shape[0]
-            with open(os.path.join(output_folder_colex, f"{model_name}_embeddings"), "w") as writer:
-                writer.write(f"{model_size} {emb_dim}\n")
-                for key, vec in model.items():
-                    vec = list(vec)
-                    writer.write(str(key) + ' ')
-                    vec_str = ['%.9f' % val for val in vec]
-                    vec_str = " ".join(vec_str)
+    node_folder = f"/Users/yiyichen/Documents/experiments/LangSim/data/edgelists/{dataset}"
+
+    with open(os.path.join(node_folder, "pmi_node2id.json")) as f:
+        node2id = json.load(f)
+
+    for model in modelnames:
+        for metric in metrics:
+            embeddings_path = os.path.join(input_folder, metric, f"{dataset}_{model}_embeddings")
+            output_folder_ = os.path.join(output_folder, dataset, metric)
+            if not os.path.exists(output_folder_):
+                os.mkdir(output_folder_)
+            output_path = os.path.join(output_folder_, f"{dataset}_{model}_embeddings")
+            embeddings = KeyedVectors.load_word2vec_format(embeddings_path, binary=False)
+            size = len(embeddings.key_to_index)
+            first_key = list(embeddings.key_to_index)[0]
+            embed_size = embeddings[first_key].size
+
+            with open(output_path, "w") as writer:
+                writer.write(f"{size} {embed_size}\n")
+                for lang, idx in node2id.items():
+                    writer.write(str(idx) + ' ')
+                    lang_vec = embeddings[lang]
+                    vec_str = get_vec_string(lang_vec)
                     writer.write(vec_str + '\n')
-        else:
-            # node2vec
-            keys = list(model.wv.key_to_index)
-            model_size = len(keys)
-            emb_dim = model.wv[keys[0]].shape[0]
-
-            with open(os.path.join(output_folder_colex, f"{model_name}_embeddings"),
-                      "w") as writer1:
-                writer1.write(f"{model_size} {emb_dim}\n")
-                for key in keys:
-                    vec = model.wv[key]
-                    vec = list(vec)
-                    writer1.write(str(key) + ' ')
-                    vec_str = ['%.9f' % val for val in vec]
-                    vec_str = " ".join(vec_str)
-                    writer1.write(vec_str + '\n')
-    else:
-        for file in os.listdir(inputfolder):
-            if file.endswith(".zip") or file.endswith(".bin"):
-                model_name = file.replace(".zip", "").replace(".bin", "")
-                model = load_model(model_name, inputfolder)
-                print(dataset, model_name )
-                if model_name != "node2vec":
-                    model_size = len(model)
-                    first_k = list(model.keys())[0]
-                    emb_dim = model[first_k].shape[0]
-                    with open(os.path.join(output_folder_colex, f"{model_name}_embeddings"), "w") as writer:
-                        writer.write(f"{model_size} {emb_dim}\n")
-                        for key, vec in model.items():
-                            vec = list(vec)
-                            writer.write(str(key) + ' ')
-                            vec_str = ['%.9f' % val for val in vec]
-                            vec_str = " ".join(vec_str)
-                            writer.write(vec_str + '\n')
-                else:
-                    # node2vec
-                    keys = list(model.wv.key_to_index)
-                    model_size = len(keys)
-                    emb_dim = model.wv[keys[0]].shape[0]
-
-                    with open(os.path.join(output_folder_colex, f"{model_name}_embeddings"),
-                              "w") as writer1:
-                        writer1.write(f"{model_size} {emb_dim}\n")
-                        for key in keys:
-                            vec = model.wv[key]
-                            vec = list(vec)
-                            writer1.write(str(key) + ' ')
-                            vec_str = ['%.9f' % val for val in vec]
-                            vec_str = " ".join(vec_str)
-                            writer1.write(vec_str + '\n')
 
 
 def convert2eval_format(dataset, output_folder="data/eval_nodeEmb"):
     # create edgelist
+    # using the language normalized_weight from LangSim
+    input_folder = f"/Users/yiyichen/Documents/experiments/LangSim/data/edgelists/{dataset}"
+    df = pd.read_csv(os.path.join(input_folder, "features_all.csv"))
 
-    df = pd.read_csv(f"data/edgelists/edgelists_{dataset}.csv")
+    with open(os.path.join(input_folder, "pmi_node2id.json")) as f:
+        node2id = json.load(f)
 
-    with open(os.path.join(output_folder, dataset, f"edgelists_{dataset}"), "w") as writer:
-        for source_id, target_id in zip(df["source_id"], df["target_id"]):
-            writer.write(f"{source_id} {target_id}\n")
+    feature = "normalized_weight"
+    print(f"length {len(df)}")
+    df_feature = df[["target", "source", feature]]
+    df_feature = df_feature.dropna(subset=[feature])
+    print(df_feature.head())
 
+    df_feature["target"] = df_feature["target"].apply(lambda x: node2id[x])
+    df_feature["source"] = df_feature["source"].apply(lambda x: node2id[x])
+
+    with open(os.path.join(output_folder, dataset, f"edgelist"), "w") as writer:
+        for tgt, src in zip(df_feature["target"], df_feature["source"]):
+            writer.write(f"{tgt} {src}\n")
 
 
 """
@@ -174,16 +147,16 @@ bin the real-valued features into a series of classes via the use of a histogram
 """
 
 
-def main(task, dataset, model_name, model_folder="data/node_embeddings", output_folder="data/eval_nodeEmb"):
+def main(task, dataset, output_folder="data/eval_nodeEmb"):
     if task == "format":
         convert2eval_format(dataset, output_folder)
-    elif task == "model2emb":
-        model2embeddings(dataset, model_name, model_folder, output_folder)
+    elif task == "emb2id":
+        embeddings_format(dataset, output_folder)
     elif task == "ecg":
         generate_ecg(dataset)
 
 
 if __name__ == '__main__':
     import plac
-    plac.call(main)
 
+    plac.call(main)

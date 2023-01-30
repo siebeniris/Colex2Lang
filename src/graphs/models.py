@@ -37,6 +37,31 @@ def get_synset_pair_graphs(file, dataset):
 
     return G
 
+def get_graph_from_feature(file, nodefile, feature):
+    df = pd.read_csv(file)
+    cprint(f"loading file {file} to create a graph for the feature {feature}, data length {len(df)}", "red",
+           attrs=["bold"])
+    df = df[["target", "source", feature]].dropna().drop_duplicates(subset=["target", "source"])
+    cprint(f"feature {feature} length {len(df)}", "red")
+
+    cprint(f"loading node2id file {nodefile}", "red")
+
+    with open(nodefile) as f:
+        node2id = json.load(f)
+
+    df["target"] = df["target"].apply(lambda x: node2id[x])
+    df["source"] = df["source"].apply(lambda x: node2id[x])
+
+    cprint(df.head(2), "green")
+
+    cprint("creating a weighted graph for the feature...", "magenta")
+    G = nx.Graph()
+    for tgt, src, weight in zip(df["target"], df["source"], df[feature]):
+        G.add_edge(tgt, src, weight=weight)
+    # print(G[293][731])
+    G = G.to_undirected()
+
+    return G
 
 def generate_prone_embeddings(G, N_COMPONENTS):
     # https://github.com/VHRanger/nodevectors

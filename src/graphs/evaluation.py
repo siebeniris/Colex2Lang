@@ -15,7 +15,7 @@ from node2vec import Node2Vec
 from src.graphs.graph_partition_and_measures import partition_networkx
 from src.graphs.models import get_synset_pair_graphs
 
-N_COMPONENTS = 64
+N_COMPONENTS = 100
 SEED = 42
 TEST_SIZE = 0.2
 

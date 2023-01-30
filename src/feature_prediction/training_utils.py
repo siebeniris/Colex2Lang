@@ -10,7 +10,7 @@ import torch.optim as optim
 from sklearn.metrics import classification_report, accuracy_score
 
 
-def evaluate_dataset(model, data, feature_name, lang_dict, mode="dev", language_vectors=None):
+def evaluate_dataset(model, data, feature_name, lang_dict, langs_list, mode="dev", language_vectors=None):
     """
 
     :param model: MODEL
@@ -22,6 +22,7 @@ def evaluate_dataset(model, data, feature_name, lang_dict, mode="dev", language_
     """
     model.eval()
     creterion = nn.CrossEntropyLoss()
+
     gold = []
     pred = []
     losses = []
@@ -32,8 +33,9 @@ def evaluate_dataset(model, data, feature_name, lang_dict, mode="dev", language_
         for lang, feature_value in zip(data["wals_code"], data[feature_name]):
             lang_idx = lang_dict[lang]
             total_langs.append(lang)
-            if language_vectors is not None:
-                if lang in language_vectors.index_to_key:
+            if langs_list is not None:
+                # if language_vectors is not None:
+                if lang in language_vectors.index_to_key and lang in langs_list:
                     langs_embeddings.append(lang)
                     language_vector = language_vectors[lang]
                     output = model(lang_idx, language_vector)
@@ -62,6 +64,7 @@ def evaluate_dataset(model, data, feature_name, lang_dict, mode="dev", language_
 
 
 def train_model(model, model_name, optimizer, train_data, dev_data, test_data, feature_name, feature_id, lang_dict,
+                langs_list,
                 output_folder,
                 max_epochs=10, language_vectors=None):
     model.train()
@@ -78,12 +81,14 @@ def train_model(model, model_name, optimizer, train_data, dev_data, test_data, f
             train_total_langs.append(lang)
             # zero the parameter gradients
             optimizer.zero_grad()
-            if language_vectors is not None:
-                if lang in language_vectors.index_to_key:
+            if langs_list is not None:
+                # if language_vectors is not None:
+                if lang in language_vectors.index_to_key and lang in langs_list:
                     train_langs_embeddings.append(lang)
                     language_vector = language_vectors[lang]
                     output = model(lang_idx, language_vector)
-                else: output = model(lang_idx, None)
+                else:
+                    output = model(lang_idx, None)
             else:
                 output = model(lang_idx, None)
 
@@ -111,7 +116,8 @@ def train_model(model, model_name, optimizer, train_data, dev_data, test_data, f
         train_total_langs = list(set(train_total_langs))
 
         dev_langs, dev_langs_embed, dev_acc, dev_report, dev_loss = evaluate_dataset(model, dev_data, feature_name,
-                                                                                     lang_dict, mode="dev",
+                                                                                     lang_dict, langs_list,
+                                                                                     mode="dev",
                                                                                      language_vectors=language_vectors)
         dev_langs = list(set(dev_langs))
         dev_langs_embed = list(set(dev_langs_embed))
@@ -120,7 +126,8 @@ def train_model(model, model_name, optimizer, train_data, dev_data, test_data, f
             best_acc.append(dev_acc)
 
             test_langs, test_lang_embeds, test_acc, test_report, _ = evaluate_dataset(model, test_data, feature_name,
-                                                                                      lang_dict, mode="test",
+                                                                                      lang_dict, langs_list,
+                                                                                      mode="test",
                                                                                       language_vectors=language_vectors)
 
             test_langs = list(set(test_langs))
@@ -157,10 +164,12 @@ def train_model(model, model_name, optimizer, train_data, dev_data, test_data, f
 
             }
             print(
-                f"total langs: train{len(list(set(train_total_langs)))} dev {len(list(set(dev_langs)))} test {len(list(set(test_langs)))}")
+                f"total langs: train {len(list(set(train_total_langs)))} dev {len(list(set(dev_langs)))} test {len(list(set(test_langs)))}")
             print(
                 f"langs with embeddings :train {len(list(set(train_langs_embeddings)))} dev {len(list(set(dev_langs_embed)))} test {len(list(set(test_lang_embeds)))} ")
+
             file_name = f"{model_name}_{feature_id}"
+
             print(f"output model {file_name}")
             with open(os.path.join(output_folder, f"{file_name}.json"), "w") as f:
                 json.dump(result, f)
