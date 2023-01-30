@@ -19,14 +19,14 @@ device=$2
 
 conda activate "$env"
 
-python -m src.feature_prediction.run "$device" output/models oneff 100 prone clics add+avg
+python -m src.feature_prediction.run "$device" output/models oneff 100 "clics" clics prone add+avg
 
-python -m src.feature_prediction.run "$device" output/models oneff 100 prone clics add+max
+python -m src.feature_prediction.run "$device" output/models oneff 100 "clics" clics prone add+max
 
-python -m src.feature_prediction.run "$device" output/models oneff 100 prone clics add+sum
+python -m src.feature_prediction.run "$device" output/models oneff 100 "clics" clics prone add+sum
 
-python -m src.feature_prediction.run "$device" output/models oneff 100 prone clics concat+avg
+python -m src.feature_prediction.run "$device" output/models oneff 100 "clics" clics prone concat+avg
 
-python -m src.feature_prediction.run "$device" output/models oneff 100 prone clics concat+max
+python -m src.feature_prediction.run "$device" output/models oneff 100 "clics" clics prone concat+max
 
-python -m src.feature_prediction.run "$device" output/models oneff 100 prone clics concat+sum
+python -m src.feature_prediction.run "$device" output/models oneff 100 "clics" clics prone concat+sum
