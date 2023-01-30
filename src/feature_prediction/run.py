@@ -49,8 +49,8 @@ def load_lang_list(langs):
 def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=100,
         langs=None,
         dataset=None,
-        feature_area=None,
         node_embeddings=None, metric=None,
+        feature_area=None,
         ):
     # node_embeddings : node2vec
     # dataset: clics
@@ -130,7 +130,6 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
                     print(f"train lang {len(langs_train)} dev lang {len(langs_dev)} test lang {len(langs_test)}")
 
                     # output folder for the models.
-
                     if model_name == "oneff":
 
                         # check if there are overlapping languages in train data
