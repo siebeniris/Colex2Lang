@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 #SBATCH --partition=prioritized
-#SBATCH --job-name=oneff
-#SBATCH --output=%j.out
+#SBATCH --job-name=ggvc
+#SBATCH --output=%j.ggvc.out
 #SBATCH --time=8:00:00
 #SBATCH --mem=32G
 

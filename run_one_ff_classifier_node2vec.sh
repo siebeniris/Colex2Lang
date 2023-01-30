@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 #SBATCH --partition=prioritized
-#SBATCH --job-name=oneff
-#SBATCH --output=%j.out
+#SBATCH --job-name=node2vec
+#SBATCH --output=%j.node2vec.out
 #SBATCH --time=8:00:00
 #SBATCH --mem=32G
 
