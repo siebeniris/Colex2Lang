@@ -20,14 +20,16 @@ device=$2
 conda activate "$env"
 
 
-python -m src.feature_prediction.run "$device" output/models oneff 100 "clics" clics ggvc add+avg
-
-python -m src.feature_prediction.run "$device" output/models oneff 100 "clics" clics ggvc add+max
-
-python -m src.feature_prediction.run "$device" output/models oneff 100 "clics" clics ggvc add+sum
-
-python -m src.feature_prediction.run "$device" output/models oneff 100 "clics" clics ggvc concat+avg
-
-python -m src.feature_prediction.run "$device" output/models oneff 100 "clics" clics ggvc concat+max
+#python -m src.feature_prediction.run "$device" output/models oneff 100 "clics" clics ggvc add+avg
+#
+#python -m src.feature_prediction.run "$device" output/models oneff 100 "clics" clics ggvc add+max
+#
+#python -m src.feature_prediction.run "$device" output/models oneff 100 "clics" clics ggvc add+sum
+#
 
 python -m src.feature_prediction.run "$device" output/models oneff 100 "clics" clics ggvc concat+sum
+
+
+python -m src.feature_prediction.run "$device" output/models oneff 100 "clics" clics ggvc concat+avg
+#
+python -m src.feature_prediction.run "$device" output/models oneff 100 "clics" clics ggvc concat+max
