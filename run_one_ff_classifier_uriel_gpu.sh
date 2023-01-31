@@ -5,7 +5,7 @@
 #SBATCH --job-name=uriel
 #SBATCH --output=%j.uriel.gpu.out
 #SBATCH --time=20:00:00
-#SBATCH --mem=32G
+#SBATCH --mem=16G
 #SBATCH --nodelist=nv-ai-01.srv.aau.dk
 
 source $HOME/.bashrc
