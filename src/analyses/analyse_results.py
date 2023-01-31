@@ -119,30 +119,163 @@ def show_results(filepath, feature_ids_file=None):
     feature_area_result_dict, feature_area_result_dict_zs, model_acc_dict, model_acc_dict_zs, feature_area_labels = compile_results(
         filepath, feature_ids_file=feature_ids_file)
 
-    print("ZS- TEST- AVERAGE")
+    print("TEST- AVERAGE")
+
     acc_ = []
+
+    acc_dict= defaultdict(list)
+
 
     for feature_area, model_results in feature_area_result_dict.items():
         print(f"{feature_area} : label_dim {feature_area_labels[feature_area]}")
-        print(model_results["random"])
-        acc_.append(model_results["random"][0])
+        model_restructed = sorted(model_results.items(), key=lambda x: x[1][0], reverse=True)
+        for m, acc in model_results.items():
+            acc_dict[m].append(acc)
+        print(model_restructed[:5])
+        # print(model_results["random"])
+        # acc_.append(model_results["random"][0])
+
+    print("average")
+    acc_dict_ = {k:np.average(v) for k,v in acc_dict.items()}
+    print(sorted(acc_dict_.items(), key=lambda x: x[1], reverse=True))
 
     print("*" * 30)
-    print(np.average(acc_))
+    # print(np.average(acc_))
     #
     #
-    # print("ZS- TEST- AVERAGE")
+    print("ZS- TEST- AVERAGE")
     # acc_ = []
-    # for feature_area, model_results in feature_area_result_dict_zs.items():
-    #     acc_.append(model_results["random"][0])
-    #     print(f"{feature_area} : label_dim {feature_area_labels[feature_area]}")
-    #     print(model_results["random"])
-    # print("*" * 30)
+    acc_dict=defaultdict(list)
+    for feature_area, model_results in feature_area_result_dict_zs.items():
+        print(f"{feature_area} : label_dim {feature_area_labels[feature_area]}")
+        # acc_.append(model_results["random"][0])
+        # print(f"{feature_area} : label_dim {feature_area_labels[feature_area]}")
+        # print(model_results["random"])
+        for m, acc in model_results.items():
+            acc_dict[m].append(acc)
+        model_restructed= sorted(model_results.items(), key=lambda x: x[1][0], reverse=True)
+        print(model_restructed[:5])
+
+    print("average")
+    acc_dict_ = {k:np.average(v) for k,v in acc_dict.items()}
+
+    print(sorted(acc_dict_.items(), key=lambda x: x[1], reverse=True))
+
+
+    print("*" * 30)
     #
     # print(np.average(acc_))
+
+
+def create_dfs(filepath, feature_ids_file=None):
+    """
+    results for clics to compare different embeddings and different metrics.
+
+    :param filepath:
+    :param feature_ids_file:
+    :return:
+    """
+    feature_area_result_dict, feature_area_result_dict_zs, model_acc_dict, model_acc_dict_zs, feature_area_labels = compile_results(
+        filepath, feature_ids_file=feature_ids_file)
+
+    print("TEST- AVERAGE")
+
+    acc_ = []
+
+    columns =["NodeEmb", "Metric", "Complex_Sentences", "Lexicon", "Morphology",
+              "Nominal_Categories", "Nominal_Syntax", "Other", "Phonology", "Sign_Languages",
+              "Simple_Cluases", "Verbal_Categories", "Word_Order" ]
+
+    acc_dict = defaultdict(list)
+
+    df_dict = defaultdict(dict)
+
+    for feature_area, model_results in feature_area_result_dict.items():
+        print(f"{feature_area} : label_dim {feature_area_labels[feature_area]}")
+
+        model_restructed = sorted(model_results.items(), key=lambda x: x[1][0], reverse=True)
+
+        for m, acc in model_results.items():
+            if m not in df_dict:
+                df_dict[m] = defaultdict(dict)
+            if "clics" in m:
+                # model, nodeEmb, metric
+                t1, t2, t3 = m.split("_")
+                df_dict[m]["NodeEmb"]= t2
+                df_dict[m]["Metric"] = t3
+                df_dict[m][feature_area]= acc[0]
+            else:
+                if m=="random":
+                    df_dict[m]["NodeEmb"] = None
+                    df_dict[m]["Metric"] = None
+                    df_dict[m][feature_area] = acc[0]
+
+
+            acc_dict[m].append(acc)
+        print(model_restructed[:5])
+        # print(model_results["random"])
+        # acc_.append(model_results["random"][0])
+
+    print("average")
+    acc_dict_ = {k: np.average(v) for k, v in acc_dict.items()}
+    print(sorted(acc_dict_.items(), key=lambda x: x, reverse=True))
+
+    df = pd.DataFrame.from_dict(df_dict, columns=columns, orient="index")
+    df = df.dropna(axis=1, how="all")
+    print(df)
+
+    df.to_csv("output/results/clics_metrics_nodeEmb_test.csv")
+
+    print("*" * 30)
+    # print(np.average(acc_))
+    #
+    #
+    print("ZS- TEST- AVERAGE")
+    # acc_ = []
+    df_dict_zs = defaultdict(dict)
+
+    acc_dict = defaultdict(list)
+    for feature_area, model_results in feature_area_result_dict_zs.items():
+        print(f"{feature_area} : label_dim {feature_area_labels[feature_area]}")
+        # acc_.append(model_results["random"][0])
+        # print(f"{feature_area} : label_dim {feature_area_labels[feature_area]}")
+        # print(model_results["random"])
+        for m, acc in model_results.items():
+            if m not in df_dict_zs:
+                df_dict_zs[m] = defaultdict(dict)
+            if "clics" in m:
+                # model, nodeEmb, metric
+                t1, t2, t3 = m.split("_")
+                df_dict_zs[m]["NodeEmb"]= t2
+                df_dict_zs[m]["Metric"] = t3
+                df_dict_zs[m][feature_area]= acc[0]
+            else:
+                if m == "random":
+                    df_dict[m]["NodeEmb"] = None
+                    df_dict[m]["Metric"] = None
+                    df_dict[m][feature_area] = acc[0]
+
+            acc_dict[m].append(acc)
+        model_restructed = sorted(model_results.items(), key=lambda x: x[1][0], reverse=True)
+        print(model_restructed[:5])
+
+
+    print("average")
+    acc_dict_ = {k: np.average(v) for k, v in acc_dict.items()}
+
+    print(sorted(acc_dict_.items(), key=lambda x: x[1], reverse=True))
+
+    print("*" * 30)
+
+    df_zs = pd.DataFrame.from_dict(df_dict_zs, columns=columns, orient="index")
+    df_zs = df_zs.dropna(axis=1, how="all")
+    print(df_zs)
+
+    df_zs.to_csv("output/results/clics_metrics_nodeEmb_test_zs.csv")
+
 
 
 if __name__ == '__main__':
     import plac
 
-    plac.call(show_results)
+    plac.call(create_dfs)
