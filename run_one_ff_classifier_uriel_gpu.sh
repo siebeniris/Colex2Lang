@@ -1,11 +1,12 @@
 #!/bin/bash
 #
 #SBATCH --partition=prioritized
+#SBATCH --gres=gpu:1
 #SBATCH --job-name=uriel
 #SBATCH --output=%j.uriel.gpu.out
 #SBATCH --time=20:00:00
 #SBATCH --mem=32G
-#SBATCH --nodelist=nv-ai-02.srv.aau.dk
+#SBATCH --nodelist=nv-ai-01.srv.aau.dk
 
 source $HOME/.bashrc
 
