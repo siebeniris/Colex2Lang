@@ -58,24 +58,41 @@ def get_results(output_dir="output/models/", langs="clics"):
                         print(file)
                         with open(os.path.join(folder, file)) as f:
                             result = json.load(f)
-                            if langs in file:
-                                # oneff, wn, node2vec, add+avg, feature_id
-                                _, t2, t3, t4, _ = file.replace(".json", "").split("_")
-                                if result["train"]["lang_embeds_length"] > 0:
-                                    result_dict_per_feature["_".join((t2, t3, t4))] = {
+
+                            if "_" in file:
+                                t = file.replace(".json", "").split("_")
+                                if len(t) == 5:
+                                    # oneff, wn, node2vec, add+avg, feature_id
+                                    _, t2, t3, t4, _ = t
+                                    if result["train"]["lang_embeds_length"] > 0:
+                                        result_dict_per_feature["_".join((t2, t3, t4))] = {
+                                            "test_acc": result["test"]["report"]["accuracy"],
+                                            "dev_acc": result["dev"]["report"]["accuracy"],
+
+                                        }
+                                        train_langs = result["train"]["langs_length"]
+                                        train_lang_embeds = result["train"]["lang_embeds_length"]
+                                        test_lang_embeds = result["test"]["langs_length"]
+                                        test_langs = result["test"]["lang_embeds_length"]
+                                elif len(t) == 3:
+                                    _, uriel, _ = t
+
+                                    if result["train"]["lang_embeds_length"] > 0:
+                                        result_dict_per_feature["uriel"] = {
+                                            "test_acc": result["test"]["report"]["accuracy"],
+                                            "dev_acc": result["dev"]["report"]["accuracy"],
+                                        }
+                                        train_langs = result["train"]["langs_length"]
+                                        train_lang_embeds = result["train"]["lang_embeds_length"]
+                                        test_lang_embeds = result["test"]["langs_length"]
+                                        test_langs = result["test"]["lang_embeds_length"]
+
+                                else:
+                                    assert len(t) == 2
+                                    result_dict_per_feature["random"] = {
                                         "test_acc": result["test"]["report"]["accuracy"],
                                         "dev_acc": result["dev"]["report"]["accuracy"],
-
                                     }
-                                    train_langs = result["train"]["langs_length"]
-                                    train_lang_embeds = result["train"]["lang_embeds_length"]
-                                    test_lang_embeds = result["test"]["langs_length"]
-                                    test_langs = result["test"]["lang_embeds_length"]
-                            else:
-                                result_dict_per_feature["random"] = {
-                                    "test_acc": result["test"]["report"]["accuracy"],
-                                    "dev_acc": result["dev"]["report"]["accuracy"],
-                                }
                 results_feature_dict[feature_area][feature_id]["results"] = result_dict_per_feature
                 results_feature_dict[feature_area][feature_id]["train_langs"] = train_langs
                 results_feature_dict[feature_area][feature_id]["train_lang_embeds"] = train_lang_embeds
@@ -86,7 +103,7 @@ def get_results(output_dir="output/models/", langs="clics"):
         json.dump(results_feature_dict, f)
 
 
-def get_results_dict(result_file):
+def analyze_results(result_file):
     models = ["node2vec", "glove", "prone"]
 
     with open(result_file) as f:
