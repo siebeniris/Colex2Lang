@@ -108,8 +108,11 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
             outputfile_name = f"{model_name}_{dataset}_{node_embeddings}_{metric}_{feature_id}.json"
             outputfile = os.path.join(output_folder, outputfile_name)
 
-        else:
+        elif dataset is not None:
             outputfile_name = f"{model_name}_{dataset}_{feature_id}.json"
+            outputfile = os.path.join(output_folder, outputfile_name)
+        else:
+            outputfile_name = f"{model_name}_{feature_id}.json"
             outputfile = os.path.join(output_folder, outputfile_name)
 
         print(f"outputfile path {outputfile}")
