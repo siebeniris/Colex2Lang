@@ -32,15 +32,18 @@ def get_results(output_dir="output/models/", langs="clics"):
     with open("data/TypPred/preprocessed/feature_dict.json") as f:
         feature_dict = json.load(f)
 
-
     folder = os.path.join(output_dir, langs)
 
     results_feature_dict = defaultdict(dict)
     for feature_area in wals_features:
         results_feature_dict[feature_area] = defaultdict(dict)
         # phonlogy:{"31A":{}}
+
         for feature_id, feature_name in wals_features[feature_area].items():
+
             if feature_name in feature_dict:
+                result_dict_per_feature = dict()
+
                 label_dim = len(feature_dict[feature_name]["values"])
                 results_feature_dict[feature_area][feature_id] = defaultdict(dict)
                 results_feature_dict[feature_area][feature_id]["label_dim"] = label_dim
@@ -49,7 +52,7 @@ def get_results(output_dir="output/models/", langs="clics"):
                 train_lang_embeds = 0
                 test_lang_embeds = 0
                 test_langs = 0
-                result_dict_per_feature = dict()
+
                 for file in os.listdir(folder):
                     if file.endswith(f"_{feature_id}.json"):
                         print(file)
@@ -73,11 +76,11 @@ def get_results(output_dir="output/models/", langs="clics"):
                                     "test_acc": result["test"]["report"]["accuracy"],
                                     "dev_acc": result["dev"]["report"]["accuracy"],
                                 }
-            results_feature_dict[feature_area][feature_id]["results"] = result_dict_per_feature
-            results_feature_dict[feature_area][feature_id]["train_langs"]= train_langs
-            results_feature_dict[feature_area][feature_id]["train_lang_embeds"] = train_lang_embeds
-            results_feature_dict[feature_area][feature_id]["test_langs"] = test_lang_embeds
-            results_feature_dict[feature_area][feature_id]["test_lang_embeds"] = test_langs
+                results_feature_dict[feature_area][feature_id]["results"] = result_dict_per_feature
+                results_feature_dict[feature_area][feature_id]["train_langs"] = train_langs
+                results_feature_dict[feature_area][feature_id]["train_lang_embeds"] = train_lang_embeds
+                results_feature_dict[feature_area][feature_id]["test_langs"] = test_lang_embeds
+                results_feature_dict[feature_area][feature_id]["test_lang_embeds"] = test_langs
 
     with open(f"results_{langs}.json", "w") as f:
         json.dump(results_feature_dict, f)
