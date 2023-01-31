@@ -19,6 +19,6 @@ device=$2
 
 conda activate "$env"
 
-python -m src.feature_prediction.run "$device" output/models oneff 100 "wals+uriel+clics+wn" wn glove concat+avg
+python -m src.feature_prediction.run "$device" output/models oneff 100 "wals+uriel+clics+wn" wn prone concat+sum
 
 
