@@ -40,38 +40,39 @@ def get_results(output_dir="output/models/", langs="clics"):
         results_feature_dict[feature_area] = defaultdict(dict)
         # phonlogy:{"31A":{}}
         for feature_id, feature_name in wals_features[feature_area].items():
-            label_dim = len(feature_dict[feature_name]["values"])
-            results_feature_dict[feature_area][feature_id] = defaultdict(dict)
-            results_feature_dict[feature_area][feature_id]["label_dim"] = label_dim
+            if feature_name in feature_dict:
+                label_dim = len(feature_dict[feature_name]["values"])
+                results_feature_dict[feature_area][feature_id] = defaultdict(dict)
+                results_feature_dict[feature_area][feature_id]["label_dim"] = label_dim
 
-            train_langs = 0
-            train_lang_embeds = 0
-            test_lang_embeds = 0
-            test_langs = 0
-            result_dict_per_feature = dict()
-            for file in os.listdir(folder):
-                if file.endswith(f"_{feature_id}.json"):
-                    print(file)
-                    with open(os.path.join(folder, file)) as f:
-                        result = json.load(f)
-                        if langs in file:
-                            # oneff, wn, node2vec, add+avg, feature_id
-                            _, t2, t3, t4, _ = file.replace(".json", "").split("_")
-                            if result["train"]["lang_embeds_length"] > 0:
-                                result_dict_per_feature["_".join((t2, t3, t4))] = {
+                train_langs = 0
+                train_lang_embeds = 0
+                test_lang_embeds = 0
+                test_langs = 0
+                result_dict_per_feature = dict()
+                for file in os.listdir(folder):
+                    if file.endswith(f"_{feature_id}.json"):
+                        print(file)
+                        with open(os.path.join(folder, file)) as f:
+                            result = json.load(f)
+                            if langs in file:
+                                # oneff, wn, node2vec, add+avg, feature_id
+                                _, t2, t3, t4, _ = file.replace(".json", "").split("_")
+                                if result["train"]["lang_embeds_length"] > 0:
+                                    result_dict_per_feature["_".join((t2, t3, t4))] = {
+                                        "test_acc": result["test"]["report"]["accuracy"],
+                                        "dev_acc": result["dev"]["report"]["accuracy"],
+
+                                    }
+                                    train_langs = result["train"]["langs_length"]
+                                    train_lang_embeds = result["train"]["lang_embeds_length"]
+                                    test_lang_embeds = result["test"]["langs_length"]
+                                    test_langs = result["test"]["lang_embeds_length"]
+                            else:
+                                result_dict_per_feature["random"] = {
                                     "test_acc": result["test"]["report"]["accuracy"],
                                     "dev_acc": result["dev"]["report"]["accuracy"],
-
                                 }
-                                train_langs = result["train"]["langs_length"]
-                                train_lang_embeds = result["train"]["lang_embeds_length"]
-                                test_lang_embeds = result["test"]["langs_length"]
-                                test_langs = result["test"]["lang_embeds_length"]
-                        else:
-                            result_dict_per_feature["random"] = {
-                                "test_acc": result["test"]["report"]["accuracy"],
-                                "dev_acc": result["dev"]["report"]["accuracy"],
-                            }
             results_feature_dict[feature_area][feature_id]["results"] = result_dict_per_feature
             results_feature_dict[feature_area][feature_id]["train_langs"]= train_langs
             results_feature_dict[feature_area][feature_id]["train_lang_embeds"] = train_lang_embeds
