@@ -71,7 +71,7 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
         os.mkdir(output_folder)
 
     lexicon_features = ["129A", "130A", "130B", "131A", "132A", "133A", "134A", "135A", "136A", "136B", "137B", "138A"]
-    for feature_id in lexicon_features:
+    for feature_id in feature_dict:
         print("*" * 40)
         label_dim = len(feature_dict[feature_id]["values"])
         feature = feature_dict[feature_id]["feature"]
