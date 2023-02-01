@@ -1,0 +1,240 @@
+{
+  "feature_name": "M-T_Pronouns",
+  "feature_id": "136A",
+  "epoch": 99,
+  "train": {
+    "report": {
+      "0": {
+        "precision": 0.9629629629629629,
+        "recall": 0.9873417721518988,
+        "f1-score": 0.975,
+        "support": 158
+      },
+      "1": {
+        "precision": 0.8333333333333334,
+        "recall": 0.625,
+        "f1-score": 0.7142857142857143,
+        "support": 16
+      },
+      "2": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 2
+      },
+      "accuracy": 0.9545454545454546,
+      "macro avg": {
+        "precision": 0.9320987654320988,
+        "recall": 0.8707805907172995,
+        "f1-score": 0.8964285714285714,
+        "support": 176
+      },
+      "weighted avg": {
+        "precision": 0.9515993265993267,
+        "recall": 0.9545454545454546,
+        "f1-score": 0.9515827922077921,
+        "support": 176
+      }
+    },
+    "loss": "0.43533057",
+    "lang_embeds": [
+      "knc",
+      "zun",
+      "lvk",
+      "chv",
+      "pue",
+      "wbk",
+      "itl",
+      "dif",
+      "bkl",
+      "plt",
+      "niv",
+      "cha",
+      "ntj",
+      "oss",
+      "ram",
+      "cbs",
+      "wsk",
+      "bsn",
+      "had",
+      "mzh",
+      "cyb",
+      "yad",
+      "wnu",
+      "ote",
+      "ape",
+      "tya",
+      "ayz",
+      "khk",
+      "ket",
+      "auc",
+      "kwi",
+      "kat",
+      "kyh",
+      "qvi",
+      "inh",
+      "yux",
+      "gld",
+      "xok",
+      "bsk",
+      "yrk",
+      "kjd",
+      "swh",
+      "dgz",
+      "bod",
+      "pav",
+      "lez",
+      "eng",
+      "ckt",
+      "rap",
+      "kpw",
+      "kal",
+      "pes",
+      "tmu",
+      "ain",
+      "dbl",
+      "dni",
+      "mni",
+      "set",
+      "saj",
+      "aey",
+      "amp",
+      "duj",
+      "gug",
+      "abk",
+      "tli",
+      "pwn",
+      "cmn",
+      "yaq"
+    ],
+    "lang_embeds_length": 68
+  },
+  "dev": {
+    "report": {
+      "0": {
+        "precision": 0.9,
+        "recall": 1.0,
+        "f1-score": 0.9473684210526316,
+        "support": 18
+      },
+      "1": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1
+      },
+      "2": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1
+      },
+      "accuracy": 0.9,
+      "macro avg": {
+        "precision": 0.3,
+        "recall": 0.3333333333333333,
+        "f1-score": 0.31578947368421056,
+        "support": 20
+      },
+      "weighted avg": {
+        "precision": 0.8099999999999999,
+        "recall": 0.9,
+        "f1-score": 0.8526315789473685,
+        "support": 20
+      }
+    },
+    "loss": "0.91187954",
+    "lang_embeds": [
+      "tpy",
+      "kan",
+      "kmg",
+      "heb",
+      "yee"
+    ],
+    "lang_embeds_length": 5
+  },
+  "test": {
+    "report": {
+      "0": {
+        "precision": 0.5238095238095238,
+        "recall": 1.0,
+        "f1-score": 0.6875000000000001,
+        "support": 11
+      },
+      "1": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 10
+      },
+      "accuracy": 0.5238095238095238,
+      "macro avg": {
+        "precision": 0.2619047619047619,
+        "recall": 0.5,
+        "f1-score": 0.34375000000000006,
+        "support": 21
+      },
+      "weighted avg": {
+        "precision": 0.2743764172335601,
+        "recall": 0.5238095238095238,
+        "f1-score": 0.36011904761904767,
+        "support": 21
+      }
+    },
+    "lang_embeds": [
+      "ind",
+      "vie",
+      "fij",
+      "rus",
+      "jpn",
+      "tyv",
+      "ell",
+      "deu",
+      "lug",
+      "fin",
+      "fra",
+      "tur",
+      "spa",
+      "arn",
+      "hau",
+      "eus",
+      "hin",
+      "kor",
+      "tgl",
+      "mya",
+      "hun"
+    ],
+    "lang_embeds_length": 21
+  },
+  "test_zs": {
+    "report": {
+      "0": {
+        "precision": 0.5238095238095238,
+        "recall": 1.0,
+        "f1-score": 0.6875000000000001,
+        "support": 11
+      },
+      "1": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 10
+      },
+      "accuracy": 0.5238095238095238,
+      "macro avg": {
+        "precision": 0.2619047619047619,
+        "recall": 0.5,
+        "f1-score": 0.34375000000000006,
+        "support": 21
+      },
+      "weighted avg": {
+        "precision": 0.2743764172335601,
+        "recall": 0.5238095238095238,
+        "f1-score": 0.36011904761904767,
+        "support": 21
+      }
+    },
+    "lang_embeds": [],
+    "lang_embeds_length": 0
+  }
+}

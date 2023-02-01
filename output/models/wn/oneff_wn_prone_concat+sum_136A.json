@@ -1,0 +1,201 @@
+{
+  "feature_name": "M-T_Pronouns",
+  "feature_id": "136A",
+  "epoch": 0,
+  "train": {
+    "report": {
+      "0": {
+        "precision": 0.9013157894736842,
+        "recall": 0.8670886075949367,
+        "f1-score": 0.8838709677419354,
+        "support": 158
+      },
+      "1": {
+        "precision": 0.1111111111111111,
+        "recall": 0.125,
+        "f1-score": 0.11764705882352941,
+        "support": 16
+      },
+      "2": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2
+      },
+      "accuracy": 0.7897727272727273,
+      "macro avg": {
+        "precision": 0.3374756335282651,
+        "recall": 0.33069620253164556,
+        "f1-score": 0.33383934218848826,
+        "support": 176
+      },
+      "weighted avg": {
+        "precision": 0.8192367756512493,
+        "recall": 0.7897727272727273,
+        "f1-score": 0.8041702604795582,
+        "support": 176
+      }
+    },
+    "loss": "607.78064",
+    "lang_embeds": [
+      "amh",
+      "rap",
+      "zun",
+      "crk",
+      "lez",
+      "cha",
+      "eng",
+      "gld",
+      "kat",
+      "naq",
+      "ppl",
+      "lkt",
+      "ace",
+      "tzm",
+      "ood",
+      "mrc",
+      "chv",
+      "oss",
+      "abk",
+      "kyh",
+      "ckt",
+      "inh",
+      "ket",
+      "ain",
+      "kal",
+      "tli",
+      "sag",
+      "pwn",
+      "arz",
+      "yor",
+      "bod"
+    ],
+    "lang_embeds_length": 31
+  },
+  "dev": {
+    "report": {
+      "0": {
+        "precision": 0.9,
+        "recall": 1.0,
+        "f1-score": 0.9473684210526316,
+        "support": 18
+      },
+      "1": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1
+      },
+      "2": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1
+      },
+      "accuracy": 0.9,
+      "macro avg": {
+        "precision": 0.3,
+        "recall": 0.3333333333333333,
+        "f1-score": 0.31578947368421056,
+        "support": 20
+      },
+      "weighted avg": {
+        "precision": 0.8099999999999999,
+        "recall": 0.9,
+        "f1-score": 0.8526315789473685,
+        "support": 20
+      }
+    },
+    "loss": "1.2979877",
+    "lang_embeds": [
+      "heb",
+      "kan",
+      "zul"
+    ],
+    "lang_embeds_length": 3
+  },
+  "test": {
+    "report": {
+      "0": {
+        "precision": 0.5294117647058824,
+        "recall": 0.8181818181818182,
+        "f1-score": 0.6428571428571428,
+        "support": 11
+      },
+      "1": {
+        "precision": 0.5,
+        "recall": 0.2,
+        "f1-score": 0.28571428571428575,
+        "support": 10
+      },
+      "accuracy": 0.5238095238095238,
+      "macro avg": {
+        "precision": 0.5147058823529411,
+        "recall": 0.5090909090909091,
+        "f1-score": 0.4642857142857143,
+        "support": 21
+      },
+      "weighted avg": {
+        "precision": 0.515406162464986,
+        "recall": 0.5238095238095238,
+        "f1-score": 0.47278911564625853,
+        "support": 21
+      }
+    },
+    "lang_embeds": [
+      "rus",
+      "fin",
+      "spa",
+      "tur",
+      "arn",
+      "tgl",
+      "jpn",
+      "ell",
+      "deu",
+      "fij",
+      "hun",
+      "kor",
+      "tyv",
+      "fra",
+      "ind",
+      "vie",
+      "mya",
+      "lug",
+      "hau",
+      "eus",
+      "hin"
+    ],
+    "lang_embeds_length": 21
+  },
+  "test_zs": {
+    "report": {
+      "0": {
+        "precision": 0.5238095238095238,
+        "recall": 1.0,
+        "f1-score": 0.6875000000000001,
+        "support": 11
+      },
+      "1": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 10
+      },
+      "accuracy": 0.5238095238095238,
+      "macro avg": {
+        "precision": 0.2619047619047619,
+        "recall": 0.5,
+        "f1-score": 0.34375000000000006,
+        "support": 21
+      },
+      "weighted avg": {
+        "precision": 0.2743764172335601,
+        "recall": 0.5238095238095238,
+        "f1-score": 0.36011904761904767,
+        "support": 21
+      }
+    },
+    "lang_embeds": [],
+    "lang_embeds_length": 0
+  }
+}

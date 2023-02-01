@@ -1,0 +1,265 @@
+{
+  "feature_name": "Finger_and_Hand",
+  "feature_id": "130A",
+  "epoch": 0,
+  "train": {
+    "report": {
+      "0": {
+        "precision": 0.8753180661577609,
+        "recall": 0.8753180661577609,
+        "f1-score": 0.8753180661577609,
+        "support": 393
+      },
+      "1": {
+        "precision": 0.15517241379310345,
+        "recall": 0.15517241379310345,
+        "f1-score": 0.15517241379310345,
+        "support": 58
+      },
+      "accuracy": 0.7827050997782705,
+      "macro avg": {
+        "precision": 0.5152452399754321,
+        "recall": 0.5152452399754321,
+        "f1-score": 0.5152452399754321,
+        "support": 451
+      },
+      "weighted avg": {
+        "precision": 0.7827050997782705,
+        "recall": 0.7827050997782705,
+        "f1-score": 0.7827050997782705,
+        "support": 451
+      }
+    },
+    "loss": "7.96058",
+    "lang_embeds": [
+      "osa",
+      "sva",
+      "mal",
+      "kaz",
+      "tuk",
+      "amh",
+      "moh",
+      "tfn",
+      "rap",
+      "zun",
+      "csm",
+      "crk",
+      "atj",
+      "lao",
+      "lez",
+      "apw",
+      "nys",
+      "ude",
+      "nmn",
+      "chy",
+      "cha",
+      "sat",
+      "ibo",
+      "kas",
+      "ceb",
+      "pag",
+      "pau",
+      "pjt",
+      "chr",
+      "yua",
+      "mnc",
+      "bcl",
+      "mic",
+      "tah",
+      "bla",
+      "abk",
+      "afr",
+      "sna",
+      "str",
+      "kyh",
+      "sin",
+      "mbb",
+      "yag",
+      "chk",
+      "ary",
+      "pon",
+      "mar",
+      "chl",
+      "zai",
+      "akz",
+      "hil",
+      "abe",
+      "pan",
+      "ems",
+      "moe",
+      "bam",
+      "cho",
+      "sme",
+      "hop",
+      "sei",
+      "tzo",
+      "tpi",
+      "tsg",
+      "ale",
+      "kir",
+      "mah",
+      "kan",
+      "quc",
+      "dak",
+      "zul",
+      "krc",
+      "nav",
+      "kjh",
+      "bod",
+      "evn",
+      "win"
+    ],
+    "lang_embeds_length": 76
+  },
+  "dev": {
+    "report": {
+      "0": {
+        "precision": 0.8235294117647058,
+        "recall": 1.0,
+        "f1-score": 0.9032258064516129,
+        "support": 42
+      },
+      "1": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 9
+      },
+      "accuracy": 0.8235294117647058,
+      "macro avg": {
+        "precision": 0.4117647058823529,
+        "recall": 0.5,
+        "f1-score": 0.45161290322580644,
+        "support": 51
+      },
+      "weighted avg": {
+        "precision": 0.6782006920415224,
+        "recall": 0.8235294117647058,
+        "f1-score": 0.7438330170777989,
+        "support": 51
+      }
+    },
+    "loss": "1.8011694",
+    "lang_embeds": [
+      "cic",
+      "haw",
+      "ppl",
+      "heb",
+      "xal",
+      "ood",
+      "eng",
+      "kat"
+    ],
+    "lang_embeds_length": 8
+  },
+  "test": {
+    "report": {
+      "0": {
+        "precision": 0.9787234042553191,
+        "recall": 1.0,
+        "f1-score": 0.989247311827957,
+        "support": 46
+      },
+      "1": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1
+      },
+      "accuracy": 0.9787234042553191,
+      "macro avg": {
+        "precision": 0.48936170212765956,
+        "recall": 0.5,
+        "f1-score": 0.4946236559139785,
+        "support": 47
+      },
+      "weighted avg": {
+        "precision": 0.9578995020371208,
+        "recall": 0.9787234042553191,
+        "f1-score": 0.9681994966826813,
+        "support": 47
+      }
+    },
+    "lang_embeds": [
+      "kum",
+      "rus",
+      "tam",
+      "pol",
+      "bre",
+      "fin",
+      "spa",
+      "lus",
+      "kgp",
+      "slk",
+      "ita",
+      "ukr",
+      "tur",
+      "ces",
+      "arn",
+      "tsn",
+      "gle",
+      "tgl",
+      "mai",
+      "jpn",
+      "nep",
+      "wbp",
+      "cym",
+      "ilo",
+      "mri",
+      "nog",
+      "ell",
+      "deu",
+      "dan",
+      "fij",
+      "cat",
+      "hun",
+      "kor",
+      "fra",
+      "ind",
+      "smo",
+      "nld",
+      "por",
+      "ron",
+      "hau",
+      "gla",
+      "cor",
+      "tat",
+      "bel",
+      "eus",
+      "lit",
+      "tha"
+    ],
+    "lang_embeds_length": 47
+  },
+  "test_zs": {
+    "report": {
+      "0": {
+        "precision": 0.9787234042553191,
+        "recall": 1.0,
+        "f1-score": 0.989247311827957,
+        "support": 46
+      },
+      "1": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1
+      },
+      "accuracy": 0.9787234042553191,
+      "macro avg": {
+        "precision": 0.48936170212765956,
+        "recall": 0.5,
+        "f1-score": 0.4946236559139785,
+        "support": 47
+      },
+      "weighted avg": {
+        "precision": 0.9578995020371208,
+        "recall": 0.9787234042553191,
+        "f1-score": 0.9681994966826813,
+        "support": 47
+      }
+    },
+    "lang_embeds": [],
+    "lang_embeds_length": 0
+  }
+}

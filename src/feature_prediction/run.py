@@ -17,23 +17,21 @@ try:
 except ImportError:
     from yaml import Loader, Dumper
 
-from src.feature_prediction.training_utils import train_model, load_dataset
+from src.feature_prediction.training_utils import train_model
 from src.feature_prediction.models import OneFF
 
 torch.manual_seed(42)
 
 
 def load_lang_list(langs):
-    input_folder = "data/TypPred/preprocessed/"
+    input_folder = "data/TypPred/"
 
-    if langs == "wals+uriel+clics+wn":
-        filepath = os.path.join(input_folder, "wals_uriel_clics_wn.json")
-    elif langs == "wals+uriel+clics":
-        filepath = os.path.join(input_folder, "wals_uriel_clics.json")
-    elif langs == "wals+uriel+wn":
-        filepath = os.path.join(input_folder, "wals_uriel_wn.json")
+    if langs == "uriel":
+        filepath = os.path.join(input_folder, "wals+uriel_langs.json")
     elif langs == "clics":
-        filepath = os.path.join(input_folder, "clics.json")
+        filepath = os.path.join(input_folder, "wals+clics_langs.json")
+    elif langs == "wn":
+        filepath = os.path.join(input_folder, "wals+wn_langs.json")
     else:
         filepath = None
 
@@ -50,7 +48,6 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
         langs=None,
         dataset=None,
         node_embeddings=None, metric=None,
-        feature_area=None,
         ):
     # node_embeddings : node2vec
     # dataset: clics
@@ -59,37 +56,12 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
     print(f"Using {device} device")
     print(f"dataset {dataset}, node_embeddings: {node_embeddings}, metric: {metric}")
 
-    with open("data/TypPred/preprocessed/feature_dict.json") as f:
+    # feature_id: {feature, values}
+    with open("data/TypPred/feature_dict.json") as f:
         feature_dict = json.load(f)
 
-    train_file = os.path.join("data/TypPred/preprocessed", "train.csv")
-    dev_file = os.path.join("data/TypPred/preprocessed", "dev.csv")
-    test_file = os.path.join("data/TypPred/preprocessed", "test.csv")
-
-    train_df = pd.read_csv(train_file)
-    dev_df = pd.read_csv(dev_file)
-    test_df = pd.read_csv(test_file)
-
-    langs_dev_all = dev_df["wals_code"].tolist()
-    langs_train_all = train_df["wals_code"].tolist()
-    langs_test_all = test_df["wals_code"].tolist()
-
-    all_langs = list(set(langs_dev_all) | set(langs_train_all) | set(langs_test_all))
-    num_langs = len(all_langs)
-    lang_dict = {lang: idx for idx, lang in enumerate(all_langs)}
-    print(f"languages in total {num_langs}")
-
-    if feature_area is not None:
-        feature_file = "data/TypPred/preprocessed/wals_features.yaml"
-        with open(feature_file) as f:
-            features = yaml.load(f, Loader=Loader)
-        features = list(features[feature_area].values())
-
-    else:
-        features = list(feature_dict.keys())
-    print(features)
-
     if langs is not None:
+        print(f"loading the langs {langs}")
         output_folder = os.path.join(output_folder, langs)
         langs_list = load_lang_list(langs)
     else:
@@ -98,107 +70,138 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
     if not os.path.exists(output_folder):
         os.mkdir(output_folder)
 
-    for feature_name in features:
+    lexicon_features = ["129A", "130A", "130B", "131A", "132A", "133A", "134A", "135A", "136A", "136B", "137B", "138A"]
+    for feature_id in lexicon_features:
         print("*" * 40)
-        label_dim = len(feature_dict[feature_name]["values"])
-        feature_id = feature_dict[feature_name]["id"]
-        print(f"feature {feature_name} has {label_dim} labels")
+        label_dim = len(feature_dict[feature_id]["values"])
+        feature = feature_dict[feature_id]["feature"]
+        print(f"feature {feature} has {label_dim} labels")
 
-        if node_embeddings is not None:
-            outputfile_name = f"{model_name}_{dataset}_{node_embeddings}_{metric}_{feature_id}.json"
-            outputfile = os.path.join(output_folder, outputfile_name)
+        train_file = f"data/TypPred/datasets/features/train_{feature_id}.csv"
+        dev_file = f"data/TypPred/datasets/features/dev_{feature_id}.csv"
+        test_file = f"data/TypPred/datasets/features/test_{feature_id}.csv"
 
-        elif dataset is not None:
-            outputfile_name = f"{model_name}_{dataset}_{feature_id}.json"
-            outputfile = os.path.join(output_folder, outputfile_name)
-        else:
-            outputfile_name = f"{model_name}_{feature_id}.json"
-            outputfile = os.path.join(output_folder, outputfile_name)
+        if os.path.exists(train_file):
 
-        print(f"outputfile path {outputfile}")
+            if node_embeddings is not None:
+                outputfile_name = f"{model_name}_{dataset}_{node_embeddings}_{metric}_{feature_id}.json"
+                outputfile = os.path.join(output_folder, outputfile_name)
 
-        if not os.path.exists(outputfile):
+            elif dataset is not None:
+                outputfile_name = f"{model_name}_{dataset}_{feature_id}.json"
+                outputfile = os.path.join(output_folder, outputfile_name)
+            else:
+                outputfile_name = f"{model_name}_{feature_id}.json"
+                outputfile = os.path.join(output_folder, outputfile_name)
 
-            train_data, langs_train = load_dataset(train_df, feature_name)
-            dev_data, langs_dev = load_dataset(dev_df, feature_name)
-            test_data, langs_test = load_dataset(test_df, feature_name)
+            print(f"outputfile path {outputfile}")
 
-            langs_train = set(train_data["wals_code"].tolist())
-            if langs_list is not None:
-                intersection = set(langs_train) & set(langs_list)
+            if not os.path.exists(outputfile):
+                train_data = pd.read_csv(train_file)
+                dev_data = pd.read_csv(dev_file)
+                test_data = pd.read_csv(test_file)
+                train_data[feature] = train_data[feature].astype("int")
+                dev_data[feature] = dev_data[feature].astype("int")
+                test_data[feature] = test_data[feature].astype("int")
 
-                if len(list(intersection)) > 0:
-                    print(f"intersection {intersection}")
+                langs_train = set(train_data["ISO"].tolist())
+                langs_dev = set(dev_data["ISO"].tolist())
+                langs_test = set(test_data["ISO"].tolist())
 
-                    print(f"train lang {len(langs_train)} dev lang {len(langs_dev)} test lang {len(langs_test)}")
+                all_langs = list(set(langs_train) | set(langs_dev) | set(langs_test))
+                num_langs = len(all_langs)
+                lang_dict = {lang: idx for idx, lang in enumerate(all_langs)}
+                print(f"languages in total {num_langs}")
 
-                    # output folder for the models.
-                    if model_name == "oneff":
+                # output folder for the models.
+                if model_name == "oneff":
 
-                        # check if there are overlapping languages in train data
-                        if metric in ["add+avg", "add+max", "add+sum"]:
+                    # check if there are overlapping languages in train data
+                    if metric in ["add+avg", "add+max", "add+sum"]:
+                        input_dim = 100
+                        hidden_dim = 75
+                    elif metric in ["concat+avg", "concat+max", "concat+sum"]:
+                        input_dim = 200
+                        hidden_dim = 150
+                    else:
+                        if dataset == "uriel":
+                            input_dim = 512
+                            hidden_dim = 300
+                        else:
                             input_dim = 100
                             hidden_dim = 75
-                        elif metric in ["concat+avg", "concat+max", "concat+sum"]:
-                            input_dim = 200
-                            hidden_dim = 150
-                        else:
-                            if dataset == "uriel":
-                                input_dim = 512
-                                hidden_dim = 300
-                            else:
-                                input_dim = 100
-                                hidden_dim = 75
 
-                        print(f"{dataset} -> input dim {input_dim} hidden dim {hidden_dim}")
-                        model = OneFF(device=device, num_langs=num_langs, input_dim=input_dim, hidden_dim=hidden_dim,
-                                      label_dim=label_dim, dropout=0.5)
+                    print(f"{dataset} -> input dim {input_dim} hidden dim {hidden_dim}")
+                    model = OneFF(device=device, num_langs=num_langs, input_dim=input_dim,
+                                  hidden_dim=hidden_dim,
+                                  label_dim=label_dim, dropout=0.5)
 
-                        model = model.to(device)
+                    model = model.to(device)
 
-                        optimizer = optim.Adam(model.parameters(), lr=0.001)
+                    optimizer = optim.Adam(model.parameters(), lr=0.001)
+                    if langs_list is not None:
+                        intersection = set(langs_train) & set(langs_list)
 
-                        if dataset is not None:
-                            # uriel, clics, wn, wn_concept
-                            if dataset == "uriel":
-                                dataset_path = "data/URIEL/learned_embeddings"
-                                uriel_language_vectors = KeyedVectors.load_word2vec_format(dataset_path, binary=False)
+                        if len(list(intersection)) > 0:
+                            print(f"intersection {intersection}")
 
-                                model_name_ = f"{model_name}_{dataset}"
+                            print(
+                                f"train lang {len(langs_train)} dev lang {len(langs_dev)} test lang {len(langs_test)}")
 
-                                train_model(model, model_name_, optimizer, train_data, dev_data, test_data,
-                                            feature_name,
-                                            feature_id,
-                                            lang_dict,
-                                            langs_list,
-                                            output_folder,
-                                            max_epochs=epochs, language_vectors=uriel_language_vectors)
-                            else:
-                                if node_embeddings is not None:
-                                    dataset_path = os.path.join("data/language_embeddings", metric,
-                                                                f"{dataset}_{node_embeddings}_embeddings")
-                                    language_vectors = KeyedVectors.load_word2vec_format(dataset_path, binary=False)
+                            if dataset is not None:
+                                # uriel, clics, wn, wn_concept
+                                if dataset == "uriel":
+                                    dataset_path = "data/URIEL/learned_embeddings"
+                                    uriel_language_vectors = KeyedVectors.load_word2vec_format(dataset_path,
+                                                                                               binary=False)
 
-                                    model_name_ = f"{model_name}_{dataset}_{node_embeddings}_{metric}"
+                                    model_name_ = f"{model_name}_{dataset}"
 
                                     train_model(model, model_name_, optimizer, train_data, dev_data, test_data,
-                                                feature_name,
+                                                feature,
                                                 feature_id,
                                                 lang_dict,
                                                 langs_list,
                                                 output_folder,
-                                                max_epochs=epochs, language_vectors=language_vectors)
+                                                max_epochs=epochs, language_vectors=uriel_language_vectors)
+                                else:
+                                    if node_embeddings is not None:
+                                        dataset_path = os.path.join("data/language_embeddings", metric,
+                                                                    f"{dataset}_{node_embeddings}_embeddings")
+                                        language_vectors = KeyedVectors.load_word2vec_format(dataset_path, binary=False)
 
-                        else:
-                            train_model(model, model_name, optimizer, train_data, dev_data, test_data, feature_name,
-                                        feature_id,
-                                        lang_dict,
-                                        langs_list,
-                                        output_folder,
-                                        max_epochs=epochs, language_vectors=None)
+                                        model_name_ = f"{model_name}_{dataset}_{node_embeddings}_{metric}"
+
+                                        train_model(model, model_name_, optimizer, train_data, dev_data, test_data,
+                                                    feature,
+                                                    feature_id,
+                                                    lang_dict,
+                                                    langs_list,
+                                                    output_folder,
+                                                    max_epochs=epochs, language_vectors=language_vectors)
+
+                            else:
+                                print("get the model")
+                                train_model(model, model_name, optimizer, train_data, dev_data, test_data, feature,
+                                            feature_id,
+                                            lang_dict,
+                                            langs_list,
+                                            output_folder,
+                                            max_epochs=epochs, language_vectors=None)
+                    else:
+                        print("get the model")
+                        train_model(model, model_name, optimizer, train_data, dev_data, test_data, feature,
+                                    feature_id,
+                                    lang_dict,
+                                    langs_list,
+                                    output_folder,
+                                    max_epochs=epochs, language_vectors=None)
+
+            else:
+                print(f"{outputfile} exists!")
+                print("*" * 50)
         else:
-            print(f"{outputfile} exists!")
-            print("*" * 50)
+            print(f"train file {train_file} doesn't exist!")
 
 
 if __name__ == '__main__':

@@ -1,0 +1,229 @@
+{
+  "feature_name": "M_in_First_Person_Singular",
+  "feature_id": "136B",
+  "epoch": 0,
+  "train": {
+    "report": {
+      "0": {
+        "precision": 0.849624060150376,
+        "recall": 0.795774647887324,
+        "f1-score": 0.8218181818181818,
+        "support": 142
+      },
+      "1": {
+        "precision": 0.32558139534883723,
+        "recall": 0.4117647058823529,
+        "f1-score": 0.36363636363636365,
+        "support": 34
+      },
+      "accuracy": 0.7215909090909091,
+      "macro avg": {
+        "precision": 0.5876027277496065,
+        "recall": 0.6037696768848384,
+        "f1-score": 0.5927272727272728,
+        "support": 176
+      },
+      "weighted avg": {
+        "precision": 0.7483885453591697,
+        "recall": 0.7215909090909091,
+        "f1-score": 0.7333057851239669,
+        "support": 176
+      }
+    },
+    "loss": "3.5769377",
+    "lang_embeds": [
+      "knc",
+      "zun",
+      "lvk",
+      "pue",
+      "chv",
+      "wbk",
+      "itl",
+      "dif",
+      "bkl",
+      "oss",
+      "ram",
+      "plt",
+      "niv",
+      "cbs",
+      "cha",
+      "wsk",
+      "bsn",
+      "had",
+      "mzh",
+      "cyb",
+      "yad",
+      "wnu",
+      "ote",
+      "pjt",
+      "ape",
+      "ayz",
+      "khk",
+      "ket",
+      "auc",
+      "tya",
+      "kwi",
+      "kat",
+      "kyh",
+      "cmn",
+      "qvi",
+      "inh",
+      "yux",
+      "kjd",
+      "xok",
+      "bsk",
+      "yrk",
+      "dgz",
+      "swh",
+      "nuk",
+      "bod",
+      "pav",
+      "lez",
+      "eng",
+      "ckt",
+      "rap",
+      "kpw",
+      "kal",
+      "pes",
+      "tmu",
+      "dbl",
+      "dni",
+      "mni",
+      "set",
+      "saj",
+      "aey",
+      "amp",
+      "kmg",
+      "duj",
+      "gug",
+      "abk",
+      "tli",
+      "pwn",
+      "ain",
+      "yaq"
+    ],
+    "lang_embeds_length": 69
+  },
+  "dev": {
+    "report": {
+      "0": {
+        "precision": 0.6470588235294118,
+        "recall": 0.9166666666666666,
+        "f1-score": 0.7586206896551724,
+        "support": 12
+      },
+      "1": {
+        "precision": 0.6666666666666666,
+        "recall": 0.25,
+        "f1-score": 0.36363636363636365,
+        "support": 8
+      },
+      "accuracy": 0.65,
+      "macro avg": {
+        "precision": 0.6568627450980392,
+        "recall": 0.5833333333333333,
+        "f1-score": 0.561128526645768,
+        "support": 20
+      },
+      "weighted avg": {
+        "precision": 0.6549019607843137,
+        "recall": 0.65,
+        "f1-score": 0.6006269592476489,
+        "support": 20
+      }
+    },
+    "loss": "3.2412457",
+    "lang_embeds": [
+      "tpy",
+      "kan",
+      "heb",
+      "gld",
+      "yee"
+    ],
+    "lang_embeds_length": 5
+  },
+  "test": {
+    "report": {
+      "0": {
+        "precision": 0.46153846153846156,
+        "recall": 0.5454545454545454,
+        "f1-score": 0.4999999999999999,
+        "support": 11
+      },
+      "1": {
+        "precision": 0.375,
+        "recall": 0.3,
+        "f1-score": 0.33333333333333326,
+        "support": 10
+      },
+      "accuracy": 0.42857142857142855,
+      "macro avg": {
+        "precision": 0.4182692307692308,
+        "recall": 0.42272727272727273,
+        "f1-score": 0.4166666666666666,
+        "support": 21
+      },
+      "weighted avg": {
+        "precision": 0.42032967032967034,
+        "recall": 0.42857142857142855,
+        "f1-score": 0.4206349206349206,
+        "support": 21
+      }
+    },
+    "lang_embeds": [
+      "ind",
+      "vie",
+      "fij",
+      "rus",
+      "jpn",
+      "tyv",
+      "ell",
+      "deu",
+      "lug",
+      "fin",
+      "fra",
+      "tur",
+      "spa",
+      "arn",
+      "hau",
+      "eus",
+      "hin",
+      "kor",
+      "tgl",
+      "mya",
+      "hun"
+    ],
+    "lang_embeds_length": 21
+  },
+  "test_zs": {
+    "report": {
+      "0": {
+        "precision": 0.5238095238095238,
+        "recall": 1.0,
+        "f1-score": 0.6875000000000001,
+        "support": 11
+      },
+      "1": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 10
+      },
+      "accuracy": 0.5238095238095238,
+      "macro avg": {
+        "precision": 0.2619047619047619,
+        "recall": 0.5,
+        "f1-score": 0.34375000000000006,
+        "support": 21
+      },
+      "weighted avg": {
+        "precision": 0.2743764172335601,
+        "recall": 0.5238095238095238,
+        "f1-score": 0.36011904761904767,
+        "support": 21
+      }
+    },
+    "lang_embeds": [],
+    "lang_embeds_length": 0
+  }
+}

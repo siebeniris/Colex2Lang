@@ -88,8 +88,6 @@ def compile_results(filepath, feature_ids_file=None):
 
         feature_area_labels[feature_area] = round(np.average(feature_labels), 1)
 
-
-
         for model, scores in feature_result_dict.items():
             feature_area_result_dict[feature_area][model] = (round(np.average(scores), 4), len(scores))
 
@@ -99,10 +97,8 @@ def compile_results(filepath, feature_ids_file=None):
     basename = os.path.basename(filepath).split("_")[1]
 
     if feature_ids_file is None:
-
         with open(f"output/results/features_ids_{basename}", "w") as f:
             json.dump(feature_ids_tested, f)
-
 
     return feature_area_result_dict, feature_area_result_dict_zs, model_acc_dict, model_acc_dict_zs, feature_area_labels
 
@@ -123,8 +119,7 @@ def show_results(filepath, feature_ids_file=None):
 
     acc_ = []
 
-    acc_dict= defaultdict(list)
-
+    acc_dict = defaultdict(list)
 
     for feature_area, model_results in feature_area_result_dict.items():
         print(f"{feature_area} : label_dim {feature_area_labels[feature_area]}")
@@ -136,7 +131,7 @@ def show_results(filepath, feature_ids_file=None):
         # acc_.append(model_results["random"][0])
 
     print("average")
-    acc_dict_ = {k:np.average(v) for k,v in acc_dict.items()}
+    acc_dict_ = {k: np.average(v) for k, v in acc_dict.items()}
     print(sorted(acc_dict_.items(), key=lambda x: x[1], reverse=True))
 
     print("*" * 30)
@@ -145,7 +140,7 @@ def show_results(filepath, feature_ids_file=None):
     #
     print("ZS- TEST- AVERAGE")
     # acc_ = []
-    acc_dict=defaultdict(list)
+    acc_dict = defaultdict(list)
     for feature_area, model_results in feature_area_result_dict_zs.items():
         print(f"{feature_area} : label_dim {feature_area_labels[feature_area]}")
         # acc_.append(model_results["random"][0])
@@ -153,14 +148,13 @@ def show_results(filepath, feature_ids_file=None):
         # print(model_results["random"])
         for m, acc in model_results.items():
             acc_dict[m].append(acc)
-        model_restructed= sorted(model_results.items(), key=lambda x: x[1][0], reverse=True)
+        model_restructed = sorted(model_results.items(), key=lambda x: x[1][0], reverse=True)
         print(model_restructed[:5])
 
     print("average")
-    acc_dict_ = {k:np.average(v) for k,v in acc_dict.items()}
+    acc_dict_ = {k: np.average(v) for k, v in acc_dict.items()}
 
     print(sorted(acc_dict_.items(), key=lambda x: x[1], reverse=True))
-
 
     print("*" * 30)
     #
@@ -182,9 +176,9 @@ def create_dfs(filepath, feature_ids_file=None):
 
     acc_ = []
 
-    columns =["NodeEmb", "Metric", "Complex_Sentences", "Lexicon", "Morphology",
-              "Nominal_Categories", "Nominal_Syntax", "Other", "Phonology", "Sign_Languages",
-              "Simple_Cluases", "Verbal_Categories", "Word_Order" ]
+    columns = ["NodeEmb", "Metric", "Complex_Sentences", "Lexicon", "Morphology",
+               "Nominal_Categories", "Nominal_Syntax", "Other", "Phonology", "Sign_Languages",
+               "Simple_Cluases", "Verbal_Categories", "Word_Order"]
 
     acc_dict = defaultdict(list)
 
@@ -201,15 +195,14 @@ def create_dfs(filepath, feature_ids_file=None):
             if "clics" in m:
                 # model, nodeEmb, metric
                 t1, t2, t3 = m.split("_")
-                df_dict[m]["NodeEmb"]= t2
+                df_dict[m]["NodeEmb"] = t2
                 df_dict[m]["Metric"] = t3
-                df_dict[m][feature_area]= acc[0]
+                df_dict[m][feature_area] = acc
             else:
-                if m=="random":
+                if m == "random":
                     df_dict[m]["NodeEmb"] = None
                     df_dict[m]["Metric"] = None
-                    df_dict[m][feature_area] = acc[0]
-
+                    df_dict[m][feature_area] = acc
 
             acc_dict[m].append(acc)
         print(model_restructed[:5])
@@ -224,7 +217,7 @@ def create_dfs(filepath, feature_ids_file=None):
     df = df.dropna(axis=1, how="all")
     print(df)
 
-    df.to_csv("output/results/clics_metrics_nodeEmb_test.csv")
+    df.to_csv("output/results/clics_metrics_nodeEmb_test_nr.csv")
 
     print("*" * 30)
     # print(np.average(acc_))
@@ -246,19 +239,18 @@ def create_dfs(filepath, feature_ids_file=None):
             if "clics" in m:
                 # model, nodeEmb, metric
                 t1, t2, t3 = m.split("_")
-                df_dict_zs[m]["NodeEmb"]= t2
+                df_dict_zs[m]["NodeEmb"] = t2
                 df_dict_zs[m]["Metric"] = t3
-                df_dict_zs[m][feature_area]= acc[0]
+                df_dict_zs[m][feature_area] = acc
             else:
                 if m == "random":
                     df_dict[m]["NodeEmb"] = None
                     df_dict[m]["Metric"] = None
-                    df_dict[m][feature_area] = acc[0]
+                    df_dict[m][feature_area] = acc
 
             acc_dict[m].append(acc)
         model_restructed = sorted(model_results.items(), key=lambda x: x[1][0], reverse=True)
         print(model_restructed[:5])
-
 
     print("average")
     acc_dict_ = {k: np.average(v) for k, v in acc_dict.items()}
@@ -271,8 +263,7 @@ def create_dfs(filepath, feature_ids_file=None):
     df_zs = df_zs.dropna(axis=1, how="all")
     print(df_zs)
 
-    df_zs.to_csv("output/results/clics_metrics_nodeEmb_test_zs.csv")
-
+    df_zs.to_csv("output/results/clics_metrics_nodeEmb_test_zs_nr.csv")
 
 
 if __name__ == '__main__':

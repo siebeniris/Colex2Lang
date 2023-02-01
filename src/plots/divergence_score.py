@@ -13,9 +13,8 @@ def plot_divergence_by_metrics(colex_only, inputfile="data/eval_nodeEmb/divergen
 
     df = pd.read_csv(inputfile, sep="\t")
 
-
     datasets = {"wn": "WordNet", "wn_concept": "WordNet (Concept)",
-                "clics": "CLICS",}
+                "clics": "CLICS"}
 
     df["Dataset"].replace(datasets, inplace=True)
 
@@ -41,8 +40,8 @@ def plot_divergence_by_metrics(colex_only, inputfile="data/eval_nodeEmb/divergen
 
 
 def plot_divergence_by_dataset(
-                               inputfile="data/eval_nodeEmb/divergence.csv", outputfolder="data/plots/",
-                               ):
+        inputfile="data/eval_nodeEmb/divergence.csv", outputfolder="data/plots/",
+):
     sns.set_theme(style="darkgrid", font_scale=0.7)
 
     df = pd.read_csv(inputfile, sep="\t")
@@ -61,7 +60,7 @@ def plot_divergence_by_dataset(
 
         plt.title(f"Divergence Score of Dataset {dataset}", fontsize=12)
 
-        plt.yscale("log") # smoothing
+        plt.yscale("log")  # smoothing
         plt.xticks(rotation=45)
         # plt.legend(loc="upper right")
 

@@ -1,0 +1,182 @@
+{
+  "feature_name": "Green_and_Blue",
+  "feature_id": "134A",
+  "epoch": 0,
+  "train": {
+    "report": {
+      "0": {
+        "precision": 0.6379310344827587,
+        "recall": 0.6271186440677966,
+        "f1-score": 0.6324786324786326,
+        "support": 59
+      },
+      "1": {
+        "precision": 0.35714285714285715,
+        "recall": 0.2631578947368421,
+        "f1-score": 0.30303030303030304,
+        "support": 19
+      },
+      "2": {
+        "precision": 0.09523809523809523,
+        "recall": 0.15384615384615385,
+        "f1-score": 0.11764705882352941,
+        "support": 13
+      },
+      "3": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2
+      },
+      "4": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2
+      },
+      "5": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1
+      },
+      "6": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1
+      },
+      "accuracy": 0.4536082474226804,
+      "macro avg": {
+        "precision": 0.15575885526624442,
+        "recall": 0.14916038466439893,
+        "f1-score": 0.1504508563332093,
+        "support": 97
+      },
+      "weighted avg": {
+        "precision": 0.4707395933844566,
+        "recall": 0.4536082474226804,
+        "f1-score": 0.4598270808094944,
+        "support": 97
+      }
+    },
+    "loss": "382.1294",
+    "lang_embeds": [
+      "chl",
+      "mic",
+      "eng",
+      "ood",
+      "sei",
+      "yka"
+    ],
+    "lang_embeds_length": 6
+  },
+  "dev": {
+    "report": {
+      "0": {
+        "precision": 0.7272727272727273,
+        "recall": 1.0,
+        "f1-score": 0.8421052631578948,
+        "support": 8
+      },
+      "1": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2
+      },
+      "2": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1
+      },
+      "accuracy": 0.7272727272727273,
+      "macro avg": {
+        "precision": 0.24242424242424243,
+        "recall": 0.3333333333333333,
+        "f1-score": 0.28070175438596495,
+        "support": 11
+      },
+      "weighted avg": {
+        "precision": 0.5289256198347108,
+        "recall": 0.7272727272727273,
+        "f1-score": 0.6124401913875599,
+        "support": 11
+      }
+    },
+    "loss": "1.4725741",
+    "lang_embeds": [],
+    "lang_embeds_length": 0
+  },
+  "test": {
+    "report": {
+      "0": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1
+      },
+      "1": {
+        "precision": 0.8,
+        "recall": 0.6666666666666666,
+        "f1-score": 0.7272727272727272,
+        "support": 6
+      },
+      "accuracy": 0.5714285714285714,
+      "macro avg": {
+        "precision": 0.4,
+        "recall": 0.3333333333333333,
+        "f1-score": 0.3636363636363636,
+        "support": 7
+      },
+      "weighted avg": {
+        "precision": 0.6857142857142858,
+        "recall": 0.5714285714285714,
+        "f1-score": 0.6233766233766234,
+        "support": 7
+      }
+    },
+    "lang_embeds": [
+      "rus",
+      "spa",
+      "jpn",
+      "kor",
+      "wbp",
+      "fra",
+      "deu"
+    ],
+    "lang_embeds_length": 7
+  },
+  "test_zs": {
+    "report": {
+      "0": {
+        "precision": 0.14285714285714285,
+        "recall": 1.0,
+        "f1-score": 0.25,
+        "support": 1
+      },
+      "1": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 6
+      },
+      "accuracy": 0.14285714285714285,
+      "macro avg": {
+        "precision": 0.07142857142857142,
+        "recall": 0.5,
+        "f1-score": 0.125,
+        "support": 7
+      },
+      "weighted avg": {
+        "precision": 0.02040816326530612,
+        "recall": 0.14285714285714285,
+        "f1-score": 0.03571428571428571,
+        "support": 7
+      }
+    },
+    "lang_embeds": [],
+    "lang_embeds_length": 0
+  }
+}

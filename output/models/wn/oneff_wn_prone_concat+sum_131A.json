@@ -1,0 +1,260 @@
+{
+  "feature_name": "Numeral_Bases",
+  "feature_id": "131A",
+  "epoch": 39,
+  "train": {
+    "report": {
+      "0": {
+        "precision": 0.6097560975609756,
+        "recall": 0.8620689655172413,
+        "f1-score": 0.7142857142857144,
+        "support": 87
+      },
+      "1": {
+        "precision": 0.2,
+        "recall": 0.058823529411764705,
+        "f1-score": 0.0909090909090909,
+        "support": 17
+      },
+      "2": {
+        "precision": 0.125,
+        "recall": 0.058823529411764705,
+        "f1-score": 0.07999999999999999,
+        "support": 17
+      },
+      "3": {
+        "precision": 0.2222222222222222,
+        "recall": 0.11764705882352941,
+        "f1-score": 0.15384615384615383,
+        "support": 17
+      },
+      "4": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4
+      },
+      "5": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 3
+      },
+      "accuracy": 0.5448275862068965,
+      "macro avg": {
+        "precision": 0.1928297199638663,
+        "recall": 0.18289384719405002,
+        "f1-score": 0.17317349317349318,
+        "support": 145
+      },
+      "weighted avg": {
+        "precision": 0.4300107466591907,
+        "recall": 0.5448275862068965,
+        "f1-score": 0.46664618140480213,
+        "support": 145
+      }
+    },
+    "loss": "1.8628422",
+    "lang_embeds": [
+      "amh",
+      "heb",
+      "rap",
+      "kca",
+      "crk",
+      "lez",
+      "sah",
+      "tel",
+      "eng",
+      "kat",
+      "pjt",
+      "yua",
+      "naq",
+      "lkt",
+      "gil",
+      "ewe",
+      "tzm",
+      "chv",
+      "abk",
+      "kyh",
+      "ckt",
+      "chk",
+      "inh",
+      "pon",
+      "chl",
+      "lbe",
+      "akz",
+      "ket",
+      "ain",
+      "kal",
+      "bam",
+      "tli",
+      "sag",
+      "khm",
+      "hsb",
+      "pwn",
+      "arz",
+      "kan",
+      "yor",
+      "nav",
+      "kbd",
+      "evn",
+      "aqc"
+    ],
+    "lang_embeds_length": 43
+  },
+  "dev": {
+    "report": {
+      "0": {
+        "precision": 0.625,
+        "recall": 1.0,
+        "f1-score": 0.7692307692307693,
+        "support": 10
+      },
+      "1": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1
+      },
+      "2": {
+        "precision": 1.0,
+        "recall": 0.3333333333333333,
+        "f1-score": 0.5,
+        "support": 3
+      },
+      "3": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2
+      },
+      "5": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1
+      },
+      "accuracy": 0.6470588235294118,
+      "macro avg": {
+        "precision": 0.325,
+        "recall": 0.26666666666666666,
+        "f1-score": 0.25384615384615383,
+        "support": 17
+      },
+      "weighted avg": {
+        "precision": 0.5441176470588235,
+        "recall": 0.6470588235294118,
+        "f1-score": 0.5407239819004526,
+        "support": 17
+      }
+    },
+    "loss": "2.7380636",
+    "lang_embeds": [
+      "ibo",
+      "cha",
+      "nmn",
+      "zul"
+    ],
+    "lang_embeds_length": 4
+  },
+  "test": {
+    "report": {
+      "0": {
+        "precision": 0.9,
+        "recall": 0.8181818181818182,
+        "f1-score": 0.8571428571428572,
+        "support": 22
+      },
+      "1": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 3
+      },
+      "2": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 0
+      },
+      "3": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 0
+      },
+      "accuracy": 0.72,
+      "macro avg": {
+        "precision": 0.225,
+        "recall": 0.20454545454545456,
+        "f1-score": 0.2142857142857143,
+        "support": 25
+      },
+      "weighted avg": {
+        "precision": 0.792,
+        "recall": 0.72,
+        "f1-score": 0.7542857142857143,
+        "support": 25
+      }
+    },
+    "lang_embeds": [
+      "rus",
+      "fin",
+      "spa",
+      "lav",
+      "tur",
+      "arn",
+      "gle",
+      "tgl",
+      "jpn",
+      "mri",
+      "ell",
+      "deu",
+      "dan",
+      "fij",
+      "hun",
+      "kor",
+      "hye",
+      "fra",
+      "ind",
+      "vie",
+      "mya",
+      "hau",
+      "eus",
+      "tha",
+      "hin"
+    ],
+    "lang_embeds_length": 25
+  },
+  "test_zs": {
+    "report": {
+      "0": {
+        "precision": 0.88,
+        "recall": 1.0,
+        "f1-score": 0.9361702127659575,
+        "support": 22
+      },
+      "1": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 3
+      },
+      "accuracy": 0.88,
+      "macro avg": {
+        "precision": 0.44,
+        "recall": 0.5,
+        "f1-score": 0.46808510638297873,
+        "support": 25
+      },
+      "weighted avg": {
+        "precision": 0.7744,
+        "recall": 0.88,
+        "f1-score": 0.8238297872340425,
+        "support": 25
+      }
+    },
+    "lang_embeds": [],
+    "lang_embeds_length": 0
+  }
+}

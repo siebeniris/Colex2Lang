@@ -1,11 +1,9 @@
 import os
 import json
-from collections import defaultdict
-import pandas as pd
+
 import numpy as np
 import torch
 from torch import nn
-import torch.optim as optim
 
 from sklearn.metrics import classification_report, accuracy_score
 
@@ -30,7 +28,7 @@ def evaluate_dataset(model, data, feature_name, lang_dict, langs_list, mode="dev
     total_langs = []
 
     with torch.no_grad():
-        for lang, feature_value in zip(data["wals_code"], data[feature_name]):
+        for lang, feature_value in zip(data["ISO"], data[feature_name]):
             lang_idx = lang_dict[lang]
             total_langs.append(lang)
             if langs_list is not None:
@@ -46,8 +44,7 @@ def evaluate_dataset(model, data, feature_name, lang_dict, langs_list, mode="dev
 
             pred_label = np.argmax(output.detach().numpy())
             feature_value = torch.tensor(feature_value)
-            # print(output)
-            # print(feature_value)
+
             if mode == "dev":
                 loss = creterion(output, feature_value)
                 loss = loss.detach().numpy()
@@ -56,7 +53,10 @@ def evaluate_dataset(model, data, feature_name, lang_dict, langs_list, mode="dev
             pred.append(pred_label)
 
     report = classification_report(gold, pred, output_dict=True)
-    acc = accuracy_score(gold, pred)
+    # acc = accuracy_score(gold, pred)
+    acc = sum([gold[i] == pred[i] for i in range(len(gold))]) / len(gold)
+    acc = float(acc.detach())
+
     if mode == "dev":
         return total_langs, langs_embeddings, acc, report, np.average(losses)
     else:
@@ -76,7 +76,7 @@ def train_model(model, model_name, optimizer, train_data, dev_data, test_data, f
         pred = []
         losses = []
         train_total_langs = []
-        for lang, feature_value in zip(train_data["wals_code"], train_data[feature_name]):
+        for lang, feature_value in zip(train_data["ISO"], train_data[feature_name]):
             lang_idx = lang_dict[lang]
             train_total_langs.append(lang)
             # zero the parameter gradients
@@ -130,8 +130,13 @@ def train_model(model, model_name, optimizer, train_data, dev_data, test_data, f
                                                                                       mode="test",
                                                                                       language_vectors=language_vectors)
 
-            test_langs = list(set(test_langs))
+            test_langs_zs, test_lang_embeds_zs, test_acc_zs, test_report_zs, _ = evaluate_dataset(model, test_data,
+                                                                                                  feature_name,
+                                                                                                  lang_dict, None,
+                                                                                                  mode="test")
+
             test_lang_embeds = list(set(test_lang_embeds))
+            test_lang_embeds_zs = list(set(test_lang_embeds_zs))
 
             result = {
                 "feature_name": feature_name,
@@ -141,26 +146,26 @@ def train_model(model, model_name, optimizer, train_data, dev_data, test_data, f
                     "report": train_report,
                     "loss": str(train_loss),
                     "lang_embeds": train_langs_embeddings,
-                    "lang_embeds_length": len(train_langs_embeddings),
-                    "langs": train_total_langs,
-                    "langs_length": len(train_total_langs)
+                    "lang_embeds_length": len(train_langs_embeddings)
                 },
                 "dev": {
                     "report": dev_report,
                     "loss": str(dev_loss),
                     "lang_embeds": dev_langs_embed,
-                    "lang_embeds_length": len(dev_langs_embed),
-                    "langs": dev_langs,
-                    "langs_length": len(dev_langs)
-
+                    "lang_embeds_length": len(dev_langs_embed)
                 },
                 "test": {
                     "report": test_report,
+                    "acc": test_acc,
                     "lang_embeds": test_lang_embeds,
-                    "lang_embeds_length": len(test_lang_embeds),
-                    "langs": test_langs,
-                    "langs_length": len(test_langs)
+                    "lang_embeds_length": len(test_lang_embeds)
                 },
+                "test_zs": {
+                    "report": test_report_zs,
+                    "acc": test_acc_zs,
+                    "lang_embeds": test_lang_embeds_zs,
+                    "lang_embeds_length": len(test_lang_embeds_zs)
+                }
 
             }
             print(

@@ -1,14 +1,5 @@
-import os
-import json
-
-import pandas as pd
-import numpy as np
 import torch
 from torch import nn
-import torch.optim as optim
-from gensim.models import KeyedVectors
-
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, f1_score
 import warnings
 
 warnings.filterwarnings("ignore")
@@ -30,7 +21,7 @@ class OneFF(nn.Module):
         self.num_langs = num_langs
         self.input_dim = input_dim
 
-        self.fc.weight.data.uniform_(-1.0,1.0)
+        self.fc.weight.data.uniform_(-1.0, 1.0)
         self.fc.bias.data.zero_()
 
     def forward(self, input_idx, language_vector=None):
@@ -38,10 +29,11 @@ class OneFF(nn.Module):
         if language_vector is not None:
             input_embeddings = torch.tensor(language_vector)
             input_embeddings = input_embeddings.to(self.device)
+
         else:
             # initialize ones rather than uniform distribution.
             emb1 = nn.Embedding(self.num_langs, self.input_dim)
-            emb1 = nn.init.uniform_(emb1.weight, -1.0, 1.0)
+            emb1 = nn.init.ones_(emb1.weight)
             input_embeddings = emb1[input_idx]
 
         fc_output = self.fc(input_embeddings)
