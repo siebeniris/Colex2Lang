@@ -63,6 +63,7 @@ def get_results(output_dir="output/models/", langs="clics"):
                                 t = file.replace(".json", "").split("_")
                                 if len(t) == 5:
                                     # oneff, wn, node2vec, add+avg, feature_id
+
                                     _, t2, t3, t4, _ = t
                                     if result["train"]["lang_embeds_length"] > 0:
                                         result_dict_per_feature["_".join((t2, t3, t4))] = {
@@ -79,6 +80,20 @@ def get_results(output_dir="output/models/", langs="clics"):
 
                                     if result["train"]["lang_embeds_length"] > 0:
                                         result_dict_per_feature["uriel"] = {
+                                            "test_acc": result["test"]["report"]["accuracy"],
+                                            "dev_acc": result["dev"]["report"]["accuracy"],
+                                        }
+                                        train_langs = result["train"]["langs_length"]
+                                        train_lang_embeds = result["train"]["lang_embeds_length"]
+                                        test_lang_embeds = result["test"]["langs_length"]
+                                        test_langs = result["test"]["lang_embeds_length"]
+                                elif len(t) == 6:
+                                    # oneff, wn, concept, prone, concat+sum, feature_id
+                                    _, t1_, t1, t2, t3, _ = t
+                                    assert "_".join((t1_, t1)) == "wn_concept"
+
+                                    if result["train"]["lang_embeds_length"] > 0:
+                                        result_dict_per_feature["_".join(("wn+concept", t2, t3))] = {
                                             "test_acc": result["test"]["report"]["accuracy"],
                                             "dev_acc": result["dev"]["report"]["accuracy"],
                                         }
