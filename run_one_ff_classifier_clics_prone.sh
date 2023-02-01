@@ -3,8 +3,8 @@
 #SBATCH --partition=prioritized
 #SBATCH --job-name=prone
 #SBATCH --output=%j.prone.out
-#SBATCH --time=8:00:00
-#SBATCH --mem=32G
+#SBATCH --time=12:00:00
+#SBATCH --mem=16G
 
 source $HOME/.bashrc
 conda activate graphEmb
