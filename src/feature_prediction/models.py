@@ -34,11 +34,12 @@ class OneFF(nn.Module):
         self.fc.bias.data.zero_()
 
     def forward(self, input_idx, language_vector=None):
+
         if language_vector is not None:
             input_embeddings = torch.tensor(language_vector)
             input_embeddings = input_embeddings.to(self.device)
         else:
-
+            # initialize ones rather than uniform distribution.
             emb1 = nn.Embedding(self.num_langs, self.input_dim)
             emb1 = nn.init.uniform_(emb1.weight, -1.0, 1.0)
             input_embeddings = emb1[input_idx]
