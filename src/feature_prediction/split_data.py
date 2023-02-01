@@ -4,6 +4,8 @@ import json
 import pandas as pd
 import numpy as np
 import yaml
+from collections import defaultdict
+
 
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
@@ -38,7 +40,7 @@ except ImportError:
 def deduplicate_wals(outputfile,wals_file="data/wals_by_language.tsv"):
     # there are duplicates per iso code, drop the rows which have fewer feature values.
     df_wals = pd.read_csv(wals_file, sep="\t")
-    drop_cols = ["WALS-ID", "Glottocode", "Name", "Latitude", "Longitude"]
+    drop_cols = ["WALS-ID", "Glottocode", "Name", "Latitude", "Longitude", "Family"]
     df_wals = df_wals.drop(columns=drop_cols)
 
     # count the values each row.
@@ -62,11 +64,25 @@ def get_test_data(wals_file="data/TypPred/wals_by_languages.csv", langs_json="da
     df_inter.to_csv("data/TypPred/test_wals+uriel+clics+wn.csv", index=False)
 
 
-def create_datasets( data_dir="data/TypPred"):
-    df_wals = pd.read_csv(os.path.join(data_dir, "wals_by_languages.csv"))
+def create_feature_maps( data_dir="data/TypPred"):
+    feature_maps = defaultdict(dict)
+    feature_counter = defaultdict(dict)
 
-    with open(os.path.join(data_dir, "wals+uriel+clics+wn_langs.json")) as f:
-        wals_uriel_clics_wn_langs = json.load(f)
+    df_wals = pd.read_csv(os.path.join(data_dir, "wals_by_languages.csv"), index_col=0)
+
+    for feature in df_wals.columns:
+        value_counter = df_wals[feature].value_counts().to_dict()
+        print(value_counter)
+        value_keys = list(value_counter.keys())
+        feature_counter[feature]= value_counter
+        feature_maps[feature] = {v:k for k,v in enumerate(value_keys)}
+
+    with open(os.path.join(data_dir, "feature_maps.json"), "w") as f:
+        json.dump(feature_maps, f)
+
+    with open(os.path.join(data_dir, "feature_coounter.json"), "w") as f:
+        json.dump(feature_counter, f)
+
 
 
 
@@ -78,4 +94,4 @@ def create_datasets( data_dir="data/TypPred"):
 
 if __name__ == '__main__':
     import plac
-    plac.call(deduplicate_wals)
+    plac.call(create_feature_maps)
