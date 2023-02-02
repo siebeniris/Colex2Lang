@@ -87,7 +87,6 @@ def split_data_by_features(train_dev_file=""):
 
     df_test = pd.read_csv("data/TypPred/datasets/test.csv")
 
-
     features = df.drop(columns=["ISO"]).columns
 
     output_dir = os.path.join("data/TypPred/datasets/", "features")
@@ -108,7 +107,7 @@ def split_data_by_features(train_dev_file=""):
     df_lang = df
     samples = []
     for feature in features:
-        if feature !="NON_NULL":
+        if feature != "NON_NULL":
             feature_id = feature2id[feature]
             print(feature_id)
             df_lang_feature = df_lang[["ISO", feature]].dropna()

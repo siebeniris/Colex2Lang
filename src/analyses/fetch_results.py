@@ -69,6 +69,8 @@ def get_results(output_dir="output/models/", langs="clics"):
                                         result_dict_per_feature["_".join((t2, t3, t4))] = {
                                             "test_acc": result["test"]["report"]["accuracy"],
                                             "test_zs_acc": result["test_zs"]["report"]["accuracy"],
+                                            "test_f1": result["test"]["report"]["macro avg"]["f1-score"],
+                                            "test_zs_f1": result["test_zs"]["report"]["macro avg"]["f1-score"],
                                             "dev_acc": result["dev"]["report"]["accuracy"],
 
                                         }
@@ -83,6 +85,8 @@ def get_results(output_dir="output/models/", langs="clics"):
                                         result_dict_per_feature["uriel"] = {
                                             "test_acc": result["test"]["report"]["accuracy"],
                                             "test_zs_acc": result["test_zs"]["report"]["accuracy"],
+                                            "test_f1": result["test"]["report"]["macro avg"]["f1-score"],
+                                            "test_zs_f1": result["test_zs"]["report"]["macro avg"]["f1-score"],
                                             "dev_acc": result["dev"]["report"]["accuracy"],
                                         }
                                         train_langs = result["train"]["lang_length"]
@@ -98,6 +102,8 @@ def get_results(output_dir="output/models/", langs="clics"):
                                         result_dict_per_feature["_".join(("wn+concept", t2, t3))] = {
                                             "test_acc": result["test"]["report"]["accuracy"],
                                             "test_zs_acc": result["test_zs"]["report"]["accuracy"],
+                                            "test_f1": result["test"]["report"]["macro avg"]["f1-score"],
+                                            "test_zs_f1": result["test_zs"]["report"]["macro avg"]["f1-score"],
                                             "dev_acc": result["dev"]["report"]["accuracy"],
                                         }
                                         train_langs = result["train"]["lang_length"]
@@ -110,6 +116,8 @@ def get_results(output_dir="output/models/", langs="clics"):
                                     result_dict_per_feature["random"] = {
                                         "test_acc": result["test"]["report"]["accuracy"],
                                         "test_zs_acc": result["test_zs"]["report"]["accuracy"],
+                                        "test_f1": result["test"]["report"]["macro avg"]["f1-score"],
+                                        "test_zs_f1": result["test_zs"]["report"]["macro avg"]["f1-score"],
                                         "dev_acc": result["dev"]["report"]["accuracy"],
                                     }
                 results_feature_dict[feature_area][feature_id]["results"] = result_dict_per_feature
@@ -118,7 +126,7 @@ def get_results(output_dir="output/models/", langs="clics"):
                 results_feature_dict[feature_area][feature_id]["test_langs"] = test_lang_embeds
                 results_feature_dict[feature_area][feature_id]["test_lang_embeds"] = test_langs
 
-    with open(f"results_{langs}.json", "w") as f:
+    with open(f"output/results/results_{langs}.json", "w") as f:
         json.dump(results_feature_dict, f)
 
 

@@ -43,8 +43,8 @@ def compile_results(filepath):
             test_lang_embeds = feature_result[feature_id]["test_lang_embeds"]
 
             for model, r in result_models.items():
-                feature_result_dict[model].append(r["test_acc"])
-                feature_result_dict_zs[model].append(r["test_zs_acc"])
+                feature_result_dict[model].append(r["test_f1"])
+                feature_result_dict_zs[model].append(r["test_zs_f1"])
 
         feature_area_labels[feature_area] = round(np.average(feature_labels), 1)
 
@@ -55,7 +55,7 @@ def compile_results(filepath):
         for model, scores in feature_result_dict_zs.items():
             feature_area_result_dict_zs[feature_area][model] = (round(np.average(scores), 4), len(scores))
 
-    basename_ = os.path.join(filepath.replace(".json", "").replace("results_", ""))
+    basename_ = os.path.basename(filepath).replace(".json","").split("_")[-1]
     with open(f"output/results/features_ids_{basename_}.json", "w") as f:
         json.dump(feature_ids_tested, f)
 
@@ -94,7 +94,7 @@ def create_dfs(filepath, dataset="clics"):
     for feature_area, model_results in feature_area_result_dict.items():
         print(f"{feature_area} : label_dim {feature_area_labels[feature_area]}")
 
-        for m, acc in model_results.items():
+        for m, f1_score in model_results.items():
             if m not in df_dict:
                 df_dict[m] = defaultdict(dict)
             if dataset in m:
@@ -102,14 +102,14 @@ def create_dfs(filepath, dataset="clics"):
                 t1, t2, t3 = m.split("_")
                 df_dict[m]["NodeEmb"] = t2
                 df_dict[m]["Metric"] = t3
-                df_dict[m][feature_area] = acc[0]
+                df_dict[m][feature_area] = f1_score[0]
             else:
                 if m == "random":
                     df_dict[m]["NodeEmb"] = None
                     df_dict[m]["Metric"] = None
-                    df_dict[m][feature_area] = acc[0]
+                    df_dict[m][feature_area] = f1_score[0]
 
-            acc_dict[m].append(acc)
+            acc_dict[m].append(f1_score)
 
     print("average")
     acc_dict_ = {k: np.average(v) for k, v in acc_dict.items()}
@@ -132,7 +132,7 @@ def create_dfs(filepath, dataset="clics"):
     for feature_area, model_results in feature_area_result_dict_zs.items():
         print(f"{feature_area} : label_dim {feature_area_labels[feature_area]}")
 
-        for m, acc in model_results.items():
+        for m, f1_score in model_results.items():
             if m not in df_dict_zs:
                 df_dict_zs[m] = defaultdict(dict)
             if dataset in m:
@@ -140,14 +140,14 @@ def create_dfs(filepath, dataset="clics"):
                 t1, t2, t3 = m.split("_")
                 df_dict_zs[m]["NodeEmb"] = t2
                 df_dict_zs[m]["Metric"] = t3
-                df_dict_zs[m][feature_area] = acc[0]
+                df_dict_zs[m][feature_area] = f1_score[0]
             else:
                 if m == "random":
                     df_dict[m]["NodeEmb"] = None
                     df_dict[m]["Metric"] = None
-                    df_dict[m][feature_area] = acc[0]
+                    df_dict[m][feature_area] = f1_score[0]
 
-            acc_dict[m].append(acc)
+            acc_dict[m].append(f1_score)
 
     print("average")
     acc_dict_ = {k: np.average(v) for k, v in acc_dict.items()}
