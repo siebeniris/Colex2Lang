@@ -72,9 +72,9 @@ def get_results(output_dir="output/models/", langs="clics"):
                                             "dev_acc": result["dev"]["report"]["accuracy"],
 
                                         }
-                                        train_langs = result["train"]["langs_length"]
+                                        train_langs = result["train"]["lang_length"]
                                         train_lang_embeds = result["train"]["lang_embeds_length"]
-                                        test_lang_embeds = result["test"]["langs_length"]
+                                        test_lang_embeds = result["test"]["lang_length"]
                                         test_langs = result["test"]["lang_embeds_length"]
                                 elif len(t) == 3:
                                     _, uriel, _ = t
@@ -85,9 +85,9 @@ def get_results(output_dir="output/models/", langs="clics"):
                                             "test_zs_acc": result["test_zs"]["report"]["accuracy"],
                                             "dev_acc": result["dev"]["report"]["accuracy"],
                                         }
-                                        train_langs = result["train"]["langs_length"]
+                                        train_langs = result["train"]["lang_length"]
                                         train_lang_embeds = result["train"]["lang_embeds_length"]
-                                        test_lang_embeds = result["test"]["langs_length"]
+                                        test_lang_embeds = result["test"]["lang_length"]
                                         test_langs = result["test"]["lang_embeds_length"]
                                 elif len(t) == 6:
                                     # oneff, wn, concept, prone, concat+sum, feature_id
@@ -100,9 +100,9 @@ def get_results(output_dir="output/models/", langs="clics"):
                                             "test_zs_acc": result["test_zs"]["report"]["accuracy"],
                                             "dev_acc": result["dev"]["report"]["accuracy"],
                                         }
-                                        train_langs = result["train"]["langs_length"]
+                                        train_langs = result["train"]["lang_length"]
                                         train_lang_embeds = result["train"]["lang_embeds_length"]
-                                        test_lang_embeds = result["test"]["langs_length"]
+                                        test_lang_embeds = result["test"]["lang_length"]
                                         test_langs = result["test"]["lang_embeds_length"]
 
                                 else:
