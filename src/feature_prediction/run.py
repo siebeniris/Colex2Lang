@@ -11,6 +11,7 @@ import warnings
 
 warnings.filterwarnings("ignore")
 import yaml
+from sklearn.model_selection import train_test_split
 
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
@@ -71,7 +72,7 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
         os.mkdir(output_folder)
 
     lexicon_features = ["129A", "130A", "130B", "131A", "132A", "133A", "134A", "135A", "136A", "136B", "137B", "138A"]
-    for feature_id in feature_dict:
+    for feature_id in lexicon_features:
         print("*" * 40)
         label_dim = len(feature_dict[feature_id]["values"])
         feature = feature_dict[feature_id]["feature"]
@@ -107,7 +108,10 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
                 print(f"outputfile path {outputfile}")
 
                 if not os.path.exists(outputfile):
-
+                    df_train_test = pd.concat([train_data, test_data], axis=0)
+                    train_data, test_data = train_test_split(df_train_test, test_size=0.1, shuffle=False)
+                    print(train_data)
+                    print(test_data)
                     langs_train = set(train_data["ISO"].tolist())
                     langs_dev = set(dev_data["ISO"].tolist())
                     langs_test = set(test_data["ISO"].tolist())

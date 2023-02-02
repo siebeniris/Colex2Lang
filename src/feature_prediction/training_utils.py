@@ -33,7 +33,7 @@ def evaluate_dataset(model, data, feature_name, lang_dict, langs_list, mode="dev
             total_langs.append(lang)
 
             if language_vectors is not None:
-                # if language_vectors is not None:
+
                 if lang in language_vectors.index_to_key and lang in langs_list:
                     langs_embeddings.append(lang)
                     language_vector = language_vectors[lang]
