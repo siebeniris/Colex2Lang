@@ -80,8 +80,17 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
         train_file = f"data/TypPred/datasets/features/train_{feature_id}.csv"
         dev_file = f"data/TypPred/datasets/features/dev_{feature_id}.csv"
         test_file = f"data/TypPred/datasets/features/test_{feature_id}.csv"
+        train_data = pd.read_csv(train_file)
+        dev_data = pd.read_csv(dev_file)
+        test_data = pd.read_csv(test_file)
+        train_data[feature] = train_data[feature].astype("int")
+        dev_data[feature] = dev_data[feature].astype("int")
+        test_data[feature] = test_data[feature].astype("int")
 
-        if os.path.exists(train_file):
+        train_data = train_data[train_data["ISO"].isin(langs_list)]
+        dev_data = dev_data[dev_data["ISO"].isin(langs_list)]
+
+        if len(train_data) > 0 and len(dev_data) > 0:
 
             if node_embeddings is not None:
                 outputfile_name = f"{model_name}_{dataset}_{node_embeddings}_{metric}_{feature_id}.json"
@@ -97,12 +106,6 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
             print(f"outputfile path {outputfile}")
 
             if not os.path.exists(outputfile):
-                train_data = pd.read_csv(train_file)
-                dev_data = pd.read_csv(dev_file)
-                test_data = pd.read_csv(test_file)
-                train_data[feature] = train_data[feature].astype("int")
-                dev_data[feature] = dev_data[feature].astype("int")
-                test_data[feature] = test_data[feature].astype("int")
 
                 langs_train = set(train_data["ISO"].tolist())
                 langs_dev = set(dev_data["ISO"].tolist())

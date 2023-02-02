@@ -31,7 +31,8 @@ def evaluate_dataset(model, data, feature_name, lang_dict, langs_list, mode="dev
         for lang, feature_value in zip(data["ISO"], data[feature_name]):
             lang_idx = lang_dict[lang]
             total_langs.append(lang)
-            if langs_list is not None:
+
+            if language_vectors is not None:
                 # if language_vectors is not None:
                 if lang in language_vectors.index_to_key and lang in langs_list:
                     langs_embeddings.append(lang)
@@ -81,7 +82,7 @@ def train_model(model, model_name, optimizer, train_data, dev_data, test_data, f
             train_total_langs.append(lang)
             # zero the parameter gradients
             optimizer.zero_grad()
-            if langs_list is not None:
+            if language_vectors is not None:
                 # if language_vectors is not None:
                 if lang in language_vectors.index_to_key and lang in langs_list:
                     train_langs_embeddings.append(lang)
@@ -146,25 +147,29 @@ def train_model(model, model_name, optimizer, train_data, dev_data, test_data, f
                     "report": train_report,
                     "loss": str(train_loss),
                     "lang_embeds": train_langs_embeddings,
-                    "lang_embeds_length": len(train_langs_embeddings)
+                    "lang_embeds_length": len(train_langs_embeddings),
+                    "lang_length": len(train_total_langs)
                 },
                 "dev": {
                     "report": dev_report,
                     "loss": str(dev_loss),
                     "lang_embeds": dev_langs_embed,
-                    "lang_embeds_length": len(dev_langs_embed)
+                    "lang_embeds_length": len(dev_langs_embed),
+                    "lang_length":len(dev_langs)
                 },
                 "test": {
                     "report": test_report,
                     "acc": test_acc,
                     "lang_embeds": test_lang_embeds,
-                    "lang_embeds_length": len(test_lang_embeds)
+                    "lang_embeds_length": len(test_lang_embeds),
+                    "lang_length": len(test_langs)
                 },
                 "test_zs": {
                     "report": test_report_zs,
                     "acc": test_acc_zs,
                     "lang_embeds": test_lang_embeds_zs,
-                    "lang_embeds_length": len(test_lang_embeds_zs)
+                    "lang_embeds_length": len(test_lang_embeds_zs),
+                    "lang_length": len(test_langs_zs)
                 }
 
             }
