@@ -68,6 +68,7 @@ def get_results(output_dir="output/models/", langs="clics"):
                                     if result["train"]["lang_embeds_length"] > 0:
                                         result_dict_per_feature["_".join((t2, t3, t4))] = {
                                             "test_acc": result["test"]["report"]["accuracy"],
+                                            "test_zs_acc": result["test_zs"]["report"]["accuracy"],
                                             "dev_acc": result["dev"]["report"]["accuracy"],
 
                                         }
@@ -81,6 +82,7 @@ def get_results(output_dir="output/models/", langs="clics"):
                                     if result["train"]["lang_embeds_length"] > 0:
                                         result_dict_per_feature["uriel"] = {
                                             "test_acc": result["test"]["report"]["accuracy"],
+                                            "test_zs_acc": result["test_zs"]["report"]["accuracy"],
                                             "dev_acc": result["dev"]["report"]["accuracy"],
                                         }
                                         train_langs = result["train"]["langs_length"]
@@ -95,6 +97,7 @@ def get_results(output_dir="output/models/", langs="clics"):
                                     if result["train"]["lang_embeds_length"] > 0:
                                         result_dict_per_feature["_".join(("wn+concept", t2, t3))] = {
                                             "test_acc": result["test"]["report"]["accuracy"],
+                                            "test_zs_acc": result["test_zs"]["report"]["accuracy"],
                                             "dev_acc": result["dev"]["report"]["accuracy"],
                                         }
                                         train_langs = result["train"]["langs_length"]
@@ -106,6 +109,7 @@ def get_results(output_dir="output/models/", langs="clics"):
                                     assert len(t) == 2
                                     result_dict_per_feature["random"] = {
                                         "test_acc": result["test"]["report"]["accuracy"],
+                                        "test_zs_acc": result["test_zs"]["report"]["accuracy"],
                                         "dev_acc": result["dev"]["report"]["accuracy"],
                                     }
                 results_feature_dict[feature_area][feature_id]["results"] = result_dict_per_feature
