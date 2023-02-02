@@ -80,73 +80,70 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
         train_file = f"data/TypPred/datasets/features/train_{feature_id}.csv"
         dev_file = f"data/TypPred/datasets/features/dev_{feature_id}.csv"
         test_file = f"data/TypPred/datasets/features/test_{feature_id}.csv"
-        train_data = pd.read_csv(train_file)
-        dev_data = pd.read_csv(dev_file)
-        test_data = pd.read_csv(test_file)
-        train_data[feature] = train_data[feature].astype("int")
-        dev_data[feature] = dev_data[feature].astype("int")
-        test_data[feature] = test_data[feature].astype("int")
 
-        train_data = train_data[train_data["ISO"].isin(langs_list)]
-        dev_data = dev_data[dev_data["ISO"].isin(langs_list)]
+        if os.path.exists(train_file):
+            train_data = pd.read_csv(train_file)
+            dev_data = pd.read_csv(dev_file)
+            test_data = pd.read_csv(test_file)
+            train_data[feature] = train_data[feature].astype("int")
+            dev_data[feature] = dev_data[feature].astype("int")
+            test_data[feature] = test_data[feature].astype("int")
+            train_data = train_data[train_data["ISO"].isin(langs_list)]
+            dev_data = dev_data[dev_data["ISO"].isin(langs_list)]
 
-        if len(train_data) > 0 and len(dev_data) > 0:
+            if len(train_data) > 0 and len(dev_data) > 0:
 
-            if node_embeddings is not None:
-                outputfile_name = f"{model_name}_{dataset}_{node_embeddings}_{metric}_{feature_id}.json"
-                outputfile = os.path.join(output_folder, outputfile_name)
+                if node_embeddings is not None:
+                    outputfile_name = f"{model_name}_{dataset}_{node_embeddings}_{metric}_{feature_id}.json"
+                    outputfile = os.path.join(output_folder, outputfile_name)
 
-            elif dataset is not None:
-                outputfile_name = f"{model_name}_{dataset}_{feature_id}.json"
-                outputfile = os.path.join(output_folder, outputfile_name)
-            else:
-                outputfile_name = f"{model_name}_{feature_id}.json"
-                outputfile = os.path.join(output_folder, outputfile_name)
+                elif dataset is not None:
+                    outputfile_name = f"{model_name}_{dataset}_{feature_id}.json"
+                    outputfile = os.path.join(output_folder, outputfile_name)
+                else:
+                    outputfile_name = f"{model_name}_{feature_id}.json"
+                    outputfile = os.path.join(output_folder, outputfile_name)
 
-            print(f"outputfile path {outputfile}")
+                print(f"outputfile path {outputfile}")
 
-            if not os.path.exists(outputfile):
+                if not os.path.exists(outputfile):
 
-                langs_train = set(train_data["ISO"].tolist())
-                langs_dev = set(dev_data["ISO"].tolist())
-                langs_test = set(test_data["ISO"].tolist())
+                    langs_train = set(train_data["ISO"].tolist())
+                    langs_dev = set(dev_data["ISO"].tolist())
+                    langs_test = set(test_data["ISO"].tolist())
 
-                all_langs = list(set(langs_train) | set(langs_dev) | set(langs_test))
-                num_langs = len(all_langs)
-                lang_dict = {lang: idx for idx, lang in enumerate(all_langs)}
-                print(f"languages in total {num_langs}")
+                    all_langs = list(set(langs_train) | set(langs_dev) | set(langs_test))
+                    num_langs = len(all_langs)
+                    lang_dict = {lang: idx for idx, lang in enumerate(all_langs)}
+                    print(f"languages in total {num_langs}")
 
-                # output folder for the models.
-                if model_name == "oneff":
+                    # output folder for the models.
+                    if model_name == "oneff":
 
-                    # check if there are overlapping languages in train data
-                    if metric in ["add+avg", "add+max", "add+sum"]:
-                        input_dim = 100
-                        hidden_dim = 75
-                    elif metric in ["concat+avg", "concat+max", "concat+sum"]:
-                        input_dim = 200
-                        hidden_dim = 150
-                    else:
-                        if dataset == "uriel":
-                            input_dim = 512
-                            hidden_dim = 300
-                        else:
+                        # check if there are overlapping languages in train data
+                        if metric in ["add+avg", "add+max", "add+sum"]:
                             input_dim = 100
                             hidden_dim = 75
+                        elif metric in ["concat+avg", "concat+max", "concat+sum"]:
+                            input_dim = 200
+                            hidden_dim = 150
+                        else:
+                            if dataset == "uriel":
+                                input_dim = 512
+                                hidden_dim = 300
+                            else:
+                                input_dim = 100
+                                hidden_dim = 75
 
-                    print(f"{dataset} -> input dim {input_dim} hidden dim {hidden_dim}")
-                    model = OneFF(device=device, num_langs=num_langs, input_dim=input_dim,
-                                  hidden_dim=hidden_dim,
-                                  label_dim=label_dim, dropout=0.5)
+                        print(f"{dataset} -> input dim {input_dim} hidden dim {hidden_dim}")
+                        model = OneFF(device=device, num_langs=num_langs, input_dim=input_dim,
+                                      hidden_dim=hidden_dim,
+                                      label_dim=label_dim, dropout=0.5)
 
-                    model = model.to(device)
+                        model = model.to(device)
 
-                    optimizer = optim.Adam(model.parameters(), lr=0.001)
-                    if langs_list is not None:
-                        intersection = set(langs_train) & set(langs_list)
-
-                        if len(list(intersection)) > 0:
-                            print(f"intersection {intersection}")
+                        optimizer = optim.Adam(model.parameters(), lr=0.001)
+                        if langs_list is not None:
 
                             print(
                                 f"train lang {len(langs_train)} dev lang {len(langs_dev)} test lang {len(langs_test)}")
@@ -191,20 +188,19 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
                                             langs_list,
                                             output_folder,
                                             max_epochs=epochs, language_vectors=None)
-                    else:
-                        print("get the model")
-                        train_model(model, model_name, optimizer, train_data, dev_data, test_data, feature,
-                                    feature_id,
-                                    lang_dict,
-                                    langs_list,
-                                    output_folder,
-                                    max_epochs=epochs, language_vectors=None)
-
-            else:
-                print(f"{outputfile} exists!")
-                print("*" * 50)
+                        else:
+                            print("get the model")
+                            train_model(model, model_name, optimizer, train_data, dev_data, test_data, feature,
+                                        feature_id,
+                                        lang_dict,
+                                        langs_list,
+                                        output_folder,
+                                        max_epochs=epochs, language_vectors=None)
         else:
-            print(f"train file {train_file} doesn't exist!")
+            print(f"{outputfile} exists!")
+            print("*" * 50)
+    else:
+        print(f"train file {train_file} doesn't exist!")
 
 
 if __name__ == '__main__':

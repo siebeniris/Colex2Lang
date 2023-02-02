@@ -73,6 +73,7 @@ def train_model(model, model_name, optimizer, train_data, dev_data, test_data, f
     best_acc = [0]
     train_langs_embeddings = []
     for epoch in range(max_epochs):
+
         gold = []
         pred = []
         losses = []
@@ -82,6 +83,7 @@ def train_model(model, model_name, optimizer, train_data, dev_data, test_data, f
             train_total_langs.append(lang)
             # zero the parameter gradients
             optimizer.zero_grad()
+
             if language_vectors is not None:
                 # if language_vectors is not None:
                 if lang in language_vectors.index_to_key and lang in langs_list:
