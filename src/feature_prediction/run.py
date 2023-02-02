@@ -196,11 +196,11 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
                                         langs_list,
                                         output_folder,
                                         max_epochs=epochs, language_vectors=None)
+                else:
+                    print(f"{outputfile} exists!")
+                    print("*" * 50)
         else:
-            print(f"{outputfile} exists!")
-            print("*" * 50)
-    else:
-        print(f"train file {train_file} doesn't exist!")
+            print(f"train file {train_file} doesn't exist!")
 
 
 if __name__ == '__main__':
