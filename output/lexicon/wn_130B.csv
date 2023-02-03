@@ -1,0 +1,7 @@
+Test (F1),Value,Model,Weight,Feature
+0.6666666666666666,Hunter-gatherers,Random,0.5,Cultural_Categories_of_Languages_with_Identity_of_'Finger'_and_'Hand'
+0.0,Full-fledged farmers,Random,0.2,Cultural_Categories_of_Languages_with_Identity_of_'Finger'_and_'Hand'
+0.6666666666666666,Hunter-gatherers,WordNet,0.5,Cultural_Categories_of_Languages_with_Identity_of_'Finger'_and_'Hand'
+0.0,Full-fledged farmers,WordNet,0.2,Cultural_Categories_of_Languages_with_Identity_of_'Finger'_and_'Hand'
+0.6666666666666666,Hunter-gatherers,WordNet Concept,0.5,Cultural_Categories_of_Languages_with_Identity_of_'Finger'_and_'Hand'
+0.0,Full-fledged farmers,WordNet Concept,0.2,Cultural_Categories_of_Languages_with_Identity_of_'Finger'_and_'Hand'

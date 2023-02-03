@@ -18,7 +18,7 @@ try:
 except ImportError:
     from yaml import Loader, Dumper
 
-from src.feature_prediction.training_utils import train_model, train_model_splits
+from src.feature_prediction.training_utils import train_model_kfold
 from src.feature_prediction.models import OneFF
 
 torch.manual_seed(42)
@@ -45,7 +45,7 @@ def load_lang_list(langs):
         return None
 
 
-def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=20,
+def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=100,
         langs=None,
         dataset=None,
         node_embeddings=None, metric=None,
@@ -72,7 +72,7 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
         os.mkdir(output_folder)
 
     lexicon_features = ["129A", "130A", "130B", "131A", "132A", "133A", "134A", "135A", "136A", "136B", "137B", "138A"]
-    for feature_id in feature_dict:
+    for feature_id in lexicon_features:
         print("*" * 40)
         label_dim = len(feature_dict[feature_id]["values"])
         feature = feature_dict[feature_id]["feature"]
@@ -86,11 +86,9 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
             train_data = pd.read_csv(train_file)
             dev_data = pd.read_csv(dev_file)
             test_data = pd.read_csv(test_file)
-
             train_data[feature] = train_data[feature].astype("int")
             dev_data[feature] = dev_data[feature].astype("int")
             test_data[feature] = test_data[feature].astype("int")
-
             train_data = train_data[train_data["ISO"].isin(langs_list)]
             dev_data = dev_data[dev_data["ISO"].isin(langs_list)]
 
@@ -110,7 +108,7 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
                 print(f"outputfile path {outputfile}")
 
                 if not os.path.exists(outputfile):
-
+                    # get language ids.
                     langs_train = set(train_data["ISO"].tolist())
                     langs_dev = set(dev_data["ISO"].tolist())
                     langs_test = set(test_data["ISO"].tolist())
@@ -121,17 +119,14 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
                     print(f"languages in total {num_langs}")
 
                     df_train_test = pd.concat([train_data, test_data], axis=0)
+                    # get part of test data to train data
                     train_data, test_data = train_test_split(df_train_test, test_size=0.1, shuffle=False)
 
-                    df_train_dev = pd.concat([train_data, dev_data], axis=0)
 
-                    sample = len(df_train_dev)
-                    if sample > 10:
-                        kf = KFold(n_splits=10)
-                        train_dev_splits = kf.split(df_train_dev)
-                    else:
-                        kf = KFold(n_splits=sample)
-                        train_dev_splits = kf.split(df_train_dev)
+                    # ten fold train and dev data
+                    df_train_dev = pd.concat([train_data, dev_data], axis=0)
+                    ten_fold = KFold(n_splits=10)
+                    kf_splits = ten_fold.split(df_train_dev)
 
                     # output folder for the models.
                     if model_name == "oneff":
@@ -173,14 +168,15 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
 
                                     model_name_ = f"{model_name}_{dataset}"
 
-                                    train_model_splits(model, model_name_, optimizer, train_dev_splits, df_train_dev,
-                                                       test_data,
-                                                       feature,
-                                                       feature_id,
-                                                       lang_dict,
-                                                       langs_list,
-                                                       output_folder,
-                                                       max_epochs=epochs, language_vectors=uriel_language_vectors)
+                                    train_model_kfold(model, model_name_, optimizer, kf_splits, df_train_dev, test_data,
+                                                feature,
+                                                feature_id,
+                                                lang_dict,
+                                                langs_list,
+                                                output_folder,
+                                                max_epochs=epochs, language_vectors=uriel_language_vectors)
+
+
                                 else:
                                     if node_embeddings is not None:
                                         dataset_path = os.path.join("data/language_embeddings", metric,
@@ -189,33 +185,36 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
 
                                         model_name_ = f"{model_name}_{dataset}_{node_embeddings}_{metric}"
 
-                                        train_model_splits(model, model_name_, optimizer, train_dev_splits,
-                                                           df_train_dev, test_data,
-                                                           feature,
-                                                           feature_id,
-                                                           lang_dict,
-                                                           langs_list,
-                                                           output_folder,
-                                                           max_epochs=epochs, language_vectors=language_vectors)
+                                        train_model_kfold(model, model_name_, optimizer, kf_splits,df_train_dev, test_data,
+                                                    feature,
+                                                    feature_id,
+                                                    lang_dict,
+                                                    langs_list,
+                                                    output_folder,
+                                                    max_epochs=epochs, language_vectors=language_vectors)
+
 
                             else:
                                 print("get the model")
-                                train_model_splits(model, model_name, optimizer, train_dev_splits, df_train_dev,
-                                                   test_data, feature,
-                                                   feature_id,
-                                                   lang_dict,
-                                                   langs_list,
-                                                   output_folder,
-                                                   max_epochs=epochs, language_vectors=None)
+                                train_model_kfold(model, model_name, optimizer, kf_splits,df_train_dev, test_data,
+                                            feature,
+                                            feature_id,
+                                            lang_dict,
+                                            langs_list,
+                                            output_folder,
+                                            max_epochs=epochs, language_vectors=None)
+
+
                         else:
                             print("get the model")
-                            train_model_splits(model, model_name, optimizer, train_dev_splits, df_train_dev, test_data,
-                                               feature,
-                                               feature_id,
-                                               lang_dict,
-                                               langs_list,
-                                               output_folder,
-                                               max_epochs=epochs, language_vectors=None)
+                            train_model_kfold(model, model_name, optimizer, kf_splits,df_train_dev, test_data, feature,
+                                        feature_id,
+                                        lang_dict,
+                                        langs_list,
+                                        output_folder,
+                                        max_epochs=epochs, language_vectors=None)
+
+
                 else:
                     print(f"{outputfile} exists!")
                     print("*" * 50)

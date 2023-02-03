@@ -1,0 +1,5 @@
+Test (F1),Value,Model,Weight,Feature
+0.4,Green/blue,Random,0.7222222222222222,Green_and_Blue
+0.0,Green vs. blue,Random,0.19444444444444445,Green_and_Blue
+0.4,Green/blue,CLICS,0.7222222222222222,Green_and_Blue
+0.0,Green vs. blue,CLICS,0.19444444444444445,Green_and_Blue

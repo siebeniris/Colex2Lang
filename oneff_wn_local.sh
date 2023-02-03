@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-python python -m src.feature_prediction.run_kfold cpu output/ oneff 100 clics
+python -m src.feature_prediction.run_kfold cpu output/ oneff 100 clics
 
 python -m src.feature_prediction.run_kfold cpu output/ oneff 100 clics clics ggvc concat+sum
 python -m src.feature_prediction.run_kfold cpu output/ oneff 100 clics clics ggvc concat+avg

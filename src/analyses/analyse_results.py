@@ -122,45 +122,7 @@ def create_dfs(filepath, dataset="clics"):
     df.to_csv(f"output/results/{dataset}_nodeEmb_test.csv")
 
     print("*" * 30)
-    # print(np.average(acc_))
-    #
-    #
-    print("ZS- TEST- AVERAGE")
-    df_dict_zs = defaultdict(dict)
 
-    acc_dict = defaultdict(list)
-    for feature_area, model_results in feature_area_result_dict_zs.items():
-        print(f"{feature_area} : label_dim {feature_area_labels[feature_area]}")
-
-        for m, f1_score in model_results.items():
-            if m not in df_dict_zs:
-                df_dict_zs[m] = defaultdict(dict)
-            if dataset in m:
-                # model, nodeEmb, metric
-                t1, t2, t3 = m.split("_")
-                df_dict_zs[m]["NodeEmb"] = t2
-                df_dict_zs[m]["Metric"] = t3
-                df_dict_zs[m][feature_area] = f1_score[0]
-            else:
-                if m == "random":
-                    df_dict[m]["NodeEmb"] = None
-                    df_dict[m]["Metric"] = None
-                    df_dict[m][feature_area] = f1_score[0]
-
-            acc_dict[m].append(f1_score)
-
-    print("average")
-    acc_dict_ = {k: np.average(v) for k, v in acc_dict.items()}
-
-    print(sorted(acc_dict_.items(), key=lambda x: x[1], reverse=True))
-
-    print("*" * 30)
-
-    df_zs = pd.DataFrame.from_dict(df_dict_zs, columns=columns, orient="index")
-    df_zs = df_zs.dropna(axis=1, how="all")
-    print(df_zs)
-
-    df_zs.to_csv(f"output/results/{dataset}_nodeEmb_test_zs.csv")
 
 
 if __name__ == '__main__':

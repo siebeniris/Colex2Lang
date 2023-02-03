@@ -1,0 +1,7 @@
+Test (F1),Value,Model,Weight,Feature
+0.9090909090909091,No M-T pronouns,Random,0.673469387755102,M-T_Pronouns
+0.0,"M-T pronouns, paradigmatic",Random,0.30612244897959184,M-T_Pronouns
+0.9090909090909091,No M-T pronouns,WordNet,0.673469387755102,M-T_Pronouns
+0.0,"M-T pronouns, paradigmatic",WordNet,0.30612244897959184,M-T_Pronouns
+0.8000000000000002,No M-T pronouns,WordNet Concept,0.673469387755102,M-T_Pronouns
+0.0,"M-T pronouns, paradigmatic",WordNet Concept,0.30612244897959184,M-T_Pronouns

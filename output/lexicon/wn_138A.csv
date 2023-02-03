@@ -1,0 +1,10 @@
+Test (F1),Value,Model,Weight,Feature
+0.8333333333333333,Words derived from Sinitic cha,Random,0.504,Tea
+0.0,Words derived from Min Nan Chinese te,Random,0.352,Tea
+0.0,Others,Random,0.144,Tea
+0.7272727272727272,Words derived from Sinitic cha,WordNet,0.504,Tea
+0.0,Words derived from Min Nan Chinese te,WordNet,0.352,Tea
+0.0,Others,WordNet,0.144,Tea
+0.6,Words derived from Sinitic cha,WordNet Concept,0.504,Tea
+0.0,Words derived from Min Nan Chinese te,WordNet Concept,0.352,Tea
+0.0,Others,WordNet Concept,0.144,Tea

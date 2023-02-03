@@ -1,0 +1,5 @@
+Test (F1),Value,Model,Weight,Feature
+0.9411764705882353,No N-M pronouns,Random,0.8941176470588236,N-M_Pronouns
+0.0,"N-M pronouns, paradigmatic",Random,0.07058823529411765,N-M_Pronouns
+0.9411764705882353,No N-M pronouns,CLICS,0.8941176470588236,N-M_Pronouns
+0.0,"N-M pronouns, paradigmatic",CLICS,0.07058823529411765,N-M_Pronouns

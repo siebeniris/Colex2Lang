@@ -1,0 +1,5 @@
+Test (F1),Value,Model,Weight,Feature
+0.7142857142857143,No m in second person singular,Random,0.7558139534883721,M_in_Second_Person_Singular
+0.0,m in second person singular,Random,0.2441860465116279,M_in_Second_Person_Singular
+0.6666666666666666,No m in second person singular,CLICS,0.7558139534883721,M_in_Second_Person_Singular
+0.3333333333333333,m in second person singular,CLICS,0.2441860465116279,M_in_Second_Person_Singular

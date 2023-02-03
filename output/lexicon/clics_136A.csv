@@ -1,0 +1,5 @@
+Test (F1),Value,Model,Weight,Feature
+0.0,No M-T pronouns,Random,0.7294117647058823,M-T_Pronouns
+0.3636363636363636,"M-T pronouns, paradigmatic",Random,0.23529411764705882,M-T_Pronouns
+0.7692307692307692,No M-T pronouns,CLICS,0.7294117647058823,M-T_Pronouns
+0.4,"M-T pronouns, paradigmatic",CLICS,0.23529411764705882,M-T_Pronouns

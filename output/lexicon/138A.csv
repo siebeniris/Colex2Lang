@@ -1,0 +1,13 @@
+Test(F1),Value,Model,Weight
+0.0,Others,random,0.09803921568627451
+0.0,Words derived from Min Nan Chinese te,random,0.3627450980392157
+0.7777777777777778,Words derived from Sinitic cha,random,0.5392156862745098
+0.0,Others,clics,0.09803921568627451
+0.5,Words derived from Min Nan Chinese te,clics,0.3627450980392157
+0.8750000000000001,Words derived from Sinitic cha,clics,0.5392156862745098
+0.0,Others,wn,0.09803921568627451
+0.0,Words derived from Min Nan Chinese te,wn,0.3627450980392157
+0.7272727272727272,Words derived from Sinitic cha,wn,0.5392156862745098
+0.0,Others,wn_concept,0.09803921568627451
+0.0,Words derived from Min Nan Chinese te,wn_concept,0.3627450980392157
+0.6,Words derived from Sinitic cha,wn_concept,0.5392156862745098

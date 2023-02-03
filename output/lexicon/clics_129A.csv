@@ -1,0 +1,5 @@
+Test (F1),Value,Model,Weight,Feature
+0.7058823529411764,Different,Random,0.6666666666666666,Hand_and_Arm
+0.0,Identical,Random,0.3333333333333333,Hand_and_Arm
+0.0,Different,CLICS,0.6666666666666666,Hand_and_Arm
+0.625,Identical,CLICS,0.3333333333333333,Hand_and_Arm

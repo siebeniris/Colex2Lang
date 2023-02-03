@@ -1,0 +1,7 @@
+Test (F1),Value,Model,Weight,Feature
+0.8333333333333333,Decimal,Random,0.8,Numeral_Bases
+0.0,Hybrid vigesimal-decimal,Random,0.09230769230769231,Numeral_Bases
+0.8333333333333333,Decimal,WordNet,0.8,Numeral_Bases
+0.0,Hybrid vigesimal-decimal,WordNet,0.09230769230769231,Numeral_Bases
+0.8333333333333333,Decimal,WordNet Concept,0.8,Numeral_Bases
+0.0,Hybrid vigesimal-decimal,WordNet Concept,0.09230769230769231,Numeral_Bases

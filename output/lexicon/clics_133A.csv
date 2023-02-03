@@ -1,0 +1,5 @@
+Test (F1),Value,Model,Weight,Feature
+0.4,6-6.5,Random,0.3888888888888889,Number_of_Basic_Colour_Categories
+0.0,11,Random,0.1111111111111111,Number_of_Basic_Colour_Categories
+0.6666666666666666,6-6.5,CLICS,0.3888888888888889,Number_of_Basic_Colour_Categories
+0.8,11,CLICS,0.1111111111111111,Number_of_Basic_Colour_Categories

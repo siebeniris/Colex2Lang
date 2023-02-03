@@ -1,0 +1,6 @@
+Test (F1),Value,Model,Weight,Feature
+0.6666666666666666,Hunter-gatherers,Random,0.5294117647058824,Cultural_Categories_of_Languages_with_Identity_of_'Finger'_and_'Hand'
+0.0,Farmer-foragers,Random,0.17647058823529413,Cultural_Categories_of_Languages_with_Identity_of_'Finger'_and_'Hand'
+1.0,Hunter-gatherers,CLICS,0.5294117647058824,Cultural_Categories_of_Languages_with_Identity_of_'Finger'_and_'Hand'
+0.0,Farmer-foragers,CLICS,0.17647058823529413,Cultural_Categories_of_Languages_with_Identity_of_'Finger'_and_'Hand'
+0.0,Full-fledged farmers,CLICS,0.29411764705882354,Cultural_Categories_of_Languages_with_Identity_of_'Finger'_and_'Hand'

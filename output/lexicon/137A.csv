@@ -1,0 +1,9 @@
+Test(F1),Value,Model,Weight
+0.0,"N-M pronouns, paradigmatic",random,0.07058823529411765
+0.9411764705882353,No N-M pronouns,random,0.8941176470588236
+0.0,"N-M pronouns, paradigmatic",clics,0.07058823529411765
+0.9411764705882353,No N-M pronouns,clics,0.8941176470588236
+0.0,"N-M pronouns, paradigmatic",wn,0.07058823529411765
+0.9090909090909091,No N-M pronouns,wn,0.8941176470588236
+0.0,"N-M pronouns, paradigmatic",wn_concept,0.07058823529411765
+0.9090909090909091,No N-M pronouns,wn_concept,0.8941176470588236
