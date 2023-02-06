@@ -1,5 +1,0 @@
-Test (F1),Value,Model,Weight,Feature
-0.4,3.5,Random,0.6388888888888888,Number_of_Non-Derived_Basic_Colour_Categories
-0.0,4.5,Random,0.2222222222222222,Number_of_Non-Derived_Basic_Colour_Categories
-0.5,3.5,CLICS,0.6388888888888888,Number_of_Non-Derived_Basic_Colour_Categories
-0.5,4.5,CLICS,0.2222222222222222,Number_of_Non-Derived_Basic_Colour_Categories

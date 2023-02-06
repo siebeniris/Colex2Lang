@@ -1,7 +1,0 @@
-Test (F1),Value,Model,Weight,Feature
-0.9090909090909091,No m in first person singular,Random,0.58,M_in_First_Person_Singular
-0.0,m in first person singular,Random,0.42,M_in_First_Person_Singular
-0.8000000000000002,No m in first person singular,WordNet,0.58,M_in_First_Person_Singular
-0.0,m in first person singular,WordNet,0.42,M_in_First_Person_Singular
-0.8000000000000002,No m in first person singular,WordNet Concept,0.58,M_in_First_Person_Singular
-0.0,m in first person singular,WordNet Concept,0.42,M_in_First_Person_Singular

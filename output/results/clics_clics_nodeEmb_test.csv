@@ -1,4 +1,0 @@
-,NodeEmb,Metric,Lexicon
-clics_glove_add+avg,glove,add+avg,0.5285
-clics_prone_concat+sum,prone,concat+sum,0.5061
-clics_prone_add+avg,prone,add+avg,0.5386

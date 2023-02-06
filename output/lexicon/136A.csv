@@ -1,9 +1,0 @@
-Test(F1),Value,Model,Weight
-0.3636363636363636,"M-T pronouns, paradigmatic",random,0.23529411764705882
-0.0,No M-T pronouns,random,0.7294117647058823
-0.4,"M-T pronouns, paradigmatic",clics,0.23529411764705882
-0.7692307692307692,No M-T pronouns,clics,0.7294117647058823
-0.0,"M-T pronouns, paradigmatic",wn,0.23529411764705882
-0.9090909090909091,No M-T pronouns,wn,0.7294117647058823
-0.0,"M-T pronouns, paradigmatic",wn_concept,0.23529411764705882
-0.8000000000000002,No M-T pronouns,wn_concept,0.7294117647058823

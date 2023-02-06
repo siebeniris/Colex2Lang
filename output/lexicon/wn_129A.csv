@@ -1,7 +1,0 @@
-Test (F1),Value,Model,Weight,Feature
-0.0,Different,Random,0.5573770491803278,Hand_and_Arm
-0.7368421052631579,Identical,Random,0.4426229508196721,Hand_and_Arm
-0.625,Different,WordNet,0.5573770491803278,Hand_and_Arm
-0.25,Identical,WordNet,0.4426229508196721,Hand_and_Arm
-0.3076923076923077,Different,WordNet Concept,0.5573770491803278,Hand_and_Arm
-0.18181818181818182,Identical,WordNet Concept,0.4426229508196721,Hand_and_Arm
