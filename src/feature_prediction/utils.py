@@ -2,12 +2,6 @@ import os
 import json
 from collections import defaultdict
 import pandas as pd
-import numpy as np
-import torch
-from torch import nn
-import torch.optim as optim
-
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, f1_score
 
 
 def lang_clics_wn():
