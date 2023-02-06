@@ -71,7 +71,6 @@ def get_datasets_dist(feature_id, langs):
     dev_data = dev_data[dev_data["ISO"].isin(langs_list)]
 
     if len(train_data) > 0 and len(dev_data) > 0:
-
         df_train_test = pd.concat([train_data, test_data], axis=0)
         train_data, test_data = train_test_split(df_train_test, test_size=0.1, shuffle=False)
 
@@ -205,16 +204,16 @@ def dict2df(lexicon_values_dict, dataset="wn"):
             "Value": values,
             "Model": models,
             "Weight": weights,
-            "Feature":feature
+            "Feature": feature
         }
 
     for feature_id, results in lexicon_results_dict.items():
         df_feature_id = pd.DataFrame.from_dict(results)
         df_feature_id["Model"] = df_feature_id["Model"].replace({"clics": "CLICS",
-                                                                 "wn_concept":"WordNet Concept",
-                                                                 "random_wn":"Random",
-                                                                 "wn":"WordNet",
-                                                                "random_clics":"Random"
+                                                                 "wn_concept": "WordNet Concept",
+                                                                 "random_wn": "Random",
+                                                                 "wn": "WordNet",
+                                                                 "random_clics": "Random"
                                                                  })
 
         df_feature_id.to_csv(f"output/lexicon/{dataset}_{feature_id}.csv", index=False)
