@@ -1,5 +1,0 @@
-Test (F1),Value,Model,Weight,Feature
-0.9743589743589743,Different,Random,0.9067357512953368,Finger_and_Hand
-0.0,Identical,Random,0.09326424870466321,Finger_and_Hand
-0.9743589743589743,Different,CLICS,0.9067357512953368,Finger_and_Hand
-0.0,Identical,CLICS,0.09326424870466321,Finger_and_Hand

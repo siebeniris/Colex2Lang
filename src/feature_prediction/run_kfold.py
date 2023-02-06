@@ -124,13 +124,12 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
                     train_data, test_data = train_test_split(df_train_test, test_size=0.1, shuffle=False)
 
                     df_train_dev = pd.concat([train_data, dev_data], axis=0)
-
-                    sample = len(df_train_dev)
-                    if sample > 10:
+                    if len(df_train_dev) > 10:
                         kf = KFold(n_splits=10)
                         train_dev_splits = kf.split(df_train_dev)
                     else:
-                        kf = KFold(n_splits=sample)
+                        sample_len = len(df_train_dev)
+                        kf = KFold(n_splits=sample_len)
                         train_dev_splits = kf.split(df_train_dev)
 
                     # output folder for the models.
@@ -185,6 +184,7 @@ def run(device="cpu", output_folder="output/models", model_name="oneff", epochs=
                                     if node_embeddings is not None:
                                         dataset_path = os.path.join("data/language_embeddings", metric,
                                                                     f"{dataset}_{node_embeddings}_embeddings")
+                                        print(f"loading language vectors {dataset_path}..")
                                         language_vectors = KeyedVectors.load_word2vec_format(dataset_path, binary=False)
 
                                         model_name_ = f"{model_name}_{dataset}_{node_embeddings}_{metric}"

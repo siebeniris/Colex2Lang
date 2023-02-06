@@ -1,9 +1,0 @@
-Test(F1),Value,Model,Weight
-0.0,m in first person singular,random,0.37209302325581395
-0.8750000000000001,No m in first person singular,random,0.627906976744186
-0.4444444444444445,m in first person singular,clics,0.37209302325581395
-0.4444444444444445,No m in first person singular,clics,0.627906976744186
-0.0,m in first person singular,wn,0.37209302325581395
-0.8000000000000002,No m in first person singular,wn,0.627906976744186
-0.0,m in first person singular,wn_concept,0.37209302325581395
-0.8000000000000002,No m in first person singular,wn_concept,0.627906976744186
