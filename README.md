@@ -9,4 +9,4 @@ https://docs.google.com/spreadsheets/d/1WZMKTruIB0H7dR1iXWrXrQPcP7AA1CyrILA5l45b
 
 
 
-Detailed README comes later :)
+Detailed README comes in the end of July :)
