@@ -1,6 +1,8 @@
 # Colex2Lang
 Colexification and language embeddings , BabelNet, Open Multilingual WordNet
 
+Language Embeddings trained with Colexification Patterns:
+https://github.com/siebeniris/Colex2Lang/tree/main/data/language_embeddings
 
 
 Detailed Typologyical Feature Predictions Results:
@@ -24,5 +26,7 @@ Yiyi Chen, Russa Biswas, and Johannes Bjerva. 2023. Colex2Lang: Language Embeddi
 }
 ```
 
+Email: yiyic@cs.aau.dk
 
-Detailed README comes in the end of July :)
+Detailed README comes later.
+
